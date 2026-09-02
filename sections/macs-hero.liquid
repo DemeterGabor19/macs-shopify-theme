@@ -1,0 +1,281 @@
+{% liquid
+  assign hero_id = 'MacsHero-' | append: section.id
+  assign eyebrow = section.settings.eyebrow | default: 'MAC’s szuperprémium kutyaeledelek'
+  assign title_first = section.settings.title_first | default: 'Prémium táplálás,'
+  assign title_accent = section.settings.title_accent | default: 'amit kutyád is imádni fog.'
+  assign description = section.settings.description | default: 'Magas hústartalmú, gabonamentes kutyaeledelek gondosan válogatott alapanyagokból. Teljes értékű táplálás kölyökkortól egészen az idősebb évekig.'
+  assign primary_label = section.settings.primary_label | default: 'Kutyatermékek'
+  assign secondary_label = section.settings.secondary_label | default: 'Táplálkozási tanácsot kérek'
+  assign benefit_one = section.settings.benefit_one | default: 'Gabonamentes'
+  assign benefit_two = section.settings.benefit_two | default: 'Magas hústartalom'
+  assign benefit_three = section.settings.benefit_three | default: '30+ év tapasztalat'
+  assign dog_image = section.settings.dog_image
+  assign bag_image = section.settings.product_bag_image
+  assign can_image = section.settings.product_can_image
+  assign snack_image = section.settings.product_snack_image
+  assign image_fetchpriority = 'auto'
+
+  if section.index == 1
+    assign image_fetchpriority = 'high'
+  endif
+%}
+
+<section class="macs-hero__section" id="{{ hero_id }}">
+  <div class="macs-hero__wrap">
+    <div class="macs-hero__inner">
+      <div class="macs-hero__content">
+        {% if eyebrow != blank %}
+          <p class="macs-hero__eyebrow">{{ eyebrow | escape }}</p>
+        {% endif %}
+
+        <h1 class="macs-hero__title">
+          {% if title_first == 'Prémium táplálás,' %}
+            <span class="macs-hero__title-line">Prémium</span>
+            <span class="macs-hero__title-line">táplálás,</span>
+          {% else %}
+            <span class="macs-hero__title-line">{{ title_first | escape }}</span>
+          {% endif %}
+          <span class="macs-hero__title-accent">{{ title_accent | escape }}</span>
+        </h1>
+
+        {% if description != blank %}
+          <div class="macs-hero__description">
+            {{ description | escape | newline_to_br }}
+          </div>
+        {% endif %}
+
+        <div class="macs-hero__actions">
+          {% if primary_label != blank %}
+            <a class="macs-hero__button macs-hero__button--primary" href="{{ section.settings.primary_link | default: routes.collections_url }}">
+              {{ primary_label | escape }}
+            </a>
+          {% endif %}
+
+          {% if secondary_label != blank %}
+            <a class="macs-hero__button macs-hero__button--secondary" href="{{ section.settings.secondary_link | default: routes.root_url }}">
+              {{ secondary_label | escape }}
+            </a>
+          {% endif %}
+        </div>
+
+        <ul class="macs-hero__benefits" aria-label="Előnyök">
+          {% if benefit_one != blank %}
+            <li class="macs-hero__benefit">{{ benefit_one | escape }}</li>
+          {% endif %}
+          {% if benefit_two != blank %}
+            <li class="macs-hero__benefit">{{ benefit_two | escape }}</li>
+          {% endif %}
+          {% if benefit_three != blank %}
+            <li class="macs-hero__benefit">{{ benefit_three | escape }}</li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <div class="macs-hero__media" aria-hidden="true">
+        <span class="macs-hero__shape macs-hero__shape--red"></span>
+        <span class="macs-hero__shape macs-hero__shape--yellow"></span>
+
+        {% if bag_image != blank %}
+          {{
+            bag_image
+            | image_url: width: 520
+            | image_tag:
+              widths: '180, 260, 360, 520',
+              sizes: '(max-width: 749px) 32vw, 16vw',
+              class: 'macs-hero__image macs-hero__product macs-hero__product--bag',
+              loading: 'eager',
+              fetchpriority: image_fetchpriority
+          }}
+        {% else %}
+          <img
+            class="macs-hero__image macs-hero__product macs-hero__product--bag"
+            src="{{ 'hero-product-bag.png' | asset_url }}"
+            alt=""
+            loading="eager"
+            fetchpriority="{{ image_fetchpriority }}"
+          >
+        {% endif %}
+
+        {% if dog_image != blank %}
+          {{
+            dog_image
+            | image_url: width: 920
+            | image_tag:
+              widths: '360, 520, 720, 920',
+              sizes: '(max-width: 749px) 68vw, 38vw',
+              class: 'macs-hero__image macs-hero__dog',
+              loading: 'eager',
+              fetchpriority: image_fetchpriority
+          }}
+        {% else %}
+          <img
+            class="macs-hero__image macs-hero__dog"
+            src="{{ 'hero-dog.png' | asset_url }}"
+            alt=""
+            loading="eager"
+            fetchpriority="{{ image_fetchpriority }}"
+          >
+        {% endif %}
+
+        {% if can_image != blank %}
+          {{
+            can_image
+            | image_url: width: 420
+            | image_tag:
+              widths: '140, 220, 320, 420',
+              sizes: '(max-width: 749px) 25vw, 13vw',
+              class: 'macs-hero__image macs-hero__product macs-hero__product--can',
+              loading: 'eager',
+              fetchpriority: image_fetchpriority
+          }}
+        {% else %}
+          <img
+            class="macs-hero__image macs-hero__product macs-hero__product--can"
+            src="{{ 'hero-product-can.png' | asset_url }}"
+            alt=""
+            loading="eager"
+            fetchpriority="{{ image_fetchpriority }}"
+          >
+        {% endif %}
+
+        {% if snack_image != blank %}
+          {{
+            snack_image
+            | image_url: width: 460
+            | image_tag:
+              widths: '160, 240, 340, 460',
+              sizes: '(max-width: 749px) 30vw, 14vw',
+              class: 'macs-hero__image macs-hero__product macs-hero__product--snack',
+              loading: 'eager',
+              fetchpriority: image_fetchpriority
+          }}
+        {% else %}
+          <img
+            class="macs-hero__image macs-hero__product macs-hero__product--snack"
+            src="{{ 'hero-product-snack.png' | asset_url }}"
+            alt=""
+            loading="eager"
+            fetchpriority="{{ image_fetchpriority }}"
+          >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ 'macs-hero.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "MAC's hero",
+  "tag": "section",
+  "class": "macs-hero__shopify-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Top label",
+      "default": "MAC’s szuperprémium kutyaeledelek"
+    },
+    {
+      "type": "text",
+      "id": "title_first",
+      "label": "Heading first line",
+      "default": "Prémium táplálás,"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Heading red line",
+      "default": "amit kutyád is imádni fog."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Magas hústartalmú, gabonamentes kutyaeledelek gondosan válogatott\nalapanyagokból. Teljes értékű táplálás kölyökkortól egészen az\nidősebb évekig."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Kutyatermékek"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Táplálkozási tanácsot kérek"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "header",
+      "content": "Benefits"
+    },
+    {
+      "type": "text",
+      "id": "benefit_one",
+      "label": "Benefit 1",
+      "default": "Gabonamentes"
+    },
+    {
+      "type": "text",
+      "id": "benefit_two",
+      "label": "Benefit 2",
+      "default": "Magas hústartalom"
+    },
+    {
+      "type": "text",
+      "id": "benefit_three",
+      "label": "Benefit 3",
+      "default": "30+ év tapasztalat"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "dog_image",
+      "label": "Dog image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_bag_image",
+      "label": "Product bag image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_can_image",
+      "label": "Product can image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_snack_image",
+      "label": "Product snack image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC's hero"
+    }
+  ]
+}
+{% endschema %}

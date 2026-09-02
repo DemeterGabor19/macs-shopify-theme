@@ -1,0 +1,166 @@
+{{ 'macs-b2b.css' | asset_url | stylesheet_tag }}
+
+<section class="macs-b2b-benefits">
+  <div class="macs-container">
+    <header class="macs-b2b-benefits__header">
+      <div class="macs-b2b-benefits__heading">
+        {% if section.settings.eyebrow != blank %}
+          <p class="macs-b2b-benefits__eyebrow">
+            <span aria-hidden="true"></span>
+            {{ section.settings.eyebrow | escape }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.title != blank %}
+          <h2 class="macs-b2b-benefits__title">
+            {{ section.settings.title | escape }}
+          </h2>
+        {% endif %}
+      </div>
+
+      {% if section.settings.text != blank %}
+        <div class="macs-b2b-benefits__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+    </header>
+
+    {% if section.settings.audiences != blank %}
+      {% assign audience_items = section.settings.audiences | split: ',' %}
+
+      <div class="macs-b2b-benefits__audiences" aria-label="Kiknek szól a partnerprogram?">
+        {% for audience in audience_items %}
+          {% assign audience_name = audience | strip %}
+          {% if audience_name != blank %}
+            <span>{{ audience_name | escape }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="macs-b2b-benefits__grid">
+        {% for block in section.blocks %}
+          <article
+            class="macs-b2b-benefit-card macs-b2b-benefit-card--{{ block.settings.color }}"
+            {{ block.shopify_attributes }}
+          >
+            <span class="macs-b2b-benefit-card__number" aria-hidden="true">
+              {{ forloop.index | prepend: '0' }}
+            </span>
+
+            {% if block.settings.title != blank %}
+              <h3>{{ block.settings.title | escape }}</h3>
+            {% endif %}
+
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text | escape }}</p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – B2B előnyök",
+  "tag": "section",
+  "class": "macs-b2b-benefits-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Együttműködés"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím",
+      "default": "Több mint termékértékesítés"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Leírás",
+      "default": "<p>Célunk nem egyszerűen a termékértékesítés, hanem egy hosszú távon működő viszonteladói együttműködés és partnerkapcsolat kialakítása.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "audiences",
+      "label": "Kiknek szól?",
+      "info": "A célcsoportokat vesszővel válaszd el.",
+      "default": "Állateledelboltok, Webáruházak, Kutyaiskolák, Sportegyesületek, Tenyésztők, Kisállatos vállalkozások"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Partnerelőny",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Cím",
+          "default": "Viszonteladói árak"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Leírás",
+          "default": "Hozzáférés a MAC’s nagykereskedelmi kínálatához és partneri feltételeihez."
+        },
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Kártya színe",
+          "options": [
+            { "value": "cream", "label": "Krém" },
+            { "value": "yellow", "label": "Mustársárga" },
+            { "value": "dark", "label": "Sötét" },
+            { "value": "red", "label": "Piros" }
+          ],
+          "default": "cream"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – B2B előnyök",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Viszonteladói árak",
+            "text": "Hozzáférés a MAC’s nagykereskedelmi kínálatához és partneri feltételeihez.",
+            "color": "cream"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Folyamatosan bővülő kínálat",
+            "text": "Többféle terméktípus, fehérjeforrás és kiszerelés egyetlen prémium márkán belül.",
+            "color": "yellow"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Hosszú távú partnerség",
+            "text": "Egy kölcsönösen jól működő és fenntartható viszonteladói kapcsolat kialakítására törekszünk.",
+            "color": "dark"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

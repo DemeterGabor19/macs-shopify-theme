@@ -1,0 +1,99 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "t:names.title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {
+            "text_color": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "background_color": "{{ settings.color_palette.background }}",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "macs_contact_hero_Gh9ahg": {
+      "type": "macs-contact-hero",
+      "name": "MAC’s – Kapcsolat hero",
+      "settings": {
+        "eyebrow": "Lépj velünk kapcsolatba",
+        "title": "Kapcsolat",
+        "text": "<p>Kérdésed van egy termékről, rendelésről vagy a megfelelő eledel kiválasztásáról? Írj nekünk, és segítünk.</p>",
+        "button_label": "Üzenetet írok",
+        "button_link": "",
+        "email": "david@macs-pet.hu",
+        "phone": "+36 70 357 6927",
+        "social_title": "Kövess minket",
+        "facebook_url": "https://www.facebook.com/macsallateledel/",
+        "tiktok_url": "https://www.tiktok.com/@macsmagyarorszag"
+      }
+    },
+    "macs_contact_form_nUtXTV": {
+      "type": "macs-contact-form",
+      "name": "MAC’s – Kapcsolati űrlap",
+      "settings": {
+        "anchor_id": "kapcsolati-urlap",
+        "eyebrow": "Írj nekünk",
+        "title": "Miben segíthetünk?",
+        "text": "<p>Töltsd ki az űrlapot, és írd meg, miben segíthetünk. A megfelelő témakör kiválasztásával gyorsabban tudunk válaszolni.</p>",
+        "note": "Rendeléssel kapcsolatos kérdésnél add meg a rendelési számot is.",
+        "privacy_link": "",
+        "submit_label": "Üzenet elküldése",
+        "success_title": "Köszönjük az üzenetet!",
+        "success_text": "Hamarosan válaszolunk a megadott e-mail-címen."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "macs_contact_hero_Gh9ahg",
+    "macs_contact_form_nUtXTV"
+  ]
+}

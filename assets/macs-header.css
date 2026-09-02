@@ -1,0 +1,340 @@
+/* =========================================================
+   MAC'S – NAVBAR
+   ========================================================= */
+
+.header-section {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--macs-white);
+  box-shadow: 0 1px 0 rgba(32, 35, 31, 0.08);
+}
+
+#header-component {
+  color: var(--macs-black);
+  background: var(--macs-white);
+  font-family: var(--macs-font-body);
+}
+
+#header-component .header__row--top {
+  min-height: 80px;
+  padding: 0 !important;
+  color: var(--macs-black);
+  background: var(--macs-white);
+  border-bottom: 0;
+}
+
+#header-component .header__row--bottom {
+  display: none;
+}
+
+#header-component .header__columns {
+  position: relative;
+  width: min(
+    calc(100% - (var(--macs-page-padding) * 2)),
+    var(--macs-page-width)
+  );
+  min-height: 80px;
+  margin-inline: auto;
+  padding: 0 !important;
+}
+
+/* Logó */
+
+#header-component .header-logo,
+#header-component .header__logo {
+  position: relative;
+  z-index: 3;
+}
+
+#header-component .header-logo img,
+#header-component .header__logo img {
+  display: block;
+  width: auto;
+  max-width: 118px;
+  max-height: 54px;
+  object-fit: contain;
+}
+
+#header-component .header-logo a,
+#header-component .header__logo a {
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* Asztali menü középre helyezése */
+
+@media screen and (min-width: 990px) {
+  #header-component .header__columns > header-menu,
+  #header-component .header__column header-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    width: max-content;
+    transform: translate(-50%, -50%);
+  }
+
+  #header-component header-menu .menu-list,
+  #header-component header-menu ul {
+    gap: clamp(22px, 2.4vw, 40px);
+    align-items: center;
+  }
+}
+
+/* Navigációs linkek */
+
+#header-component .menu-list__link,
+#header-component header-menu a {
+  position: relative;
+  padding-block: 29px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--macs-transition);
+}
+
+#header-component .menu-list__link:hover,
+#header-component header-menu a:hover {
+  color: var(--macs-red);
+}
+
+/* Aktív menüpont piros aláhúzása */
+
+#header-component .menu-list__link[aria-current="page"],
+#header-component header-menu a[aria-current="page"] {
+  color: var(--macs-red);
+}
+
+#header-component .menu-list__link[aria-current="page"]::after,
+#header-component header-menu a[aria-current="page"]::after {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+  height: 3px;
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+  content: "";
+}
+
+/* Jobb oldali műveletek */
+
+#header-component .header-actions {
+  gap: 9px;
+  align-items: center;
+}
+
+#header-component .header-actions__action {
+  color: var(--macs-black);
+  transition:
+    color var(--macs-transition),
+    background-color var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+#header-component .header-actions__action:hover {
+  color: var(--macs-red);
+  transform: translateY(-1px);
+}
+
+/* Fiókikon elrejtése */
+
+@media screen and (min-width: 750px) {
+  #header-component a[href*="/account"],
+  #header-component .header-actions__account {
+    display: none !important;
+  }
+}
+
+/* Kosárgomb */
+
+#header-component a[href*="/cart"] {
+  display: inline-flex;
+  gap: 8px;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  color: var(--macs-black);
+  background: var(--macs-cream);
+  border: 1px solid rgba(32, 35, 31, 0.1);
+  border-radius: var(--macs-radius-pill);
+  font-family: var(--macs-font-body);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+#header-component a[href*="/cart"]::after {
+  order: 2;
+  content: "Kosár";
+}
+
+#header-component a[href*="/cart"]:hover {
+  color: var(--macs-black);
+  background: var(--macs-mustard);
+  border-color: var(--macs-mustard);
+}
+
+/* Kosár termékszámláló */
+
+#header-component .cart-bubble,
+#header-component .cart-count-bubble {
+  position: static;
+  order: 3;
+  display: grid;
+  min-width: 19px;
+  height: 19px;
+  padding-inline: 4px;
+  place-items: center;
+  color: var(--macs-white);
+  background: var(--macs-red);
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Tanácsot kérek CTA */
+
+.macs-header__advice-button {
+  display: inline-flex;
+  gap: 10px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 14px 9px 18px;
+  color: var(--macs-white) !important;
+  background: var(--macs-red);
+  border: 2px solid var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+  box-shadow: 0 8px 20px rgba(213, 43, 50, 0.2);
+  font-family: var(--macs-font-body);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color var(--macs-transition),
+    background-color var(--macs-transition),
+    border-color var(--macs-transition),
+    box-shadow var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+.macs-header__advice-button:hover {
+  color: var(--macs-white) !important;
+  background: var(--macs-black);
+  border-color: var(--macs-black);
+  box-shadow: var(--macs-shadow-small);
+  transform: translateY(-2px);
+}
+
+.macs-header__advice-button:focus-visible {
+  outline: 3px solid var(--macs-mustard);
+  outline-offset: 3px;
+}
+
+.macs-header__advice-arrow {
+  display: grid;
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+  place-items: center;
+  color: var(--macs-red);
+  background: var(--macs-white);
+  border-radius: 50%;
+  font-size: 0.76rem;
+  line-height: 1;
+  transition: transform var(--macs-transition);
+}
+
+.macs-header__advice-button:hover .macs-header__advice-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Közepes képernyők */
+
+@media screen and (min-width: 990px) and (max-width: 1199px) {
+  #header-component .header__columns > header-menu,
+  #header-component .header__column header-menu {
+    left: 46%;
+  }
+
+  #header-component header-menu .menu-list,
+  #header-component header-menu ul {
+    gap: 18px;
+  }
+
+  #header-component .menu-list__link,
+  #header-component header-menu a {
+    font-size: 0.78rem;
+  }
+
+  .macs-header__advice-button {
+    padding-inline: 14px 10px;
+    font-size: 0.76rem;
+  }
+}
+
+/* Mobil és tablet */
+
+@media screen and (max-width: 989px) {
+  #header-component .header__row--top,
+  #header-component .header__columns {
+    min-height: 68px;
+  }
+
+  #header-component .header__columns {
+    width: min(calc(100% - 32px), var(--macs-page-width));
+  }
+
+  #header-component .header-logo img,
+  #header-component .header__logo img {
+    max-width: 96px;
+    max-height: 46px;
+  }
+
+  .macs-header__advice-button {
+    display: none;
+  }
+
+  #header-component a[href*="/cart"] {
+    min-width: 42px;
+    min-height: 42px;
+    padding: 8px;
+  }
+
+  #header-component a[href*="/cart"]::after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  #header-component .header__row--top,
+  #header-component .header__columns {
+    min-height: 64px;
+  }
+
+  #header-component .header-logo img,
+  #header-component .header__logo img {
+    max-width: 84px;
+    max-height: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #header-component .header-actions__action,
+  .macs-header__advice-button,
+  .macs-header__advice-arrow {
+    transition: none;
+  }
+}

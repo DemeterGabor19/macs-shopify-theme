@@ -1,0 +1,242 @@
+{{ 'macs-products.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="macs-section macs-products-nav"
+  id="termekkategoriak"
+>
+  <div class="macs-container">
+    <header class="macs-products-nav__header">
+      <div>
+        {% if section.settings.eyebrow != blank %}
+          <p class="macs-products-nav__eyebrow">
+            <span aria-hidden="true"></span>
+            {{ section.settings.eyebrow | escape }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.title != blank %}
+          <h2 class="macs-products-nav__title">
+            {{ section.settings.title | escape }}
+          </h2>
+        {% endif %}
+      </div>
+
+      {% if section.settings.text != blank %}
+        <div class="macs-products-nav__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+    </header>
+
+    {% if section.blocks.size > 0 %}
+      <nav
+        class="macs-products-nav__grid"
+        aria-label="Termékkategóriák"
+      >
+        {% for block in section.blocks %}
+          {% assign category_anchor = block.settings.anchor_id | handleize %}
+
+          <a
+            class="macs-products-nav__card macs-products-nav__card--{{ block.settings.accent }}"
+            href="#{{ category_anchor }}"
+            {{ block.shopify_attributes }}
+          >
+            <span class="macs-products-nav__number">
+              {{ forloop.index | prepend: '0' }}
+            </span>
+
+            <div class="macs-products-nav__media">
+              <span
+                class="macs-products-nav__image-spot"
+                aria-hidden="true"
+              ></span>
+
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 700
+                  | image_tag:
+                    class: 'macs-products-nav__image',
+                    loading: 'lazy',
+                    widths: '220, 320, 440, 560, 700',
+                    sizes: '(max-width: 749px) 58vw, (max-width: 1099px) 32vw, 20vw',
+                    alt: block.settings.image.alt
+                }}
+              {% else %}
+                <div class="macs-products-nav__placeholder">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="macs-products-nav__card-content">
+              {% if block.settings.label != blank %}
+                <h3>{{ block.settings.label | escape }}</h3>
+              {% endif %}
+
+              {% if block.settings.description != blank %}
+                <p>{{ block.settings.description | escape }}</p>
+              {% endif %}
+            </div>
+
+            <span
+              class="macs-products-nav__arrow"
+              aria-hidden="true"
+            >
+              ↓
+            </span>
+          </a>
+        {% endfor %}
+      </nav>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Kategóriák",
+  "tag": "section",
+  "class": "macs-products-nav-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "MAC’s termékkategóriák"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím",
+      "default": "Milyen eledelt keresel?"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Leírás",
+      "default": "<p>Válassz kategóriát, és ugorj közvetlenül a számodra érdekes termékekhez.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Kategória",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Termékkép"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Kategória neve",
+          "default": "Száraz eledelek"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Rövid leírás",
+          "default": "Teljes értékű eledelek a mindennapokra."
+        },
+        {
+          "type": "text",
+          "id": "anchor_id",
+          "label": "Horgony azonosító",
+          "default": "szaraz-eledelek",
+          "info": "Ékezetek és szóközök nélkül."
+        },
+        {
+          "type": "select",
+          "id": "accent",
+          "label": "Kiemelőszín",
+          "options": [
+            {
+              "value": "red",
+              "label": "Piros"
+            },
+            {
+              "value": "yellow",
+              "label": "Mustársárga"
+            },
+            {
+              "value": "green",
+              "label": "Zöld"
+            },
+            {
+              "value": "neutral",
+              "label": "Semleges"
+            }
+          ],
+          "default": "red"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Kategóriák",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "label": "Száraz eledelek",
+            "description": "Teljes értékű eledelek a mindennapokra.",
+            "anchor_id": "szaraz-eledelek",
+            "accent": "red"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "label": "Félnedves eledelek",
+            "description": "Puha falatok magas hústartalommal.",
+            "anchor_id": "felnedves-eledelek",
+            "accent": "yellow"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "label": "Konzervek",
+            "description": "Szaftos receptek válogatott alapanyagokból.",
+            "anchor_id": "konzervek",
+            "accent": "neutral"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "label": "Levesek",
+            "description": "Ízletes kiegészítés és extra folyadék.",
+            "anchor_id": "levesek",
+            "accent": "yellow"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "label": "MAC’s Vetcare",
+            "description": "Speciális táplálás különleges igényekre.",
+            "anchor_id": "vetcare",
+            "accent": "green"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "label": "Jutalomfalatok",
+            "description": "Finom falatok örömteli pillanatokhoz.",
+            "anchor_id": "jutalomfalatok",
+            "accent": "red"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

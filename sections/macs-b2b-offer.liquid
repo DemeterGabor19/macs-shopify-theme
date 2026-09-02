@@ -1,0 +1,180 @@
+{{ 'macs-b2b.css' | asset_url | stylesheet_tag }}
+
+<section class="macs-b2b-offer">
+  <div class="macs-container macs-b2b-offer__container">
+    <div class="macs-b2b-offer__content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="macs-b2b-offer__eyebrow">
+          <span aria-hidden="true"></span>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="macs-b2b-offer__title">
+          {{ section.settings.title | escape }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="macs-b2b-offer__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.note != blank %}
+        <div class="macs-b2b-offer__note">
+          <span aria-hidden="true">+</span>
+          <p>{{ section.settings.note | escape }}</p>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="macs-b2b-offer__categories">
+        {% for block in section.blocks %}
+          <article
+            class="macs-b2b-offer__category macs-b2b-offer__category--{{ block.settings.accent }}"
+            {{ block.shopify_attributes }}
+          >
+            <span class="macs-b2b-offer__check" aria-hidden="true">✓</span>
+
+            <div>
+              {% if block.settings.title != blank %}
+                <h3>{{ block.settings.title | escape }}</h3>
+              {% endif %}
+
+              {% if block.settings.text != blank %}
+                <p>{{ block.settings.text | escape }}</p>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – B2B kínálat",
+  "tag": "section",
+  "class": "macs-b2b-offer-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Széles termékpaletta"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím",
+      "default": "Kínálat többféle vásárlói igényre"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Leírás",
+      "default": "<p>Partnerként hozzáférhetsz a MAC’s nagykereskedelmi kínálatához és viszonteladói áraihoz. A különböző fehérjeforrásoknak, kiszereléseknek és terméktípusoknak köszönhetően a MAC’s a mindennapi táplálástól a speciális igényekig több vásárlói elvárást is lefed.</p>"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Kiemelt megjegyzés",
+      "default": "A termékpaletta folyamatosan bővül."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Termékkategória",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Kategória neve",
+          "default": "Szárazeledelek"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Rövid leírás",
+          "default": "Teljes értékű eledelek a mindennapokra."
+        },
+        {
+          "type": "select",
+          "id": "accent",
+          "label": "Kiemelőszín",
+          "options": [
+            { "value": "red", "label": "Piros" },
+            { "value": "yellow", "label": "Mustársárga" },
+            { "value": "dark", "label": "Sötét" }
+          ],
+          "default": "red"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – B2B kínálat",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Szárazeledelek",
+            "text": "Teljes értékű eledelek a mindennapokra.",
+            "accent": "red"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Nedveseledelek",
+            "text": "Szaftos receptek válogatott alapanyagokból.",
+            "accent": "yellow"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Monoprotein eledelek",
+            "text": "Egyetlen állati fehérjeforrással készült termékek.",
+            "accent": "dark"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Jutalomfalatok",
+            "text": "Finom falatok örömteli pillanatokhoz.",
+            "accent": "red"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Smoothie-k és levesek",
+            "text": "Ízletes kiegészítés és extra folyadék.",
+            "accent": "yellow"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Vetcare termékek",
+            "text": "Speciális táplálási igényekhez fejlesztve.",
+            "accent": "dark"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,220 @@
+{{ 'macs-contact.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="macs-contact-form-section"
+  id="{{ section.settings.anchor_id | default: 'kapcsolati-urlap' | handleize }}"
+>
+  <span class="macs-contact-form-section__spot" aria-hidden="true"></span>
+
+  <div class="macs-container macs-contact-form-section__container">
+    <div class="macs-contact-form-section__intro">
+      {% if section.settings.eyebrow != blank %}
+        <p class="macs-contact-form-section__eyebrow">
+          <span aria-hidden="true"></span>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2 class="macs-contact-form-section__title">
+          {{ section.settings.title | escape }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="macs-contact-form-section__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.note != blank %}
+        <div class="macs-contact-form-section__note">
+          <span aria-hidden="true">↗</span>
+          <p>{{ section.settings.note | escape }}</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="macs-contact-form-section__card">
+      {% form 'contact', id: 'MacsGeneralContactForm', class: 'macs-contact-form' %}
+        <input
+          type="hidden"
+          name="contact[Kapcsolatfelvétel típusa]"
+          value="Általános kapcsolatfelvétel"
+        >
+
+        {% if form.posted_successfully? %}
+          <div class="macs-contact-form__success" tabindex="-1" autofocus>
+            <strong>{{ section.settings.success_title | escape }}</strong>
+            <p>{{ section.settings.success_text | escape }}</p>
+          </div>
+        {% endif %}
+
+        {% if form.errors %}
+          <div class="macs-contact-form__errors" role="alert">
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+
+        <div class="macs-contact-form__grid">
+          <label class="macs-contact-field">
+            <span>Név *</span>
+            <input
+              type="text"
+              name="contact[name]"
+              value="{% if form.name %}{{ form.name | escape }}{% endif %}"
+              autocomplete="name"
+              required
+            >
+          </label>
+
+          <label class="macs-contact-field">
+            <span>E-mail cím *</span>
+            <input
+              type="email"
+              name="contact[email]"
+              value="{% if form.email %}{{ form.email | escape }}{% endif %}"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              required
+            >
+          </label>
+
+          <label class="macs-contact-field">
+            <span>Telefonszám</span>
+            <input
+              type="tel"
+              name="contact[Telefonszám]"
+              value="{% if form.phone %}{{ form.phone | escape }}{% endif %}"
+              autocomplete="tel"
+            >
+          </label>
+
+          <label class="macs-contact-field">
+            <span>Rendelési szám</span>
+            <input
+              type="text"
+              name="contact[Rendelési szám]"
+              autocomplete="off"
+            >
+          </label>
+
+          <label class="macs-contact-field macs-contact-field--full">
+            <span>Miben segíthetünk? *</span>
+            <select name="contact[Miben segíthetünk?]" required>
+              <option value="" selected disabled>Válassz témát</option>
+              <option value="Termékkel kapcsolatos kérdés">Termékkel kapcsolatos kérdés</option>
+              <option value="Rendeléssel kapcsolatos kérdés">Rendeléssel kapcsolatos kérdés</option>
+              <option value="Szállítás és fizetés">Szállítás és fizetés</option>
+              <option value="Táplálási / termékválasztási kérdés">Táplálási / termékválasztási kérdés</option>
+              <option value="Viszonteladói érdeklődés">Viszonteladói érdeklődés</option>
+              <option value="Egyéb">Egyéb</option>
+            </select>
+          </label>
+
+          <label class="macs-contact-field macs-contact-field--full">
+            <span>Üzenet *</span>
+            <textarea name="contact[body]" rows="7" required>{% if form.body %}{{ form.body | escape }}{% endif %}</textarea>
+          </label>
+
+          <label class="macs-contact-form__consent macs-contact-field--full">
+            <input
+              type="checkbox"
+              name="contact[Adatkezelési hozzájárulás]"
+              value="Elfogadva"
+              required
+            >
+
+            <span>
+              Elolvastam és elfogadom az
+              {% if section.settings.privacy_link != blank %}
+                <a href="{{ section.settings.privacy_link }}">adatkezelési tájékoztatót</a>.
+              {% else %}
+                adatkezelési tájékoztatót.
+              {% endif %}
+              *
+            </span>
+          </label>
+        </div>
+
+        <button class="macs-contact-form__submit" type="submit">
+          <span>{{ section.settings.submit_label | escape }}</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Kapcsolati űrlap",
+  "tag": "section",
+  "class": "macs-contact-form-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Horgonyazonosító",
+      "default": "kapcsolati-urlap",
+      "info": "A hero gombja erre a részre görget."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Írj nekünk"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím",
+      "default": "Miben segíthetünk?"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Leírás",
+      "default": "<p>Töltsd ki az űrlapot, és írd meg, miben segíthetünk. A megfelelő témakör kiválasztásával gyorsabban tudunk válaszolni.</p>"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Kiemelt megjegyzés",
+      "default": "Rendeléssel kapcsolatos kérdésnél add meg a rendelési számot is."
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Adatkezelési tájékoztató"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Küldés gomb felirata",
+      "default": "Üzenet elküldése"
+    },
+    {
+      "type": "text",
+      "id": "success_title",
+      "label": "Sikeres küldés címe",
+      "default": "Köszönjük az üzenetet!"
+    },
+    {
+      "type": "text",
+      "id": "success_text",
+      "label": "Sikeres küldés szövege",
+      "default": "Hamarosan válaszolunk a megadott e-mail-címen."
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Kapcsolati űrlap"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,255 @@
+<section
+  class="macs-section macs-story"
+  id="macs-story-{{ section.id }}"
+>
+  <div class="macs-container macs-story__container">
+
+    <div class="macs-story__media">
+
+      <span
+        class="macs-story__shape"
+        aria-hidden="true"
+      ></span>
+
+      <div class="macs-story__image-frame">
+        {% if section.settings.image != blank %}
+          {{
+            section.settings.image
+            | image_url: width: 1200
+            | image_tag:
+              class: 'macs-story__image',
+              loading: 'lazy',
+              widths: '400, 600, 800, 1000, 1200',
+              sizes: '(max-width: 749px) 90vw, 45vw',
+              alt: section.settings.image.alt
+          }}
+        {% else %}
+          <img
+            class="macs-story__image"
+            src="{{ 'macs-story-dog.jpg' | asset_url }}"
+            alt="MAC’s eledel kutyával"
+            width="1400"
+            height="1200"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+
+      <div class="macs-story__paw" aria-hidden="true">
+        <svg
+          viewBox="0 0 64 64"
+          width="42"
+          height="42"
+          fill="none"
+        >
+          <ellipse
+            cx="32"
+            cy="40"
+            rx="15"
+            ry="12"
+            fill="currentColor"
+            transform="rotate(-8 32 40)"
+          />
+
+          <ellipse
+            cx="16"
+            cy="27"
+            rx="7"
+            ry="9"
+            fill="currentColor"
+            transform="rotate(-24 16 27)"
+          />
+
+          <ellipse
+            cx="29"
+            cy="19"
+            rx="7"
+            ry="9"
+            fill="currentColor"
+            transform="rotate(-7 29 19)"
+          />
+
+          <ellipse
+            cx="43"
+            cy="21"
+            rx="7"
+            ry="9"
+            fill="currentColor"
+            transform="rotate(10 43 21)"
+          />
+
+          <ellipse
+            cx="51"
+            cy="33"
+            rx="7"
+            ry="9"
+            fill="currentColor"
+            transform="rotate(25 51 33)"
+          />
+        </svg>
+      </div>
+
+    </div>
+
+    <div class="macs-story__content">
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="macs-story__eyebrow">
+          <span aria-hidden="true"></span>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      <h2 class="macs-story__title">
+        {% if section.settings.title != blank %}
+          <span>{{ section.settings.title | escape }}</span>
+        {% endif %}
+
+        {% if section.settings.highlighted_title != blank %}
+          <em>{{ section.settings.highlighted_title | escape }}</em>
+        {% endif %}
+      </h2>
+
+      {% if section.settings.text != blank %}
+        <div class="macs-story__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <ul class="macs-story__list" role="list">
+          {% for block in section.blocks %}
+            <li
+              class="macs-story__list-item"
+              {{ block.shopify_attributes }}
+            >
+              <span
+                class="macs-story__check"
+                aria-hidden="true"
+              >
+                ✓
+              </span>
+
+              <span>
+                {{ block.settings.text | escape }}
+              </span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if section.settings.button_text != blank %}
+        <a
+          class="macs-button macs-button--primary macs-story__button"
+          href="{{ section.settings.button_link | default: routes.root_url }}"
+        >
+          <span>{{ section.settings.button_text | escape }}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Márkatörténet",
+  "tag": "section",
+  "class": "macs-story-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Kép"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bal oldali kép"
+    },
+    {
+      "type": "header",
+      "content": "Szöveges tartalom"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Minőség 1993 óta"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím első része",
+      "default": "A természetből"
+    },
+    {
+      "type": "text",
+      "id": "highlighted_title",
+      "label": "Piros címrész",
+      "default": "merítünk ihletet."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Leírás",
+      "default": "<p>A MAC’s több mint 30 éve fejleszt szuperprémium eledeleket kutyák és macskák számára. A receptek kialakításánál a természetes táplálkozás szolgál mintaként.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Gomb felirata",
+      "default": "Lépj kapcsolatba velünk"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Gomb hivatkozása"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Kiemelt állítás",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Szöveg",
+          "default": "Élelmiszer-minőségű alapanyagok"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Márkatörténet",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Élelmiszer-minőségű alapanyagok"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Állatkísérletek nélkül"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Kíméletes gyártási eljárással"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

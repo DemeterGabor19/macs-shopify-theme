@@ -1,0 +1,345 @@
+{{ 'macs-products.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign group_anchor = section.settings.anchor_id | handleize
+  if group_anchor == blank
+    assign group_anchor = 'termekcsoport-' | append: section.id
+  endif
+
+  assign selected_collection = section.settings.collection
+  assign group_link = section.settings.button_link
+
+  if group_link == blank and selected_collection != blank
+    assign group_link = selected_collection.url
+  endif
+%}
+
+<section
+  class="macs-section macs-product-group macs-product-group--{{ section.settings.background }}"
+  id="{{ group_anchor }}"
+>
+  <div class="macs-container">
+    <header class="macs-product-group__header">
+      <div class="macs-product-group__heading">
+        {% if section.settings.eyebrow != blank %}
+          <p class="macs-product-group__eyebrow">
+            <span aria-hidden="true"></span>
+            {{ section.settings.eyebrow | escape }}
+          </p>
+        {% endif %}
+
+        <h2 class="macs-product-group__title">
+          {% if section.settings.title != blank %}
+            <span>{{ section.settings.title | escape }}</span>
+          {% endif %}
+
+          {% if section.settings.highlighted_title != blank %}
+            <em>{{ section.settings.highlighted_title | escape }}</em>
+          {% endif %}
+        </h2>
+      </div>
+
+      {% if section.settings.text != blank %}
+        <div class="macs-product-group__intro rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+    </header>
+
+    <div
+      class="macs-product-group__grid macs-product-group__grid--{{ section.settings.columns }}"
+    >
+      {% if selected_collection != blank and selected_collection.products_count > 0 %}
+        {% for product in selected_collection.products limit: section.settings.products_to_show %}
+          <article class="macs-product-card">
+            <a
+              class="macs-product-card__media"
+              href="{{ product.url }}"
+              aria-label="{{ product.title | escape }}"
+            >
+              <span
+                class="macs-product-card__spot"
+                aria-hidden="true"
+              ></span>
+
+              {% if product.featured_image != blank %}
+                {{
+                  product.featured_image
+                  | image_url: width: 900
+                  | image_tag:
+                    class: 'macs-product-card__image',
+                    loading: 'lazy',
+                    widths: '260, 380, 520, 700, 900',
+                    sizes: '(max-width: 749px) 72vw, (max-width: 1099px) 38vw, 22vw',
+                    alt: product.featured_image.alt
+                }}
+              {% else %}
+                <div class="macs-product-card__placeholder">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+
+              {% if product.compare_at_price > product.price %}
+                <span class="macs-product-card__sale">
+                  Akció
+                </span>
+              {% endif %}
+            </a>
+
+            <div class="macs-product-card__content">
+              {% if section.settings.show_vendor and product.vendor != blank %}
+                <p class="macs-product-card__vendor">
+                  {{ product.vendor | escape }}
+                </p>
+              {% endif %}
+
+              <h3 class="macs-product-card__title">
+                <a href="{{ product.url }}">
+                  {{ product.title | escape }}
+                </a>
+              </h3>
+
+              {% if section.settings.show_price %}
+                <div class="macs-product-card__price">
+                  {% if product.price_varies %}
+                    <span class="macs-product-card__from">Már</span>
+                  {% endif %}
+
+                  <span>{{ product.price | money }}</span>
+
+                  {% if product.compare_at_price > product.price %}
+                    <s>{{ product.compare_at_price | money }}</s>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              <a
+                class="macs-product-card__button"
+                href="{{ product.url }}"
+              >
+                <span>{{ section.settings.product_button_text | escape }}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        {% for index in (1..section.settings.placeholder_count) %}
+          <article class="macs-product-card macs-product-card--placeholder">
+            <div class="macs-product-card__media">
+              <span
+                class="macs-product-card__spot"
+                aria-hidden="true"
+              ></span>
+
+              <div class="macs-product-card__placeholder">
+                {{ 'product-1' | placeholder_svg_tag }}
+              </div>
+            </div>
+
+            <div class="macs-product-card__content">
+              {% if section.settings.show_vendor %}
+                <p class="macs-product-card__vendor">MAC’s</p>
+              {% endif %}
+
+              <h3 class="macs-product-card__title">
+                Mintatermék {{ index }}
+              </h3>
+
+              {% if section.settings.show_price %}
+                <div class="macs-product-card__price">
+                  <span>0 Ft</span>
+                </div>
+              {% endif %}
+
+              <span class="macs-product-card__button">
+                <span>{{ section.settings.product_button_text | escape }}</span>
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_button and section.settings.button_text != blank %}
+      <div class="macs-product-group__footer">
+        {% if group_link != blank %}
+          <a
+            class="macs-button macs-button--secondary"
+            href="{{ group_link }}"
+          >
+            <span>{{ section.settings.button_text | escape }}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        {% else %}
+          <span class="macs-button macs-button--secondary macs-product-group__disabled-button">
+            <span>{{ section.settings.button_text | escape }}</span>
+            <span aria-hidden="true">↗</span>
+          </span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Termékcsoport",
+  "tag": "section",
+  "class": "macs-product-group-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tartalom"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Horgonyazonosító",
+      "default": "szaraz-eledelek",
+      "info": "Egyezzen meg a kategóriakártya hivatkozásával."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Mindennapi táplálás"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím",
+      "default": "Száraz eledelek"
+    },
+    {
+      "type": "text",
+      "id": "highlighted_title",
+      "label": "Színes címrész"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Leírás",
+      "default": "<p>Teljes értékű, magas hústartalmú száraz eledelek a mindennapi tápláláshoz.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Termékek"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Kollekció"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Megjelenített termékek",
+      "min": 3,
+      "max": 24,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Oszlopok száma asztali nézetben",
+      "options": [
+        {
+          "value": "3",
+          "label": "3 oszlop"
+        },
+        {
+          "value": "4",
+          "label": "4 oszlop"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "range",
+      "id": "placeholder_count",
+      "label": "Mintakártyák száma kollekció nélkül",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Márkanév megjelenítése",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Ár megjelenítése",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "product_button_text",
+      "label": "Termékkártya gombja",
+      "default": "Megnézem"
+    },
+    {
+      "type": "header",
+      "content": "Szekció megjelenése"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Háttér",
+      "options": [
+        {
+          "value": "cream",
+          "label": "Krém"
+        },
+        {
+          "value": "white",
+          "label": "Fehér"
+        },
+        {
+          "value": "burlap",
+          "label": "Zsákvászon"
+        }
+      ],
+      "default": "cream"
+    },
+    {
+      "type": "header",
+      "content": "Alsó gomb"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Alsó gomb megjelenítése",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Alsó gomb felirata",
+      "default": "Összes száraz eledel",
+      "visible_if": "{{ section.settings.show_button }}"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Egyedi gombhivatkozás",
+      "info": "Ha üres, a kiválasztott kollekcióra mutat.",
+      "visible_if": "{{ section.settings.show_button }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Termékcsoport"
+    }
+  ]
+}
+{% endschema %}

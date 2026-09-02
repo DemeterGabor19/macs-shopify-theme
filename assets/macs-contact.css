@@ -1,0 +1,537 @@
+/* =========================================================
+   MAC'S – KAPCSOLATI OLDAL
+   01. Hero és elérhetőségek
+   ========================================================= */
+
+.macs-contact-hero {
+  position: relative;
+  padding-block: clamp(68px, 9vw, 130px);
+  overflow: hidden;
+  color: var(--macs-black, #20231f);
+  background: var(--macs-cream, #f7f3ea);
+  font-family: var(--macs-font-body, Arial, sans-serif);
+}
+
+.macs-contact-hero *,
+.macs-contact-hero *::before,
+.macs-contact-hero *::after {
+  box-sizing: border-box;
+}
+
+.macs-contact-hero__container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(440px, 0.75fr);
+  gap: clamp(48px, 9vw, 130px);
+  align-items: center;
+}
+
+.macs-contact-hero__eyebrow {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 17px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.macs-contact-hero__eyebrow > span {
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red, #d52b32);
+  border-radius: 999px;
+}
+
+.macs-contact-hero__title {
+  margin: 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(4.5rem, 9vw, 9.5rem);
+  font-weight: 850;
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+}
+
+.macs-contact-hero__text {
+  max-width: 630px;
+  margin-top: 30px;
+  color: var(--macs-muted, #5c5f58);
+  font-size: clamp(1rem, 1.3vw, 1.16rem);
+  line-height: 1.72;
+}
+
+.macs-contact-hero__text p {
+  margin: 0;
+}
+
+.macs-contact-hero__button {
+  display: inline-flex;
+  min-height: 52px;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 14px 22px;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-red, #d52b32);
+  border: 2px solid var(--macs-red, #d52b32);
+  border-radius: 999px;
+  box-shadow: 0 12px 26px rgba(213, 43, 50, 0.22);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background-color var(--macs-transition, 180ms ease),
+    border-color var(--macs-transition, 180ms ease),
+    transform var(--macs-transition, 180ms ease);
+}
+
+.macs-contact-hero__button:hover {
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-black, #20231f);
+  border-color: var(--macs-black, #20231f);
+  transform: translateY(-2px);
+}
+
+.macs-contact-hero__details {
+  display: grid;
+  gap: 14px;
+}
+
+.macs-contact-card {
+  position: relative;
+  display: flex;
+  min-height: 142px;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 25px;
+  overflow: hidden;
+  color: var(--macs-black, #20231f);
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(32, 35, 31, 0.1);
+  text-decoration: none;
+  transition:
+    box-shadow var(--macs-transition, 180ms ease),
+    transform var(--macs-transition, 180ms ease);
+}
+
+.macs-contact-card--email {
+  background: var(--macs-yellow, #e5ae2f);
+  transform: rotate(-1deg);
+}
+
+.macs-contact-card--phone {
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-black, #20231f);
+  transform: rotate(0.8deg);
+}
+
+.macs-contact-card:hover {
+  box-shadow: 0 22px 46px rgba(32, 35, 31, 0.16);
+  transform: translateY(-4px) rotate(0deg);
+}
+
+.macs-contact-card__label {
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.macs-contact-card strong {
+  padding-right: 42px;
+  overflow-wrap: anywhere;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  line-height: 1.05;
+}
+
+.macs-contact-card__arrow {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-red, #d52b32);
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+.macs-contact-socials {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding: 20px 22px;
+  background: var(--macs-white, #ffffff);
+  border: 1px solid rgba(32, 35, 31, 0.08);
+  border-radius: 18px;
+}
+
+.macs-contact-socials > p {
+  margin: 0;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-contact-socials__links {
+  display: flex;
+  gap: 17px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.macs-contact-socials__links a {
+  color: var(--macs-black, #20231f);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.macs-contact-socials__links a:hover {
+  color: var(--macs-red, #d52b32);
+}
+
+.macs-contact-hero__spot {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.macs-contact-hero__spot--red {
+  top: -130px;
+  right: 28%;
+  width: 340px;
+  aspect-ratio: 1;
+  background: rgba(213, 43, 50, 0.1);
+}
+
+.macs-contact-hero__spot--yellow {
+  bottom: -170px;
+  left: -90px;
+  width: 400px;
+  aspect-ratio: 1;
+  background: rgba(229, 174, 47, 0.16);
+}
+
+@media screen and (max-width: 989px) {
+  .macs-contact-hero__container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-contact-hero {
+    padding-block: 52px 70px;
+  }
+
+  .macs-contact-hero__container {
+    gap: 40px;
+  }
+
+  .macs-contact-hero__title {
+    font-size: clamp(4rem, 20vw, 6.2rem);
+  }
+
+  .macs-contact-card {
+    min-height: 125px;
+    padding: 21px;
+  }
+
+  .macs-contact-socials {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .macs-contact-socials__links {
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macs-contact-card,
+  .macs-contact-card--email,
+  .macs-contact-card--phone {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   MAC'S – ÁLTALÁNOS KAPCSOLATFELVÉTELI ŰRLAP
+   Ezt a macs-contact.css fájl végére másold.
+   ========================================================= */
+
+.macs-contact-form-section {
+  position: relative;
+  padding-block: clamp(72px, 8vw, 120px);
+  scroll-margin-top: 90px;
+  overflow: hidden;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-black, #20231f);
+  font-family: var(--macs-font-body, Arial, sans-serif);
+}
+
+.macs-contact-form-section *,
+.macs-contact-form-section *::before,
+.macs-contact-form-section *::after {
+  box-sizing: border-box;
+}
+
+.macs-contact-form-section__container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(520px, 1.15fr);
+  gap: clamp(45px, 8vw, 120px);
+  align-items: start;
+}
+
+.macs-contact-form-section__intro {
+  position: sticky;
+  top: 120px;
+}
+
+.macs-contact-form-section__eyebrow {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 15px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.macs-contact-form-section__eyebrow > span {
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-yellow, #e5ae2f);
+  border-radius: 999px;
+}
+
+.macs-contact-form-section__title {
+  margin: 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(2.7rem, 4.5vw, 5rem);
+  font-weight: 850;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.macs-contact-form-section__text {
+  margin-top: 27px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.macs-contact-form-section__text p {
+  margin: 0;
+}
+
+.macs-contact-form-section__note {
+  display: flex;
+  gap: 14px;
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.macs-contact-form-section__note > span {
+  color: var(--macs-yellow, #e5ae2f);
+  font-size: 1.5rem;
+}
+
+.macs-contact-form-section__note p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.macs-contact-form-section__card {
+  padding: clamp(25px, 4vw, 48px);
+  color: var(--macs-black, #20231f);
+  background: var(--macs-white, #ffffff);
+  border-radius: 28px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+}
+
+.macs-contact-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 17px;
+}
+
+.macs-contact-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.macs-contact-field--full {
+  grid-column: 1 / -1;
+}
+
+.macs-contact-field > span {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.macs-contact-field input,
+.macs-contact-field select,
+.macs-contact-field textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  color: var(--macs-black, #20231f);
+  background: #faf9f6;
+  border: 1px solid rgba(32, 35, 31, 0.17);
+  border-radius: 12px;
+  font: inherit;
+}
+
+.macs-contact-field textarea {
+  min-height: 175px;
+  resize: vertical;
+}
+
+.macs-contact-field input:focus,
+.macs-contact-field select:focus,
+.macs-contact-field textarea:focus {
+  border-color: var(--macs-yellow, #e5ae2f);
+  outline: 3px solid rgba(229, 174, 47, 0.32);
+}
+
+.macs-contact-form__consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.macs-contact-form__consent input {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  accent-color: var(--macs-red, #d52b32);
+}
+
+.macs-contact-form__consent a {
+  color: inherit;
+  font-weight: 750;
+  text-underline-offset: 3px;
+}
+
+.macs-contact-form__submit {
+  display: flex;
+  width: 100%;
+  min-height: 54px;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding: 14px 20px;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-red, #d52b32);
+  border: 2px solid var(--macs-red, #d52b32);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 850;
+  cursor: pointer;
+  transition:
+    background-color var(--macs-transition, 180ms ease),
+    border-color var(--macs-transition, 180ms ease),
+    transform var(--macs-transition, 180ms ease);
+}
+
+.macs-contact-form__submit:hover {
+  background: var(--macs-black, #20231f);
+  border-color: var(--macs-black, #20231f);
+  transform: translateY(-2px);
+}
+
+.macs-contact-form__submit:focus-visible {
+  outline: 3px solid var(--macs-yellow, #e5ae2f);
+  outline-offset: 4px;
+}
+
+.macs-contact-form__success,
+.macs-contact-form__errors {
+  margin-bottom: 22px;
+  padding: 17px;
+  border-radius: 12px;
+}
+
+.macs-contact-form__success {
+  color: #23451d;
+  background: #edf7e9;
+}
+
+.macs-contact-form__success p {
+  margin: 5px 0 0;
+}
+
+.macs-contact-form__errors {
+  color: #8a151a;
+  background: #fff0f0;
+}
+
+.macs-contact-form-section__spot {
+  position: absolute;
+  right: -170px;
+  bottom: -190px;
+  width: 470px;
+  aspect-ratio: 1;
+  background: rgba(213, 43, 50, 0.11);
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 989px) {
+  .macs-contact-form-section__container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 45px;
+  }
+
+  .macs-contact-form-section__intro {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-contact-form-section {
+    padding-block: 62px 74px;
+    scroll-margin-top: 70px;
+  }
+
+  .macs-contact-form-section__title {
+    font-size: clamp(2.45rem, 11vw, 3.6rem);
+  }
+
+  .macs-contact-form-section__card {
+    margin-inline: -4px;
+    border-radius: 21px;
+  }
+
+  .macs-contact-form__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .macs-contact-field--full {
+    grid-column: auto;
+  }
+}

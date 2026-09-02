@@ -1,0 +1,177 @@
+<section
+  class="macs-section macs-blog"
+  id="macs-blog-{{ section.id }}"
+>
+  <div class="macs-container">
+
+    <div class="macs-blog__header">
+
+      <div class="macs-blog__heading">
+        {% if section.settings.eyebrow != blank %}
+          <p class="macs-blog__eyebrow">
+            <span aria-hidden="true"></span>
+            {{ section.settings.eyebrow | escape }}
+          </p>
+        {% endif %}
+
+        <h2 class="macs-blog__title">
+          {% if section.settings.title != blank %}
+            <span>{{ section.settings.title | escape }}</span>
+          {% endif %}
+
+          {% if section.settings.highlighted_title != blank %}
+            <em>{{ section.settings.highlighted_title | escape }}</em>
+          {% endif %}
+        </h2>
+      </div>
+
+      {% if section.settings.blog != blank %}
+        <a
+          class="macs-blog__all-link"
+          href="{{ section.settings.blog.url }}"
+        >
+          <span>{{ section.settings.all_button_text | escape }}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+
+    </div>
+
+    {% if section.settings.blog != blank %}
+      <div class="macs-blog__grid">
+
+        {% for article in section.settings.blog.articles limit: 3 %}
+
+          {% assign article_words = article.content
+            | strip_html
+            | split: ' '
+            | size
+          %}
+
+          {% assign reading_time = article_words
+            | divided_by: 200
+            | plus: 1
+          %}
+
+          <article class="macs-blog-card">
+
+            <a
+              class="macs-blog-card__image-link"
+              href="{{ article.url }}"
+              aria-label="{{ article.title | escape }}"
+            >
+              <div class="macs-blog-card__media">
+
+                {% if article.image != blank %}
+                  {{
+                    article.image
+                    | image_url: width: 1000
+                    | image_tag:
+                      class: 'macs-blog-card__image',
+                      loading: 'lazy',
+                      widths: '320, 480, 640, 800, 1000',
+                      sizes: '(max-width: 749px) 100vw, (max-width: 1050px) 50vw, 33vw',
+                      alt: article.image.alt
+                  }}
+                {% else %}
+                  <div class="macs-blog-card__placeholder">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+
+              </div>
+            </a>
+
+            <div class="macs-blog-card__content">
+
+              <div class="macs-blog-card__meta">
+                {% if article.tags.size > 0 %}
+                  <span>{{ article.tags.first | escape }}</span>
+                  <i aria-hidden="true">•</i>
+                {% endif %}
+
+                <span>{{ reading_time }} perc</span>
+              </div>
+
+              <h3 class="macs-blog-card__title">
+                <a href="{{ article.url }}">
+                  {{ article.title | escape }}
+                </a>
+              </h3>
+
+              <a
+                class="macs-blog-card__link"
+                href="{{ article.url }}"
+              >
+                <span>{{ section.settings.article_button_text | escape }}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+
+            </div>
+
+          </article>
+
+        {% endfor %}
+
+      </div>
+    {% else %}
+      <div class="macs-blog__empty">
+        <p>Válassz ki egy blogot a szekció beállításainál.</p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Blogelőnézet",
+  "tag": "section",
+  "class": "macs-blog-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Megjelenített blog"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "MAC’s Tudástár"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím első része",
+      "default": "Hasznos tanácsok"
+    },
+    {
+      "type": "text",
+      "id": "highlighted_title",
+      "label": "Piros címrész",
+      "default": "gazdiknak"
+    },
+    {
+      "type": "text",
+      "id": "all_button_text",
+      "label": "Összes bejegyzés hivatkozás",
+      "default": "Minden bejegyzés"
+    },
+    {
+      "type": "text",
+      "id": "article_button_text",
+      "label": "Kártyák hivatkozása",
+      "default": "Elolvasom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Blogelőnézet"
+    }
+  ]
+}
+{% endschema %}

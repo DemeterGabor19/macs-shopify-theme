@@ -1,0 +1,159 @@
+{{ 'macs-contact.css' | asset_url | stylesheet_tag }}
+
+<section class="macs-contact-hero">
+  <span class="macs-contact-hero__spot macs-contact-hero__spot--red" aria-hidden="true"></span>
+  <span class="macs-contact-hero__spot macs-contact-hero__spot--yellow" aria-hidden="true"></span>
+
+  <div class="macs-container macs-contact-hero__container">
+    <div class="macs-contact-hero__content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="macs-contact-hero__eyebrow">
+          <span aria-hidden="true"></span>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h1 class="macs-contact-hero__title">
+          {{ section.settings.title | escape }}
+        </h1>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="macs-contact-hero__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <a
+          class="macs-contact-hero__button"
+          href="{{ section.settings.button_link | default: '#kapcsolati-urlap' }}"
+        >
+          <span>{{ section.settings.button_label | escape }}</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="macs-contact-hero__details">
+      {% if section.settings.email != blank %}
+        <a class="macs-contact-card macs-contact-card--email" href="mailto:{{ section.settings.email | escape }}">
+          <span class="macs-contact-card__label">E-mail</span>
+          <strong>{{ section.settings.email | escape }}</strong>
+          <span class="macs-contact-card__arrow" aria-hidden="true">↗</span>
+        </a>
+      {% endif %}
+
+      {% if section.settings.phone != blank %}
+        {% assign phone_link = section.settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' %}
+        <a class="macs-contact-card macs-contact-card--phone" href="tel:{{ phone_link }}">
+          <span class="macs-contact-card__label">Telefon</span>
+          <strong>{{ section.settings.phone | escape }}</strong>
+          <span class="macs-contact-card__arrow" aria-hidden="true">↗</span>
+        </a>
+      {% endif %}
+
+      <div class="macs-contact-socials">
+        <p>{{ section.settings.social_title | escape }}</p>
+
+        <div class="macs-contact-socials__links">
+          {% if section.settings.facebook_url != blank %}
+            <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener">
+              Facebook <span aria-hidden="true">↗</span>
+            </a>
+          {% endif %}
+
+          {% if section.settings.tiktok_url != blank %}
+            <a href="{{ section.settings.tiktok_url }}" target="_blank" rel="noopener">
+              TikTok <span aria-hidden="true">↗</span>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Kapcsolat hero",
+  "tag": "section",
+  "class": "macs-contact-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Lépj velünk kapcsolatba"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím",
+      "default": "Kapcsolat"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Bevezető szöveg",
+      "default": "<p>Kérdésed van egy termékről, rendelésről vagy a megfelelő eledel kiválasztásáról? Írj nekünk, és segítünk.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Gomb felirata",
+      "default": "Üzenetet írok"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Gomb hivatkozása"
+    },
+    {
+      "type": "header",
+      "content": "Elérhetőségek"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "E-mail cím",
+      "default": "david@macs-pet.hu"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Telefonszám",
+      "default": "+36 70 357 6927"
+    },
+    {
+      "type": "text",
+      "id": "social_title",
+      "label": "Közösségi oldalak címe",
+      "default": "Kövess minket"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook hivatkozás"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok hivatkozás"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Kapcsolat hero",
+      "settings": {
+        "facebook_url": "https://www.facebook.com/macsallateledel/",
+        "tiktok_url": "https://www.tiktok.com/@macsmagyarorszag"
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,940 @@
+/* =========================================================
+   MAC'S – Termékek oldal
+   ========================================================= */
+
+.macs-products-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(44px, 5vw, 76px);
+  color: var(--macs-black);
+  background: var(--macs-cream);
+}
+
+.macs-products-hero::after {
+  position: absolute;
+  right: -90px;
+  bottom: -160px;
+  width: 310px;
+  aspect-ratio: 1;
+  border: 46px solid rgba(213, 43, 50, 0.08);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.macs-products-hero__container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(440px, 1.08fr);
+  gap: clamp(42px, 6vw, 96px);
+  align-items: center;
+  min-height: clamp(480px, 42vw, 590px);
+}
+
+.macs-products-hero__content {
+  max-width: 650px;
+}
+
+.macs-products-hero__eyebrow {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 20px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: clamp(0.7rem, 0.8vw, 0.82rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-products-hero__eyebrow > span {
+  display: block;
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+}
+
+.macs-products-hero__title {
+  max-width: 650px;
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(3.2rem, 5.4vw, 5.7rem);
+  font-weight: 800;
+  line-height: 0.91;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.macs-products-hero__title span,
+.macs-products-hero__title em {
+  display: block;
+}
+
+.macs-products-hero__title em {
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 8px;
+  color: var(--macs-red);
+  font-weight: 800;
+  font-style: italic;
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+}
+
+.macs-products-hero__text {
+  max-width: 590px;
+  margin-top: 26px;
+  color: var(--macs-muted, #5c5f58);
+  font-family: var(--macs-font-body);
+  font-size: clamp(1rem, 1.1vw, 1.12rem);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.macs-products-hero__text p {
+  margin: 0;
+}
+
+.macs-products-hero__actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.macs-products-hero__actions .macs-button {
+  gap: 12px;
+}
+
+.macs-products-hero__visual {
+  position: relative;
+  min-height: clamp(430px, 38vw, 540px);
+}
+
+.macs-products-hero__spot {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.macs-products-hero__spot--red {
+  top: 1%;
+  left: -3%;
+  width: clamp(240px, 25vw, 390px);
+  aspect-ratio: 1;
+  background: var(--macs-red);
+}
+
+.macs-products-hero__spot--yellow {
+  right: -5%;
+  bottom: -1%;
+  width: clamp(190px, 19vw, 300px);
+  aspect-ratio: 1;
+  background: var(--macs-mustard);
+}
+
+.macs-products-hero__image-frame {
+  position: absolute;
+  inset: 6% 5% 4% 4%;
+  z-index: 2;
+  overflow: hidden;
+  background: var(--macs-surface, #fffdf9);
+  border: 8px solid rgba(255, 255, 255, 0.92);
+  border-radius: 38% 18% 34% 16% / 22% 34% 18% 32%;
+  box-shadow: 0 24px 55px rgba(32, 35, 31, 0.18);
+  transform: rotate(1.5deg);
+}
+
+.macs-products-hero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.015);
+}
+
+.macs-products-hero__placeholder,
+.macs-products-hero__placeholder svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.macs-products-hero__placeholder {
+  color: rgba(32, 35, 31, 0.2);
+  background: var(--macs-surface, #fffdf9);
+}
+
+.macs-products-hero__badge {
+  position: absolute;
+  right: 1%;
+  bottom: 7%;
+  z-index: 3;
+  display: grid;
+  width: 104px;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 14px;
+  color: var(--macs-white);
+  background: var(--macs-black);
+  border: 5px solid var(--macs-cream);
+  border-radius: 50%;
+  box-shadow: var(--macs-shadow-small);
+  font-family: var(--macs-font-heading);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.05;
+  text-align: center;
+  transform: rotate(7deg);
+}
+
+@media screen and (max-width: 989px) {
+  .macs-products-hero__container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+
+  .macs-products-hero__content {
+    max-width: 760px;
+  }
+
+  .macs-products-hero__visual {
+    min-height: clamp(430px, 68vw, 590px);
+  }
+
+  .macs-products-hero__image-frame {
+    inset-inline: 5%;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-products-hero {
+    padding-block: 38px 46px;
+  }
+
+  .macs-products-hero__container {
+    gap: 24px;
+  }
+
+  .macs-products-hero__eyebrow {
+    margin-bottom: 17px;
+    font-size: 0.68rem;
+  }
+
+  .macs-products-hero__title {
+    font-size: clamp(2.8rem, 13vw, 4.25rem);
+  }
+
+  .macs-products-hero__text {
+    margin-top: 21px;
+    font-size: 0.96rem;
+    line-height: 1.62;
+  }
+
+  .macs-products-hero__actions {
+    align-items: stretch;
+    margin-top: 25px;
+  }
+
+  .macs-products-hero__actions .macs-button {
+    width: 100%;
+  }
+
+  .macs-products-hero__visual {
+    min-height: clamp(350px, 94vw, 470px);
+  }
+
+  .macs-products-hero__spot--red {
+    top: 2%;
+    left: -10%;
+    width: 230px;
+  }
+
+  .macs-products-hero__spot--yellow {
+    right: -12%;
+    width: 190px;
+  }
+
+  .macs-products-hero__image-frame {
+    inset: 5% 1% 4%;
+    border-width: 6px;
+    border-radius: 30% 14% 28% 13% / 18% 28% 15% 26%;
+  }
+
+  .macs-products-hero__badge {
+    right: -2%;
+    bottom: 3%;
+    width: 84px;
+    padding: 10px;
+    border-width: 4px;
+    font-size: 0.76rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .macs-products-hero__visual {
+    min-height: 330px;
+  }
+
+  .macs-products-hero__image-frame {
+    inset-inline: -2%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macs-products-hero__image-frame,
+  .macs-products-hero__title em {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   Termékek – képes kategóriák
+   ========================================================= */
+
+.macs-products-nav {
+  position: relative;
+  padding-block: clamp(64px, 7vw, 108px);
+  overflow: hidden;
+  background: var(--macs-white);
+  scroll-margin-top: 90px;
+}
+
+.macs-products-nav__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  gap: clamp(30px, 6vw, 90px);
+  align-items: end;
+  margin-bottom: clamp(36px, 5vw, 62px);
+}
+
+.macs-products-nav__eyebrow {
+  display: inline-flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 14px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-products-nav__eyebrow > span {
+  width: 34px;
+  height: 3px;
+  flex: 0 0 34px;
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+}
+
+.macs-products-nav__title {
+  max-width: 720px;
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(2.7rem, 4.3vw, 4.6rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.macs-products-nav__text {
+  color: var(--macs-muted, #5c5f58);
+  font-family: var(--macs-font-body);
+  font-size: 1rem;
+  line-height: 1.68;
+}
+
+.macs-products-nav__text p {
+  margin: 0;
+}
+
+.macs-products-nav__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 26px);
+}
+
+.macs-products-nav__card {
+  --macs-card-accent: var(--macs-red);
+
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 350px;
+  flex-direction: column;
+  padding: 18px 20px 22px;
+  overflow: hidden;
+  color: var(--macs-black);
+  background: var(--macs-cream);
+  border: 1px solid rgba(32, 35, 31, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 14px 34px rgba(32, 35, 31, 0.09);
+  font-family: var(--macs-font-body);
+  text-decoration: none;
+  transition:
+    box-shadow var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+.macs-products-nav__card--yellow {
+  --macs-card-accent: var(--macs-mustard);
+}
+
+.macs-products-nav__card--green {
+  --macs-card-accent: var(--macs-green, #173e33);
+}
+
+.macs-products-nav__card--neutral {
+  --macs-card-accent: #8c8f89;
+}
+
+.macs-products-nav__card:hover {
+  box-shadow: 0 22px 48px rgba(32, 35, 31, 0.15);
+  transform: translateY(-7px);
+}
+
+.macs-products-nav__number {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  z-index: 4;
+  color: var(--macs-card-accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.macs-products-nav__media {
+  position: relative;
+  display: grid;
+  height: 210px;
+  flex: 0 0 210px;
+  place-items: center;
+}
+
+.macs-products-nav__image-spot {
+  position: absolute;
+  width: 170px;
+  aspect-ratio: 1;
+  background: color-mix(in srgb, var(--macs-card-accent) 19%, transparent);
+  border-radius: 50%;
+  transition: transform 320ms ease;
+}
+
+.macs-products-nav__card:hover .macs-products-nav__image-spot {
+  transform: scale(1.08) rotate(5deg);
+}
+
+.macs-products-nav__image {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: auto;
+  max-width: 82%;
+  height: 185px;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 16px rgba(32, 35, 31, 0.17));
+  transition: transform 320ms ease;
+}
+
+.macs-products-nav__card:hover .macs-products-nav__image {
+  transform: translateY(-5px) rotate(2deg) scale(1.035);
+}
+
+.macs-products-nav__placeholder {
+  position: relative;
+  z-index: 2;
+  width: 150px;
+  height: 175px;
+  color: rgba(32, 35, 31, 0.18);
+}
+
+.macs-products-nav__placeholder svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.macs-products-nav__card-content {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  padding-right: 54px;
+}
+
+.macs-products-nav__card-content h3 {
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(1.25rem, 1.7vw, 1.65rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.macs-products-nav__card-content p {
+  max-width: 280px;
+  margin: 9px 0 0;
+  color: var(--macs-muted, #5c5f58);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.macs-products-nav__arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 22px;
+  z-index: 4;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  color: var(--macs-white);
+  background: var(--macs-card-accent);
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: transform var(--macs-transition);
+}
+
+.macs-products-nav__card:hover .macs-products-nav__arrow {
+  transform: translateY(4px);
+}
+
+@media screen and (max-width: 989px) {
+  .macs-products-nav__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-products-nav {
+    padding-block: 54px 68px;
+    scroll-margin-top: 70px;
+  }
+
+  .macs-products-nav__header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .macs-products-nav__title {
+    font-size: clamp(2.4rem, 10.5vw, 3.5rem);
+  }
+
+  .macs-products-nav__grid {
+    display: flex;
+    gap: 15px;
+    margin-inline: -16px;
+    padding: 5px 16px 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .macs-products-nav__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .macs-products-nav__card {
+    min-width: min(82vw, 330px);
+    min-height: 340px;
+    flex: 0 0 min(82vw, 330px);
+    scroll-snap-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macs-products-nav__card,
+  .macs-products-nav__image,
+  .macs-products-nav__image-spot,
+  .macs-products-nav__arrow {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   MAC'S – Újrahasználható termékcsoport
+   ========================================================= */
+
+.macs-product-group {
+  position: relative;
+  padding-block: clamp(70px, 8vw, 120px);
+  overflow: hidden;
+  scroll-margin-top: 90px;
+}
+
+.macs-product-group--cream {
+  background: var(--macs-cream);
+}
+
+.macs-product-group--white {
+  background: var(--macs-white);
+}
+
+.macs-product-group--burlap {
+  background-color: var(--macs-cream);
+  background-image:
+    linear-gradient(rgba(247, 243, 234, 0.87), rgba(247, 243, 234, 0.87)),
+    url("macs-burlap-texture.png");
+  background-position: center;
+  background-size: 520px auto;
+}
+
+.macs-product-group__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 450px);
+  gap: clamp(32px, 6vw, 90px);
+  align-items: end;
+  margin-bottom: clamp(38px, 5vw, 64px);
+}
+
+.macs-product-group__eyebrow {
+  display: inline-flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 14px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-product-group__eyebrow > span {
+  width: 34px;
+  height: 3px;
+  flex: 0 0 34px;
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+}
+
+.macs-product-group__title {
+  max-width: 760px;
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(2.7rem, 4.5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+.macs-product-group__title span,
+.macs-product-group__title em {
+  display: block;
+}
+
+.macs-product-group__title em {
+  width: fit-content;
+  margin-top: 5px;
+  color: var(--macs-red);
+  font-weight: 800;
+  font-style: italic;
+  transform: rotate(-1deg);
+  transform-origin: left center;
+}
+
+.macs-product-group__intro {
+  color: var(--macs-muted, #5c5f58);
+  font-family: var(--macs-font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.macs-product-group__intro p {
+  margin: 0;
+}
+
+.macs-product-group__grid {
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.macs-product-group__grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.macs-product-group__grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.macs-product-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--macs-black);
+  background: var(--macs-white);
+  border: 1px solid rgba(32, 35, 31, 0.08);
+  border-radius: 26px;
+  box-shadow: 0 13px 32px rgba(32, 35, 31, 0.09);
+  font-family: var(--macs-font-body);
+  transition:
+    box-shadow var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+.macs-product-card:hover {
+  box-shadow: 0 22px 48px rgba(32, 35, 31, 0.15);
+  transform: translateY(-7px);
+}
+
+.macs-product-card__media {
+  position: relative;
+  display: grid;
+  min-height: 280px;
+  padding: 24px;
+  overflow: hidden;
+  place-items: center;
+  color: var(--macs-black);
+  background: var(--macs-surface, #fffdf9);
+  text-decoration: none;
+}
+
+.macs-product-card__spot {
+  position: absolute;
+  width: 190px;
+  aspect-ratio: 1;
+  background: rgba(229, 174, 47, 0.2);
+  border-radius: 50%;
+  transition: transform 320ms ease;
+}
+
+.macs-product-card:nth-child(even) .macs-product-card__spot {
+  background: rgba(213, 43, 50, 0.12);
+}
+
+.macs-product-card:hover .macs-product-card__spot {
+  transform: scale(1.08) rotate(5deg);
+}
+
+.macs-product-card__image {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: auto;
+  max-width: 88%;
+  height: 235px;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 17px rgba(32, 35, 31, 0.17));
+  transition: transform 320ms ease;
+}
+
+.macs-product-card:hover .macs-product-card__image {
+  transform: translateY(-5px) rotate(1.5deg) scale(1.035);
+}
+
+.macs-product-card__placeholder {
+  position: relative;
+  z-index: 2;
+  width: 180px;
+  height: 220px;
+  color: rgba(32, 35, 31, 0.17);
+}
+
+.macs-product-card__placeholder svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.macs-product-card__sale {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 4;
+  padding: 7px 11px;
+  color: var(--macs-white);
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.macs-product-card__content {
+  display: flex;
+  min-height: 205px;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px;
+}
+
+.macs-product-card__vendor {
+  margin: 0 0 8px;
+  color: var(--macs-red);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.macs-product-card__title {
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(1.08rem, 1.4vw, 1.35rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+.macs-product-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.macs-product-card__title a:hover {
+  color: var(--macs-red);
+}
+
+.macs-product-card__price {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: 13px;
+  color: var(--macs-black);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.macs-product-card__price s {
+  color: var(--macs-muted, #747872);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.macs-product-card__from {
+  color: var(--macs-muted, #747872);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.macs-product-card__button {
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 10px 13px 10px 16px;
+  color: var(--macs-white);
+  background: var(--macs-black);
+  border-radius: 14px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    color var(--macs-transition),
+    background-color var(--macs-transition);
+}
+
+.macs-product-card__button span:last-child {
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  color: var(--macs-black);
+  background: var(--macs-white);
+  border-radius: 50%;
+}
+
+.macs-product-card:hover .macs-product-card__button {
+  background: var(--macs-red);
+}
+
+.macs-product-card--placeholder .macs-product-card__button,
+.macs-product-group__disabled-button {
+  pointer-events: none;
+}
+
+.macs-product-group__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(34px, 5vw, 56px);
+}
+
+.macs-product-group__footer .macs-button {
+  gap: 12px;
+}
+
+.macs-product-group__disabled-button {
+  opacity: 0.55;
+}
+
+@media screen and (max-width: 1099px) {
+  .macs-product-group__grid--4,
+  .macs-product-group__grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-product-group {
+    padding-block: 60px 74px;
+    scroll-margin-top: 70px;
+  }
+
+  .macs-product-group__header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .macs-product-group__title {
+    font-size: clamp(2.4rem, 10.5vw, 3.55rem);
+  }
+
+  .macs-product-group__grid--4,
+  .macs-product-group__grid--3 {
+    display: flex;
+    gap: 15px;
+    margin-inline: -16px;
+    padding: 5px 16px 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .macs-product-group__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .macs-product-card {
+    min-width: min(82vw, 330px);
+    flex: 0 0 min(82vw, 330px);
+    scroll-snap-align: start;
+  }
+
+  .macs-product-card__media {
+    min-height: 260px;
+  }
+
+  .macs-product-card__image {
+    height: 215px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macs-product-card,
+  .macs-product-card__image,
+  .macs-product-card__spot {
+    transition: none;
+  }
+}

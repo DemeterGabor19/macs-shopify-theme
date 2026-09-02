@@ -1,0 +1,206 @@
+{
+  "sections": {
+    "macs_hero_emaUpz": {
+      "type": "macs-hero",
+      "name": "MAC’s – Hero",
+      "settings": {
+        "eyebrow": "MAC’s szuperprémium kutyaeledelek",
+        "title_first": "Prémium táplálás,",
+        "title_accent": "amit kutyád is imádni fog.",
+        "description": "Magas hústartalmú, gabonamentes kutyaeledelek gondosan válogatott\nalapanyagokból. Teljes értékű táplálás kölyökkortól egészen az\nidősebb évekig.",
+        "primary_label": "Kutyatermékek",
+        "primary_link": "",
+        "secondary_label": "Táplálkozási tanácsot kérek",
+        "secondary_link": "",
+        "benefit_one": "Gabonamentes",
+        "benefit_two": "Magas hústartalom",
+        "benefit_three": "30+ év tapasztalat"
+      }
+    },
+    "macs_usp": {
+      "type": "macs-usp",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "✦",
+            "title": "Hús az első helyen",
+            "text": "Magas hústartalmú receptek az ízletes, természetközeli táplálásért."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "∅",
+            "title": "Gabona nélkül",
+            "text": "Gabonamentes változatok az érzékenyebb kutyák számára is."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "✓",
+            "title": "Teljes értékű táplálás",
+            "text": "Kiegyensúlyozott receptek kölyökkortól az idősebb évekig."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "30+",
+            "title": "Több mint 30 év tapasztalat",
+            "text": "Német szakértelem és folyamatos termékfejlesztés 1993 óta."
+          }
+        }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3", "benefit_4"],
+      "settings": {
+        "badge_number": "100%",
+        "badge_text": "örömmel válogatva",
+        "eyebrow": "Miért MAC’s?",
+        "title": "Ami jó neki, abból",
+        "highlighted_title": "nem engedünk.",
+        "subtitle": "Természetközeli receptek valódi igényekre",
+        "text": "<p>A MAC’s eledeleit úgy állítjuk össze, hogy kutyád minden élethelyzetben teljes értékű, ízletes és gondosan megtervezett táplálást kapjon.</p>"
+      }
+    },
+    "macs_product_categories": {
+      "type": "macs-product-categories",
+      "blocks": {
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "title": "Száraz eledelek",
+            "text": "Teljes értékű, gabonamentes receptek a mindennapokra.",
+            "accent": "red",
+            "button_text": "Termékek megtekintése"
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "title": "Félnedves eledelek",
+            "text": "Puha, szaftos falatok magasabb nedvességtartalommal.",
+            "accent": "yellow",
+            "button_text": "Termékek megtekintése"
+          }
+        },
+        "category_3": {
+          "type": "category",
+          "settings": {
+            "title": "Konzervek",
+            "text": "Magas hústartalmú, természetközeli nedves eledelek.",
+            "accent": "dark",
+            "button_text": "Termékek megtekintése"
+          }
+        },
+        "category_4": {
+          "type": "category",
+          "settings": {
+            "title": "Levesek",
+            "text": "Ízletes folyadékpótlás és különleges kiegészítés.",
+            "accent": "red",
+            "button_text": "Termékek megtekintése"
+          }
+        },
+        "category_5": {
+          "type": "category",
+          "settings": {
+            "title": "MAC’s Vetcare",
+            "text": "Speciális eledelek különleges táplálási igényekre.",
+            "accent": "yellow",
+            "button_text": "Termékek megtekintése"
+          }
+        },
+        "category_6": {
+          "type": "category",
+          "settings": {
+            "title": "Jutalomfalatok",
+            "text": "Gabonamentes falatok tréninghez és jutalmazáshoz.",
+            "accent": "dark",
+            "button_text": "Termékek megtekintése"
+          }
+        }
+      },
+      "block_order": [
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4",
+        "category_5",
+        "category_6"
+      ],
+      "settings": {
+        "eyebrow": "Fedezd fel a kínálatot",
+        "title": "Minden falatban",
+        "highlighted_title": "ott a gondoskodás.",
+        "intro": "<p>Válassz kutyád életkorához, ízléséhez és egyedi igényeihez illő MAC’s eledelt.</p>",
+        "button_text": "Összes kutyatermék",
+        "button_link": ""
+      }
+    },
+    "macs_brand_story": {
+      "type": "macs-brand-story",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Élelmiszer-minőségű alapanyagok"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "text": "Állatkísérletek nélkül"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "text": "Kíméletes gyártási eljárással"
+          }
+        }
+      },
+      "block_order": ["benefit_1", "benefit_2", "benefit_3"],
+      "settings": {
+        "eyebrow": "Minőség 1993 óta",
+        "title": "A természetből",
+        "highlighted_title": "merítünk ihletet.",
+        "text": "<p>A MAC’s több mint 30 éve fejleszt szuperprémium eledeleket kutyák és macskák számára. A receptek kialakításánál a természetes táplálkozás szolgál mintaként.</p>",
+        "button_text": "Lépj kapcsolatba velünk",
+        "button_link": ""
+      }
+    },
+    "macs_blog_preview": {
+      "type": "macs-blog-preview",
+      "settings": {
+        "blog": "",
+        "eyebrow": "MAC’s Tudástár",
+        "title": "Hasznos tanácsok",
+        "highlighted_title": "gazdiknak",
+        "all_button_text": "Minden bejegyzés",
+        "article_button_text": "Elolvasom"
+      }
+    },
+    "macs_advice_cta": {
+      "type": "macs-advice-cta",
+      "settings": {
+        "eyebrow": "Segítünk választani",
+        "title_first": "Nem tudod, melyik",
+        "title_highlight": "MAC’s eledel",
+        "title_last": "illik hozzá?",
+        "text": "<p>Írd meg kutyád életkorát, testsúlyát és táplálkozási igényeit, mi pedig segítünk megtalálni a megfelelő eledelt.</p>",
+        "button_text": "Táplálkozási tanácsot kérek",
+        "button_link": ""
+      }
+    }
+  },
+  "order": [
+    "macs_hero_emaUpz",
+    "macs_usp",
+    "macs_product_categories",
+    "macs_brand_story",
+    "macs_blog_preview",
+    "macs_advice_cta"
+  ]
+}

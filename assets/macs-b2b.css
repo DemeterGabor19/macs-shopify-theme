@@ -1,0 +1,882 @@
+/* =========================================================
+   MAC'S – B2B OLDAL
+   01. Hero
+   ========================================================= */
+
+.macs-b2b-hero {
+  position: relative;
+  padding-block: clamp(64px, 8vw, 118px);
+  overflow: hidden;
+  color: var(--macs-black, #20231f);
+  background: var(--macs-cream, #f7f3ea);
+  font-family: var(--macs-font-body, Arial, sans-serif);
+}
+
+.macs-b2b-hero *,
+.macs-b2b-hero *::before,
+.macs-b2b-hero *::after {
+  box-sizing: border-box;
+}
+
+.macs-b2b-hero__container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 0.86fr);
+  gap: clamp(46px, 7vw, 110px);
+  align-items: center;
+}
+
+.macs-b2b-hero__content {
+  min-width: 0;
+}
+
+.macs-b2b-hero__eyebrow {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 17px;
+  color: var(--macs-black, #20231f);
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.macs-b2b-hero__eyebrow > span {
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red, #d52b32);
+  border-radius: 999px;
+}
+
+.macs-b2b-hero__title {
+  max-width: 780px;
+  margin: 0;
+  color: var(--macs-black, #20231f);
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(3.4rem, 6.2vw, 7rem);
+  font-weight: 850;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+}
+
+.macs-b2b-hero__title span,
+.macs-b2b-hero__title em {
+  display: block;
+}
+
+.macs-b2b-hero__title em {
+  width: fit-content;
+  margin-top: 9px;
+  color: var(--macs-red, #d52b32);
+  font-weight: inherit;
+  font-style: italic;
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+}
+
+.macs-b2b-hero__text {
+  max-width: 660px;
+  margin-top: 30px;
+  color: var(--macs-muted, #5c5f58);
+  font-size: clamp(1rem, 1.3vw, 1.16rem);
+  line-height: 1.72;
+}
+
+.macs-b2b-hero__text p {
+  margin: 0;
+}
+
+.macs-b2b-hero__button {
+  display: inline-flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.macs-b2b-hero__visual {
+  position: relative;
+  min-height: clamp(470px, 49vw, 650px);
+}
+
+.macs-b2b-hero__image-frame {
+  position: absolute;
+  inset: 3% 3% 4%;
+  overflow: hidden;
+  background: var(--macs-surface, #fffdf9);
+  border: 8px solid rgba(255, 255, 255, 0.94);
+  border-radius: 34% 17% 31% 15% / 20% 31% 17% 29%;
+  box-shadow: 0 26px 60px rgba(32, 35, 31, 0.18);
+  transform: rotate(1.8deg);
+}
+
+.macs-b2b-hero__image,
+.macs-b2b-hero__placeholder,
+.macs-b2b-hero__placeholder svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.macs-b2b-hero__image {
+  object-fit: cover;
+}
+
+.macs-b2b-hero__placeholder {
+  color: rgba(32, 35, 31, 0.18);
+}
+
+.macs-b2b-hero__badge {
+  position: absolute;
+  right: -2%;
+  bottom: 5%;
+  z-index: 3;
+  display: grid;
+  width: 116px;
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 14px;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-black, #20231f);
+  border: 5px solid var(--macs-cream, #f7f3ea);
+  border-radius: 50%;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 850;
+  line-height: 1.06;
+  text-align: center;
+  transform: rotate(8deg);
+}
+
+.macs-b2b-hero__spot {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.macs-b2b-hero__spot--red {
+  top: -90px;
+  right: 31%;
+  width: 310px;
+  aspect-ratio: 1;
+  background: rgba(213, 43, 50, 0.12);
+}
+
+.macs-b2b-hero__spot--yellow {
+  bottom: -130px;
+  left: -80px;
+  width: 370px;
+  aspect-ratio: 1;
+  background: rgba(229, 174, 47, 0.18);
+}
+
+@media screen and (max-width: 989px) {
+  .macs-b2b-hero__container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .macs-b2b-hero__visual {
+    min-height: 560px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-b2b-hero {
+    padding-block: 48px 65px;
+  }
+
+  .macs-b2b-hero__container {
+    gap: 34px;
+  }
+
+  .macs-b2b-hero__title {
+    font-size: clamp(3.1rem, 15vw, 5rem);
+  }
+
+  .macs-b2b-hero__text {
+    margin-top: 24px;
+    font-size: 0.98rem;
+  }
+
+  .macs-b2b-hero__visual {
+    min-height: 390px;
+  }
+
+  .macs-b2b-hero__image-frame {
+    inset: 4% 0;
+    border-width: 6px;
+  }
+
+  .macs-b2b-hero__badge {
+    right: -1%;
+    width: 92px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macs-b2b-hero__title em,
+  .macs-b2b-hero__image-frame,
+  .macs-b2b-hero__badge {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   MAC'S – B2B PARTNERPROGRAM ÉS ELŐNYÖK
+   Ezt a macs-b2b.css fájl végére másold.
+   ========================================================= */
+
+.macs-b2b-benefits {
+  padding-block: clamp(72px, 8vw, 120px);
+  color: var(--macs-black, #20231f);
+  background: var(--macs-white, #ffffff);
+  font-family: var(--macs-font-body, Arial, sans-serif);
+}
+
+.macs-b2b-benefits *,
+.macs-b2b-benefits *::before,
+.macs-b2b-benefits *::after {
+  box-sizing: border-box;
+}
+
+.macs-b2b-benefits__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 470px);
+  gap: clamp(35px, 7vw, 100px);
+  align-items: end;
+}
+
+.macs-b2b-benefits__eyebrow {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 15px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.macs-b2b-benefits__eyebrow > span {
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red, #d52b32);
+  border-radius: 999px;
+}
+
+.macs-b2b-benefits__title {
+  max-width: 760px;
+  margin: 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(2.7rem, 4.5vw, 5rem);
+  font-weight: 850;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.macs-b2b-benefits__text {
+  color: var(--macs-muted, #5c5f58);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.macs-b2b-benefits__text p {
+  margin: 0;
+}
+
+.macs-b2b-benefits__audiences {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+.macs-b2b-benefits__audiences > span {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  padding: 8px 15px;
+  color: var(--macs-black, #20231f);
+  background: var(--macs-cream, #f7f3ea);
+  border: 1px solid rgba(32, 35, 31, 0.08);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.macs-b2b-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: clamp(28px, 4vw, 46px);
+}
+
+.macs-b2b-benefit-card {
+  position: relative;
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  padding: clamp(27px, 3vw, 38px);
+  overflow: hidden;
+  border-radius: 26px;
+  box-shadow: 0 13px 32px rgba(32, 35, 31, 0.08);
+}
+
+.macs-b2b-benefit-card--cream {
+  background: var(--macs-cream, #f7f3ea);
+}
+
+.macs-b2b-benefit-card--yellow {
+  background: var(--macs-yellow, #e5ae2f);
+}
+
+.macs-b2b-benefit-card--dark {
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-black, #20231f);
+}
+
+.macs-b2b-benefit-card--red {
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-red, #d52b32);
+}
+
+.macs-b2b-benefit-card__number {
+  margin-bottom: auto;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.macs-b2b-benefit-card h3 {
+  margin: 44px 0 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 850;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.macs-b2b-benefit-card p {
+  margin: 15px 0 0;
+  font-size: 0.94rem;
+  line-height: 1.62;
+}
+
+@media screen and (max-width: 989px) {
+  .macs-b2b-benefits__header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .macs-b2b-benefits__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .macs-b2b-benefit-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-b2b-benefits {
+    padding-block: 62px 74px;
+  }
+
+  .macs-b2b-benefits__title {
+    font-size: clamp(2.45rem, 11vw, 3.6rem);
+  }
+
+  .macs-b2b-benefits__audiences {
+    gap: 8px;
+  }
+
+  .macs-b2b-benefits__audiences > span {
+    min-height: 34px;
+    padding: 7px 12px;
+    font-size: 0.72rem;
+  }
+
+  .macs-b2b-benefits__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .macs-b2b-benefit-card,
+  .macs-b2b-benefit-card:last-child {
+    min-height: 235px;
+    grid-column: auto;
+  }
+}
+
+/* =========================================================
+   MAC'S – B2B TERMÉKKÍNÁLAT
+   Ezt a macs-b2b.css fájl végére másold.
+   ========================================================= */
+
+.macs-b2b-offer {
+  padding-block: clamp(72px, 8vw, 120px);
+  color: var(--macs-black, #20231f);
+  background-color: var(--macs-cream, #f7f3ea);
+  background-image:
+    linear-gradient(rgba(247, 243, 234, 0.91), rgba(247, 243, 234, 0.91)),
+    url("macs-burlap-texture.png");
+  background-position: center;
+  background-size: 520px auto;
+  font-family: var(--macs-font-body, Arial, sans-serif);
+}
+
+.macs-b2b-offer *,
+.macs-b2b-offer *::before,
+.macs-b2b-offer *::after {
+  box-sizing: border-box;
+}
+
+.macs-b2b-offer__container {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(440px, 1fr);
+  gap: clamp(48px, 8vw, 120px);
+  align-items: center;
+}
+
+.macs-b2b-offer__eyebrow {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 15px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.macs-b2b-offer__eyebrow > span {
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red, #d52b32);
+  border-radius: 999px;
+}
+
+.macs-b2b-offer__title {
+  max-width: 720px;
+  margin: 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(2.7rem, 4.5vw, 5rem);
+  font-weight: 850;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.macs-b2b-offer__text {
+  margin-top: 27px;
+  color: var(--macs-muted, #5c5f58);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.macs-b2b-offer__text p {
+  margin: 0;
+}
+
+.macs-b2b-offer__note {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(32, 35, 31, 0.15);
+  font-size: 0.86rem;
+  font-weight: 750;
+}
+
+.macs-b2b-offer__note > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-red, #d52b32);
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+
+.macs-b2b-offer__note p {
+  margin: 0;
+}
+
+.macs-b2b-offer__categories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.macs-b2b-offer__category {
+  display: flex;
+  min-height: 118px;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 22px 20px;
+  background: var(--macs-white, #ffffff);
+  border: 1px solid rgba(32, 35, 31, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(32, 35, 31, 0.07);
+}
+
+.macs-b2b-offer__check {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-red, #d52b32);
+  border-radius: 50%;
+  font-size: 0.76rem;
+  font-weight: 900;
+}
+
+.macs-b2b-offer__category--yellow .macs-b2b-offer__check {
+  color: var(--macs-black, #20231f);
+  background: var(--macs-yellow, #e5ae2f);
+}
+
+.macs-b2b-offer__category--dark .macs-b2b-offer__check {
+  background: var(--macs-black, #20231f);
+}
+
+.macs-b2b-offer__category h3 {
+  margin: 2px 0 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: 1.08rem;
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.macs-b2b-offer__category p {
+  margin: 8px 0 0;
+  color: var(--macs-muted, #5c5f58);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 989px) {
+  .macs-b2b-offer__container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-b2b-offer {
+    padding-block: 62px 74px;
+  }
+
+  .macs-b2b-offer__title {
+    font-size: clamp(2.45rem, 11vw, 3.6rem);
+  }
+
+  .macs-b2b-offer__categories {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .macs-b2b-offer__category {
+    min-height: 104px;
+  }
+}
+
+/* =========================================================
+   MAC'S – B2B VISZONTELADÓI ŰRLAP
+   Ezt a macs-b2b.css fájl végére másold.
+   ========================================================= */
+
+.macs-b2b-contact {
+  padding-block: clamp(72px, 8vw, 120px);
+  scroll-margin-top: 90px;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-black, #20231f);
+  font-family: var(--macs-font-body, Arial, sans-serif);
+}
+
+.macs-b2b-contact *,
+.macs-b2b-contact *::before,
+.macs-b2b-contact *::after {
+  box-sizing: border-box;
+}
+
+.macs-b2b-contact__container {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(520px, 1.15fr);
+  gap: clamp(45px, 8vw, 120px);
+  align-items: start;
+}
+
+.macs-b2b-contact__intro {
+  position: sticky;
+  top: 120px;
+}
+
+.macs-b2b-contact__eyebrow {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 15px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.macs-b2b-contact__eyebrow > span {
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-yellow, #e5ae2f);
+  border-radius: 999px;
+}
+
+.macs-b2b-contact__title {
+  max-width: 700px;
+  margin: 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(2.7rem, 4.5vw, 5rem);
+  font-weight: 850;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.macs-b2b-contact__text {
+  margin-top: 27px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.macs-b2b-contact__text p {
+  margin: 0;
+}
+
+.macs-b2b-contact__note {
+  display: flex;
+  gap: 14px;
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.macs-b2b-contact__note > span {
+  color: var(--macs-yellow, #e5ae2f);
+  font-size: 1.5rem;
+}
+
+.macs-b2b-contact__note p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.macs-b2b-contact__card {
+  padding: clamp(25px, 4vw, 48px);
+  color: var(--macs-black, #20231f);
+  background: var(--macs-white, #ffffff);
+  border-radius: 28px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+}
+
+.macs-b2b-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 17px;
+}
+
+.macs-b2b-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.macs-b2b-field--full {
+  grid-column: 1 / -1;
+}
+
+.macs-b2b-field > span,
+.macs-b2b-form__choices legend {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.macs-b2b-field input,
+.macs-b2b-field select,
+.macs-b2b-field textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  color: var(--macs-black, #20231f);
+  background: #faf9f6;
+  border: 1px solid rgba(32, 35, 31, 0.17);
+  border-radius: 12px;
+  font: inherit;
+}
+
+.macs-b2b-field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.macs-b2b-field input:focus,
+.macs-b2b-field select:focus,
+.macs-b2b-field textarea:focus {
+  border-color: var(--macs-yellow, #e5ae2f);
+  outline: 3px solid rgba(229, 174, 47, 0.32);
+}
+
+.macs-b2b-form__choices {
+  margin: 5px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.macs-b2b-form__choices legend {
+  margin-bottom: 11px;
+}
+
+.macs-b2b-form__choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.macs-b2b-form__choice-grid label {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 10px 12px;
+  background: #faf9f6;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.macs-b2b-form__choice-grid label:has(input:checked) {
+  background: rgba(213, 43, 50, 0.08);
+  border-color: rgba(213, 43, 50, 0.25);
+}
+
+.macs-b2b-form__choice-grid input,
+.macs-b2b-form__consent input {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  accent-color: var(--macs-red, #d52b32);
+}
+
+.macs-b2b-form__consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.macs-b2b-form__consent a {
+  color: inherit;
+  font-weight: 750;
+  text-underline-offset: 3px;
+}
+
+.macs-b2b-form__submit {
+  display: flex;
+  width: 100%;
+  min-height: 54px;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding: 14px 20px;
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-red, #d52b32);
+  border: 2px solid var(--macs-red, #d52b32);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 850;
+  cursor: pointer;
+  transition:
+    background-color var(--macs-transition, 180ms ease),
+    border-color var(--macs-transition, 180ms ease),
+    transform var(--macs-transition, 180ms ease);
+}
+
+.macs-b2b-form__submit:hover {
+  background: var(--macs-black, #20231f);
+  border-color: var(--macs-black, #20231f);
+  transform: translateY(-2px);
+}
+
+.macs-b2b-form__submit:focus-visible {
+  outline: 3px solid var(--macs-yellow, #e5ae2f);
+  outline-offset: 4px;
+}
+
+.macs-b2b-form__success,
+.macs-b2b-form__errors {
+  margin-bottom: 22px;
+  padding: 17px;
+  border-radius: 12px;
+}
+
+.macs-b2b-form__success {
+  color: #23451d;
+  background: #edf7e9;
+}
+
+.macs-b2b-form__success p {
+  margin: 5px 0 0;
+}
+
+.macs-b2b-form__errors {
+  color: #8a151a;
+  background: #fff0f0;
+}
+
+@media screen and (max-width: 989px) {
+  .macs-b2b-contact__container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 45px;
+  }
+
+  .macs-b2b-contact__intro {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-b2b-contact {
+    padding-block: 62px 74px;
+    scroll-margin-top: 70px;
+  }
+
+  .macs-b2b-contact__title {
+    font-size: clamp(2.45rem, 11vw, 3.6rem);
+  }
+
+  .macs-b2b-contact__card {
+    margin-inline: -4px;
+    border-radius: 21px;
+  }
+
+  .macs-b2b-form__grid,
+  .macs-b2b-form__choice-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .macs-b2b-field--full {
+    grid-column: auto;
+  }
+}

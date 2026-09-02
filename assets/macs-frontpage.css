@@ -1,0 +1,2127 @@
+/* =========================================================
+   MAC'S - Homepage hero
+   ========================================================= */
+
+.macs-hero__section {
+  position: relative;
+  overflow: hidden;
+  background: var(--macs-cream);
+}
+
+.macs-hero__wrap {
+  --macs-hero__background: var(--macs-cream);
+  --macs-hero__text: var(--macs-black);
+  --macs-hero__muted: var(--macs-muted, #5c5f58);
+  --macs-hero__red: var(--macs-red);
+  --macs-hero__yellow: var(--macs-mustard);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: clamp(620px, 74vw, 790px);
+  margin-inline: clamp(12px, 1.35vw, 24px);
+  color: var(--macs-hero__text);
+  background: var(--macs-hero__background);
+  border-radius: 0 0 34px 34px;
+  font-family: var(--macs-font-body);
+}
+
+.macs-hero__wrap::after {
+  position: absolute;
+  top: clamp(42px, 7vw, 96px);
+  right: clamp(-28px, -1.8vw, -10px);
+  z-index: -1;
+  color: rgba(32, 35, 31, 0.04);
+  content: "MAC'S";
+  font-family: var(--macs-font-heading);
+  font-size: clamp(112px, 13vw, 214px);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: 0;
+  pointer-events: none;
+  transform: rotate(90deg);
+  transform-origin: right top;
+  white-space: nowrap;
+}
+
+.macs-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
+  gap: clamp(28px, 4.5vw, 86px);
+  align-items: center;
+  width: min(
+    calc(100% - (var(--macs-page-padding, 24px) * 2)),
+    var(--macs-page-width, 1320px)
+  );
+  min-height: inherit;
+  margin-inline: auto;
+  padding-block: clamp(64px, 7vw, 98px) clamp(56px, 6vw, 82px);
+}
+
+.macs-hero__content {
+  min-width: 0;
+  max-width: 650px;
+}
+
+.macs-hero__eyebrow {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 22px;
+  color: var(--macs-hero__text);
+  font-family: var(--macs-font-body);
+  font-size: clamp(0.72rem, 0.88vw, 0.84rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-hero__eyebrow::before {
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: var(--macs-hero__red);
+  border-radius: 999px;
+  content: "";
+}
+
+.macs-hero__title {
+  max-width: 620px;
+  margin: 0;
+  color: var(--macs-hero__text);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(3.05rem, 5.45vw, 5.6rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.macs-hero__title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.macs-hero__title-accent {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 8px;
+  color: var(--macs-hero__red);
+  font-family: var(--macs-font-heading);
+  font-weight: 800;
+  font-style: italic;
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+}
+
+.macs-hero__title-accent {
+  white-space: normal;
+}
+
+.macs-hero__description {
+  max-width: 590px;
+  margin: 28px 0 0;
+  color: var(--macs-hero__muted);
+  font-family: var(--macs-font-body);
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  font-weight: 500;
+  line-height: 1.72;
+}
+
+.macs-hero__description p {
+  margin: 0;
+}
+
+.macs-hero__actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.macs-hero__button {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 25px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font-family: var(--macs-font-body);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+.macs-hero__button:hover {
+  transform: translateY(-2px);
+}
+
+.macs-hero__button:focus-visible {
+  outline: 3px solid var(--macs-hero__yellow);
+  outline-offset: 3px;
+}
+
+.macs-hero__button--primary {
+  color: var(--macs-white);
+  background: var(--macs-hero__red);
+  border-color: var(--macs-hero__red);
+  box-shadow: 0 12px 26px rgba(213, 43, 50, 0.22);
+}
+
+.macs-hero__button--primary:hover {
+  color: var(--macs-white);
+  background: #bd2027;
+  border-color: #bd2027;
+}
+
+.macs-hero__button--secondary {
+  color: var(--macs-hero__text);
+  background: transparent;
+  border-color: var(--macs-hero__text);
+}
+
+.macs-hero__button--secondary:hover {
+  color: var(--macs-white);
+  background: var(--macs-hero__text);
+  border-color: var(--macs-hero__text);
+}
+
+.macs-hero__benefits {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 30px 0 0;
+  padding: 0;
+  color: var(--macs-hero__text);
+  font-family: var(--macs-font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.25;
+  list-style: none;
+}
+
+.macs-hero__benefit {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.macs-hero__benefit::before {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  place-items: center;
+  color: var(--macs-hero__text);
+  background: var(--macs-hero__yellow);
+  border-radius: 50%;
+  content: "✓";
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.macs-hero__media {
+  position: relative;
+  min-height: clamp(500px, 46vw, 650px);
+}
+
+.macs-hero__shape {
+  position: absolute;
+  pointer-events: none;
+}
+
+.macs-hero__shape--red {
+  top: 12%;
+  right: 16%;
+  width: clamp(300px, 29vw, 450px);
+  aspect-ratio: 1;
+  height: auto;
+  background: var(--macs-hero__red);
+  border-radius: 50%;
+  transform: rotate(-3deg);
+}
+
+.macs-hero__shape--yellow {
+  top: 8%;
+  right: 1%;
+  width: clamp(190px, 18vw, 300px);
+  height: clamp(190px, 18vw, 300px);
+  background: var(--macs-hero__yellow);
+  border-radius: 50%;
+  transform: rotate(0deg);
+}
+
+.macs-hero__image {
+  position: absolute;
+  display: block;
+  width: auto;
+  max-width: none;
+  filter: drop-shadow(0 20px 24px rgba(32, 35, 31, 0.16));
+  pointer-events: none;
+  user-select: none;
+}
+
+.macs-hero__dog {
+  right: 24%;
+  bottom: 1%;
+  z-index: 3;
+  height: clamp(380px, 39vw, 565px);
+  transform: scale(var(--macs-hero__dog-scale, 1));
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+.macs-hero__product {
+  z-index: 4;
+}
+
+.macs-hero__product--bag {
+  right: 61%;
+  bottom: 9%;
+  height: clamp(158px, 16vw, 245px);
+  transform: rotate(-7deg);
+}
+
+.macs-hero__product--can {
+  right: 1%;
+  bottom: 7%;
+  height: clamp(126px, 13vw, 190px);
+  transform: rotate(4deg);
+}
+
+.macs-hero__product--snack {
+  top: 15%;
+  right: 7%;
+  height: clamp(138px, 13vw, 200px);
+  transform: rotate(8deg);
+}
+
+@media screen and (min-width: 900px) and (max-width: 1199px) {
+  .macs-hero__inner {
+    grid-template-columns: minmax(0, 1.06fr) minmax(350px, 0.94fr);
+    gap: clamp(18px, 2.4vw, 34px);
+  }
+
+  .macs-hero__title {
+    max-width: 560px;
+    font-size: clamp(3.25rem, 4.75vw, 4.35rem);
+    letter-spacing: -0.04em;
+  }
+
+  .macs-hero__description {
+    max-width: 520px;
+    font-size: 1rem;
+  }
+
+  .macs-hero__media {
+    min-height: clamp(440px, 44vw, 520px);
+  }
+
+  .macs-hero__dog {
+    right: 20%;
+    height: clamp(350px, 39vw, 465px);
+  }
+
+  .macs-hero__shape--red {
+    right: 18%;
+    width: clamp(320px, 37vw, 430px);
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .macs-hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .macs-hero__content {
+    max-width: 760px;
+  }
+
+  .macs-hero__media {
+    min-height: clamp(430px, 64vw, 600px);
+  }
+
+  .macs-hero__dog {
+    right: 25%;
+    height: clamp(330px, 55vw, 510px);
+  }
+
+  .macs-hero__product--bag {
+    right: 61%;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .macs-hero__wrap {
+    min-height: auto;
+    margin-inline: 0;
+    border-radius: 0 0 26px 26px;
+  }
+
+  .macs-hero__wrap::after {
+    top: 58%;
+    right: -18px;
+    font-size: 96px;
+  }
+
+  .macs-hero__inner {
+    width: min(calc(100% - 32px), var(--macs-page-width, 1320px));
+    padding-block: 42px 34px;
+  }
+
+  .macs-hero__eyebrow {
+    margin-bottom: 18px;
+    font-size: 0.68rem;
+  }
+
+  .macs-hero__title {
+    font-size: clamp(2.82rem, 13vw, 4.35rem);
+  }
+
+  .macs-hero__description {
+    margin-top: 22px;
+    font-size: 0.98rem;
+    line-height: 1.62;
+  }
+
+  .macs-hero__actions {
+    align-items: stretch;
+    margin-top: 26px;
+  }
+
+  .macs-hero__button {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .macs-hero__benefits {
+    gap: 12px 16px;
+    margin-top: 24px;
+    font-size: 0.78rem;
+  }
+
+  .macs-hero__media {
+    min-height: clamp(330px, 90vw, 460px);
+    margin-top: 8px;
+  }
+
+  .macs-hero__shape--red {
+    top: 4%;
+    right: 22%;
+    width: 240px;
+    height: 240px;
+  }
+
+  .macs-hero__shape--yellow {
+    right: 2%;
+    bottom: 12%;
+    width: 190px;
+    height: 190px;
+  }
+
+  .macs-hero__dog {
+    right: 19%;
+    bottom: 0;
+    height: clamp(275px, 77vw, 390px);
+  }
+
+  .macs-hero__product--bag {
+    right: 62%;
+    bottom: 5%;
+    height: clamp(104px, 30vw, 150px);
+  }
+
+  .macs-hero__product--can {
+    right: 2%;
+    bottom: 8%;
+    height: clamp(82px, 23vw, 118px);
+  }
+
+  .macs-hero__product--snack {
+    top: 8%;
+    right: 1%;
+    height: clamp(98px, 29vw, 142px);
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .macs-hero__product--snack {
+    right: -8%;
+  }
+
+  .macs-hero__product--bag {
+    right: 58%;
+  }
+}
+
+/* =========================================================
+   MAC'S – USP / Miért válaszd a MAC's-et?
+   ========================================================= */
+
+.macs-usp {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  padding-block: clamp(90px, 8vw, 140px) clamp(130px, 10vw, 180px);
+  color: var(--macs-black);
+  background: var(--macs-surface, #fffdf9);
+  border-radius: 0 0 50% 50% / 0 0 80px 80px;
+}
+
+.macs-usp__container {
+  display: grid;
+  grid-template-columns: minmax(420px, 0.94fr) minmax(0, 1.06fr);
+  gap: clamp(60px, 8vw, 130px);
+  align-items: center;
+}
+
+.macs-usp__media {
+  position: relative;
+  min-height: clamp(500px, 42vw, 620px);
+}
+
+.macs-usp__spot {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.macs-usp__spot--red {
+  top: 0;
+  left: -3%;
+  width: clamp(270px, 26vw, 390px);
+  aspect-ratio: 1;
+  background: var(--macs-red);
+}
+
+.macs-usp__spot--yellow {
+  right: 0;
+  bottom: 1%;
+  width: clamp(240px, 23vw, 350px);
+  aspect-ratio: 1;
+  background: var(--macs-mustard);
+}
+
+.macs-usp__image-frame {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  right: clamp(28px, 4vw, 62px);
+  bottom: 26px;
+  left: clamp(28px, 3.5vw, 54px);
+  overflow: hidden;
+  background: #e7e7e5;
+  border-radius: 45% 55% 48% 52% / 48% 44% 56% 52%;
+  box-shadow: var(--macs-shadow-card);
+  transform: rotate(-2deg);
+}
+
+.macs-usp__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.035) rotate(2deg);
+}
+
+.macs-usp__placeholder,
+.macs-usp__placeholder svg {
+  width: 100%;
+  height: 100%;
+}
+
+.macs-usp__badge {
+  position: absolute;
+  top: 11%;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  width: clamp(94px, 8vw, 118px);
+  aspect-ratio: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  color: var(--macs-white);
+  background: var(--macs-black);
+  border-radius: 50%;
+  box-shadow: 0 16px 30px rgba(32, 35, 31, 0.2);
+  text-align: center;
+  transform: rotate(8deg);
+}
+
+.macs-usp__badge strong {
+  display: block;
+  color: var(--macs-mustard);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(1.3rem, 1.6vw, 1.65rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.macs-usp__badge span {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--macs-font-body);
+  font-size: 0.58rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-usp__content {
+  min-width: 0;
+  max-width: 680px;
+}
+
+.macs-usp__eyebrow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 20px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-usp__eyebrow span {
+  display: block;
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+}
+
+.macs-usp__title {
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(3.15rem, 4.7vw, 5rem);
+  font-weight: 800;
+  line-height: 0.93;
+  letter-spacing: -0.05em;
+}
+
+.macs-usp__title span,
+.macs-usp__title em {
+  display: block;
+}
+
+.macs-usp__title em {
+  width: fit-content;
+  margin-top: 7px;
+  color: var(--macs-red);
+  font-weight: 800;
+  font-style: normal;
+  transform: rotate(-1.5deg);
+  transform-origin: left center;
+}
+
+.macs-usp__subtitle {
+  margin: 30px 0 12px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.macs-usp__intro {
+  max-width: 640px;
+  color: #666a64;
+  font-family: var(--macs-font-body);
+  font-size: 0.96rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.macs-usp__intro p {
+  margin: 0;
+}
+
+.macs-usp__list {
+  margin-top: 32px;
+  border-top: 1px solid rgba(32, 35, 31, 0.12);
+}
+
+.macs-usp__item {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 18px 8px;
+  border-bottom: 1px solid rgba(32, 35, 31, 0.12);
+  transition:
+    padding var(--macs-transition),
+    background-color var(--macs-transition);
+}
+
+.macs-usp__item:hover {
+  padding-right: 14px;
+  padding-left: 16px;
+  background: var(--macs-cream);
+}
+
+.macs-usp__icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: var(--macs-black);
+  background: var(--macs-mustard);
+  border-radius: 15px;
+  font-family: var(--macs-font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
+  transform: rotate(-4deg);
+}
+
+.macs-usp__item-content {
+  min-width: 0;
+}
+
+.macs-usp__item h4 {
+  margin: 0 0 5px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.macs-usp__item p {
+  margin: 0;
+  color: #747872;
+  font-family: var(--macs-font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+/* Tablet */
+
+@media screen and (max-width: 1050px) {
+  .macs-usp__container {
+    grid-template-columns: minmax(350px, 0.9fr) minmax(0, 1.1fr);
+    gap: 44px;
+  }
+
+  .macs-usp__media {
+    min-height: 520px;
+  }
+
+  .macs-usp__image-frame {
+    right: 25px;
+    left: 20px;
+  }
+
+  .macs-usp__title {
+    font-size: clamp(3rem, 5.3vw, 4.15rem);
+  }
+
+  .macs-usp__badge {
+    right: -5px;
+  }
+}
+
+/* Mobil */
+
+@media screen and (max-width: 749px) {
+  .macs-usp {
+    padding-block: 82px 120px;
+    border-radius: 0 0 50% 50% / 0 0 42px 42px;
+  }
+
+  .macs-usp__container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .macs-usp__content {
+    order: 1;
+  }
+
+  .macs-usp__media {
+    order: 2;
+    min-height: clamp(410px, 112vw, 520px);
+  }
+
+  .macs-usp__title {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+
+  .macs-usp__subtitle {
+    margin-top: 26px;
+  }
+
+  .macs-usp__intro {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .macs-usp__list {
+    margin-top: 28px;
+  }
+
+  .macs-usp__item {
+    grid-template-columns: 50px minmax(0, 1fr);
+    gap: 14px;
+    padding-block: 16px;
+  }
+
+  .macs-usp__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .macs-usp__image-frame {
+    top: 25px;
+    right: 18px;
+    bottom: 20px;
+    left: 18px;
+  }
+
+  .macs-usp__spot--red {
+    top: 0;
+    left: -12%;
+    width: 250px;
+  }
+
+  .macs-usp__spot--yellow {
+    right: -8%;
+    bottom: 0;
+    width: 230px;
+  }
+
+  .macs-usp__badge {
+    top: 7%;
+    right: 0;
+    width: 94px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .macs-usp__eyebrow {
+    font-size: 0.7rem;
+  }
+
+  .macs-usp__title {
+    font-size: clamp(2.55rem, 12vw, 3.35rem);
+  }
+
+  .macs-usp__item p {
+    font-size: 0.74rem;
+  }
+
+  .macs-usp__badge {
+    right: -5px;
+    width: 88px;
+  }
+}
+/* =========================================================
+   MAC'S – Termékkategóriák
+   ========================================================= */
+
+.macs-categories {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  margin-top: -92px;
+  padding-block: clamp(190px, 15vw, 230px) clamp(120px, 10vw, 170px);
+  color: var(--macs-black);
+  background-color: var(--macs-cream);
+  background-image:
+    linear-gradient(rgba(247, 243, 234, 0.86), rgba(247, 243, 234, 0.86)),
+    url("macs-burlap-texture.png");
+  background-repeat: repeat;
+  background-size:
+    auto,
+    520px 520px;
+}
+
+.macs-categories__header {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(40px, 8vw, 130px);
+  align-items: end;
+  margin-bottom: clamp(46px, 5vw, 70px);
+}
+
+.macs-categories__heading {
+  min-width: 0;
+}
+
+.macs-categories__eyebrow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 18px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-categories__eyebrow span {
+  display: block;
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+}
+
+.macs-categories__title {
+  max-width: 780px;
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(3.2rem, 4.8vw, 5.2rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.052em;
+}
+
+.macs-categories__title span,
+.macs-categories__title em {
+  display: block;
+}
+
+.macs-categories__title em {
+  width: fit-content;
+  margin-top: 7px;
+  color: var(--macs-red);
+  font-weight: 800;
+  font-style: normal;
+  transform: rotate(-1.4deg);
+  transform-origin: left center;
+}
+
+.macs-categories__intro {
+  max-width: 430px;
+  justify-self: end;
+  color: #626862;
+  font-family: var(--macs-font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.macs-categories__intro p {
+  margin: 0;
+}
+
+/* Kártyarács */
+
+.macs-categories__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2vw, 28px);
+}
+
+/* Kategóriakártya */
+
+.macs-category-card {
+  --macs-card-accent: var(--macs-red);
+  --macs-card-soft: rgba(213, 43, 50, 0.1);
+
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 510px;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(255, 253, 249, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 26px;
+  box-shadow: 0 10px 28px rgba(32, 35, 31, 0.08);
+  transition:
+    box-shadow 280ms ease,
+    transform 280ms ease;
+}
+
+.macs-category-card::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  background: var(--macs-card-accent);
+  content: "";
+}
+
+.macs-category-card:hover {
+  box-shadow: 0 22px 48px rgba(32, 35, 31, 0.15);
+  transform: translateY(-8px);
+}
+
+.macs-category-card--red {
+  --macs-card-accent: var(--macs-red);
+  --macs-card-soft: rgba(213, 43, 50, 0.1);
+}
+
+.macs-category-card--yellow {
+  --macs-card-accent: var(--macs-mustard);
+  --macs-card-soft: rgba(229, 174, 47, 0.2);
+}
+
+.macs-category-card--dark {
+  --macs-card-accent: var(--macs-black);
+  --macs-card-soft: rgba(32, 35, 31, 0.08);
+}
+
+/* Kártya felső sáv */
+
+.macs-category-card__top {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  left: 23px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.macs-category-card__number {
+  color: var(--macs-card-accent);
+  font-family: var(--macs-font-body);
+  font-size: 0.7rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.15em;
+}
+
+.macs-category-card__arrow {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  color: var(--macs-black);
+  background: var(--macs-card-soft);
+  border-radius: 50%;
+  font-family: var(--macs-font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  transition:
+    color var(--macs-transition),
+    background-color var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+.macs-category-card:hover .macs-category-card__arrow {
+  color: var(--macs-white);
+  background: var(--macs-card-accent);
+  transform: rotate(8deg);
+}
+
+/* Termékkép */
+
+.macs-category-card__media {
+  position: relative;
+  display: grid;
+  height: 300px;
+  flex: 0 0 300px;
+  place-items: end center;
+  padding: 42px 24px 0;
+}
+
+.macs-category-card__halo {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: 220px;
+  aspect-ratio: 1;
+  background: var(--macs-card-soft);
+  border-radius: 44% 56% 53% 47% / 57% 45% 55% 43%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  transition: transform 350ms ease;
+}
+
+.macs-category-card__image {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: auto;
+  max-width: 82%;
+  height: 270px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 18px 14px rgba(32, 35, 31, 0.18));
+  transition: transform 350ms ease;
+}
+
+.macs-category-card:hover .macs-category-card__image {
+  transform: translateY(-8px) rotate(1.5deg) scale(1.035);
+}
+
+.macs-category-card:hover .macs-category-card__halo {
+  transform: translate(-50%, -50%) rotate(3deg) scale(1.05);
+}
+
+/* Kártyatartalom */
+
+.macs-category-card__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px 25px 28px;
+}
+
+.macs-category-card__content h3 {
+  margin: 0 0 10px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(1.45rem, 1.7vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.macs-category-card__content p {
+  max-width: 300px;
+  margin: 0 0 24px;
+  color: #686d68;
+  font-family: var(--macs-font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.macs-category-card__button {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 10px 16px;
+  color: var(--macs-white);
+  background: var(--macs-black);
+  border-radius: 12px;
+  font-family: var(--macs-font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-decoration: none;
+  transition:
+    background-color var(--macs-transition),
+    box-shadow var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+.macs-category-card__button span:last-child {
+  font-size: 1rem;
+}
+
+.macs-category-card__button:hover {
+  color: var(--macs-white);
+  background: var(--macs-card-accent);
+  box-shadow: 0 8px 18px rgba(32, 35, 31, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Alsó CTA */
+
+.macs-categories__footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(36px, 4vw, 52px);
+}
+
+.macs-button--categories {
+  gap: 18px;
+  color: var(--macs-white);
+  background: var(--macs-black);
+  box-shadow: var(--macs-shadow-small);
+}
+
+.macs-button--categories:hover {
+  color: var(--macs-white);
+  background: var(--macs-red);
+}
+
+/* Dekoratív körök */
+
+.macs-categories__orbit {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.macs-categories__orbit--right {
+  top: 160px;
+  right: -260px;
+  width: 520px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(32, 35, 31, 0.1);
+}
+
+.macs-categories__orbit--left {
+  bottom: 160px;
+  left: -135px;
+  width: 250px;
+  aspect-ratio: 1;
+  border: 42px solid rgba(229, 174, 47, 0.16);
+}
+
+/* Tablet */
+
+@media screen and (max-width: 1050px) {
+  .macs-categories {
+    padding-top: 180px;
+  }
+
+  .macs-categories__header {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.55fr);
+    gap: 40px;
+  }
+
+  .macs-categories__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .macs-category-card {
+    min-height: 500px;
+  }
+
+  .macs-category-card__content h3 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Mobil */
+
+@media screen and (max-width: 749px) {
+  .macs-categories {
+    margin-top: -55px;
+    padding-block: 135px 105px;
+    background-size:
+      auto,
+      390px 390px;
+  }
+
+  .macs-categories__header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    margin-bottom: 38px;
+  }
+
+  .macs-categories__title {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+
+  .macs-categories__intro {
+    max-width: 580px;
+    justify-self: start;
+    font-size: 0.92rem;
+  }
+
+  .macs-categories__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .macs-category-card {
+    min-height: 485px;
+    border-radius: 22px;
+  }
+
+  .macs-category-card__media {
+    height: 285px;
+    flex-basis: 285px;
+  }
+
+  .macs-category-card__image {
+    height: 255px;
+  }
+
+  .macs-category-card__content {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .macs-categories__orbit--right {
+    display: none;
+  }
+
+  .macs-categories__orbit--left {
+    bottom: 80px;
+    left: -105px;
+    width: 190px;
+    border-width: 32px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .macs-categories__title {
+    font-size: clamp(2.55rem, 12vw, 3.3rem);
+  }
+
+  .macs-category-card__image {
+    max-width: 88%;
+  }
+}
+
+/* =========================================================
+   MAC'S – Márkatörténet
+   ========================================================= */
+
+.macs-story {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  margin-top: -85px;
+  padding-block: clamp(180px, 14vw, 220px) clamp(115px, 9vw, 160px);
+  color: var(--macs-black);
+  background: var(--macs-surface, #fffdf9);
+  border-radius: 50% 50% 0 0 / 85px 85px 0 0;
+}
+
+.macs-story__container {
+  display: grid;
+  grid-template-columns: minmax(420px, 1.04fr) minmax(0, 0.96fr);
+  gap: clamp(65px, 9vw, 140px);
+  align-items: center;
+}
+
+/* =========================================================
+   Képes oldal
+   ========================================================= */
+
+.macs-story__media {
+  position: relative;
+  min-height: clamp(500px, 42vw, 610px);
+}
+
+.macs-story__shape {
+  position: absolute;
+  top: 7%;
+  right: 8%;
+  bottom: 2%;
+  left: 0;
+  display: block;
+  background: var(--macs-green, #173e33);
+  border-radius: 48% 52% 43% 57% / 44% 45% 55% 56%;
+  pointer-events: none;
+  transform: rotate(-4deg);
+}
+
+.macs-story__image-frame {
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  z-index: 2;
+  overflow: hidden;
+  width: 68%;
+  height: 88%;
+  background: #e8e4da;
+  border-radius: 48% 52% 42% 54% / 47% 45% 55% 53%;
+  box-shadow: 0 28px 55px rgba(25, 44, 34, 0.22);
+  transform: rotate(2deg);
+}
+
+.macs-story__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  transform: scale(1.025) rotate(-2deg);
+}
+
+.macs-story__paw {
+  position: absolute;
+  bottom: 5%;
+  left: 1%;
+  z-index: 4;
+  display: grid;
+  width: clamp(90px, 8vw, 108px);
+  aspect-ratio: 1;
+  place-items: center;
+  color: var(--macs-black);
+  background: var(--macs-mustard);
+  border-radius: 50%;
+  box-shadow: 0 16px 30px rgba(32, 35, 31, 0.14);
+  transform: rotate(-12deg);
+}
+
+/* =========================================================
+   Szöveges oldal
+   ========================================================= */
+
+.macs-story__content {
+  min-width: 0;
+  max-width: 620px;
+}
+
+.macs-story__eyebrow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 20px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-story__eyebrow span {
+  display: block;
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+}
+
+.macs-story__title {
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(3.2rem, 4.7vw, 5rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.052em;
+}
+
+.macs-story__title span,
+.macs-story__title em {
+  display: block;
+}
+
+.macs-story__title em {
+  width: fit-content;
+  margin-top: 7px;
+  color: var(--macs-red);
+  font-weight: 800;
+  font-style: normal;
+  transform: rotate(-1.4deg);
+  transform-origin: left center;
+}
+
+.macs-story__text {
+  max-width: 590px;
+  margin-top: 28px;
+  color: #626862;
+  font-family: var(--macs-font-body);
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.macs-story__text p {
+  margin: 0;
+}
+
+/* =========================================================
+   Kiemelt állítások
+   ========================================================= */
+
+.macs-story__list {
+  display: grid;
+  gap: 13px;
+  margin: 30px 0 0;
+  padding: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.macs-story__list-item {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+}
+
+.macs-story__check {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  place-items: center;
+  color: var(--macs-white);
+  background: #789940;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* =========================================================
+   CTA-gomb
+   ========================================================= */
+
+.macs-story__button {
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.macs-story__button span:last-child {
+  font-size: 1.05rem;
+}
+
+/* =========================================================
+   Tablet
+   ========================================================= */
+
+@media screen and (max-width: 1050px) {
+  .macs-story {
+    padding-top: 165px;
+  }
+
+  .macs-story__container {
+    grid-template-columns: minmax(360px, 0.95fr) minmax(0, 1.05fr);
+    gap: 50px;
+  }
+
+  .macs-story__media {
+    min-height: 520px;
+  }
+
+  .macs-story__shape {
+    right: 4%;
+  }
+
+  .macs-story__image-frame {
+    right: 0;
+    width: 72%;
+  }
+
+  .macs-story__title {
+    font-size: clamp(3rem, 5.3vw, 4.2rem);
+  }
+
+  .macs-story__text {
+    font-size: 0.92rem;
+  }
+}
+
+/* =========================================================
+   Mobil
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+  .macs-story {
+    margin-top: -50px;
+    padding-block: 125px 100px;
+    border-radius: 50% 50% 0 0 / 42px 42px 0 0;
+  }
+
+  .macs-story__container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 52px;
+  }
+
+  .macs-story__media {
+    min-height: clamp(400px, 105vw, 510px);
+  }
+
+  .macs-story__shape {
+    top: 6%;
+    right: 5%;
+    bottom: 0;
+    left: 1%;
+  }
+
+  .macs-story__image-frame {
+    top: 3%;
+    right: 1%;
+    width: 70%;
+    height: 90%;
+  }
+
+  .macs-story__paw {
+    bottom: 2%;
+    left: 0;
+    width: 88px;
+  }
+
+  .macs-story__paw svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .macs-story__title {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+
+  .macs-story__text {
+    margin-top: 24px;
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .macs-story__list {
+    margin-top: 26px;
+    font-size: 0.85rem;
+  }
+
+  .macs-story__button {
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .macs-story__media {
+    min-height: 390px;
+  }
+
+  .macs-story__title {
+    font-size: clamp(2.55rem, 12vw, 3.3rem);
+  }
+
+  .macs-story__image-frame {
+    width: 73%;
+  }
+
+  .macs-story__paw {
+    width: 78px;
+  }
+}
+
+/* =========================================================
+   MAC'S – Blogelőnézet
+   ========================================================= */
+
+.macs-blog {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  margin-top: -70px;
+  padding-block: clamp(150px, 12vw, 190px) clamp(110px, 9vw, 150px);
+  color: var(--macs-black);
+  background: #f3eee4;
+  border-radius: 50% 50% 0 0 / 70px 70px 0 0;
+}
+
+/* =========================================================
+   Fejléc
+   ========================================================= */
+
+.macs-blog__header {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: clamp(42px, 5vw, 62px);
+}
+
+.macs-blog__heading {
+  min-width: 0;
+}
+
+.macs-blog__eyebrow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 18px;
+  color: var(--macs-black);
+  font-family: var(--macs-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-blog__eyebrow span {
+  display: block;
+  width: 36px;
+  height: 3px;
+  flex: 0 0 36px;
+  background: var(--macs-red);
+  border-radius: var(--macs-radius-pill);
+}
+
+.macs-blog__title {
+  display: flex;
+  gap: 13px;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin: 0;
+  color: var(--macs-black);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(3rem, 4.4vw, 4.8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.macs-blog__title span,
+.macs-blog__title em {
+  display: inline-block;
+}
+
+.macs-blog__title em {
+  width: fit-content;
+  color: var(--macs-red);
+  font-weight: 800;
+  font-style: normal;
+  transform: rotate(-1.2deg);
+  transform-origin: left center;
+}
+
+.macs-blog__all-link {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  flex: 0 0 auto;
+  padding-bottom: 4px;
+  color: var(--macs-black);
+  border-bottom: 1px solid rgba(32, 35, 31, 0.35);
+  font-family: var(--macs-font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    color var(--macs-transition),
+    border-color var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+.macs-blog__all-link:hover {
+  color: var(--macs-red);
+  border-color: var(--macs-red);
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   Blogrács
+   ========================================================= */
+
+.macs-blog__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2vw, 28px);
+}
+
+/* =========================================================
+   Blogkártyák
+   ========================================================= */
+
+.macs-blog-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 430px;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--macs-white);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px;
+}
+
+/* =========================================================
+   MAC'S – Táplálkozási tanácsadás CTA
+   ========================================================= */
+
+.macs-advice {
+  position: relative;
+  padding-block: clamp(52px, 6vw, 90px);
+  overflow: hidden;
+  background: var(--macs-white);
+}
+
+.macs-advice__box {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+  min-height: clamp(430px, 38vw, 540px);
+  padding: clamp(48px, 5.5vw, 82px) clamp(36px, 6vw, 92px);
+  overflow: hidden;
+  color: var(--macs-white);
+  background-color: var(--macs-green, #173e33);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.075) 1px,
+    transparent 1px
+  );
+  background-size: 8px 8px;
+  border-radius: clamp(26px, 3vw, 42px);
+  box-shadow: 0 24px 60px rgba(32, 35, 31, 0.14);
+}
+
+/* Szöveges oldal */
+
+.macs-advice__content {
+  position: relative;
+  z-index: 4;
+  max-width: 620px;
+}
+
+.macs-advice__eyebrow {
+  display: inline-flex;
+  gap: 11px;
+  align-items: center;
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--macs-font-body);
+  font-size: clamp(0.7rem, 0.8vw, 0.82rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.macs-advice__eyebrow > span {
+  display: block;
+  width: 32px;
+  height: 3px;
+  flex: 0 0 32px;
+  background: var(--macs-mustard);
+  border-radius: var(--macs-radius-pill);
+}
+
+.macs-advice__title {
+  max-width: 650px;
+  margin: 0;
+  color: var(--macs-white);
+  font-family: var(--macs-font-heading);
+  font-size: clamp(2.8rem, 4.6vw, 5rem);
+  font-weight: 800;
+  line-height: 0.91;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.macs-advice__title span,
+.macs-advice__title em {
+  display: block;
+}
+
+.macs-advice__title em {
+  width: fit-content;
+  color: var(--macs-mustard);
+  font-weight: 800;
+  font-style: normal;
+}
+
+.macs-advice__text {
+  max-width: 570px;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--macs-font-body);
+  font-size: clamp(0.95rem, 1.05vw, 1.08rem);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.macs-advice__text p {
+  margin: 0;
+}
+
+/* CTA gomb */
+
+.macs-advice__button {
+  display: inline-flex;
+  gap: 13px;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  margin-top: 30px;
+  padding: 13px 22px 13px 26px;
+  color: var(--macs-black);
+  background: var(--macs-white);
+  border: 2px solid var(--macs-white);
+  border-radius: var(--macs-radius-pill);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  font-family: var(--macs-font-body);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    color var(--macs-transition),
+    background-color var(--macs-transition),
+    border-color var(--macs-transition),
+    box-shadow var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+.macs-advice__button:hover {
+  color: var(--macs-black);
+  background: var(--macs-mustard);
+  border-color: var(--macs-mustard);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.macs-advice__button:focus-visible {
+  outline: 3px solid var(--macs-mustard);
+  outline-offset: 4px;
+}
+
+.macs-advice__button span:last-child {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  place-items: center;
+  border: 1px solid rgba(32, 35, 31, 0.25);
+  border-radius: 50%;
+  font-size: 0.82rem;
+  transition: transform var(--macs-transition);
+}
+
+.macs-advice__button:hover span:last-child {
+  transform: translate(2px, -2px);
+}
+
+/* Jobb oldali képek */
+
+.macs-advice__visual {
+  position: relative;
+  z-index: 2;
+  min-height: clamp(330px, 32vw, 460px);
+}
+
+.macs-advice__yellow-shape {
+  position: absolute;
+  right: clamp(-120px, -7vw, -60px);
+  bottom: clamp(-150px, -9vw, -80px);
+  z-index: 0;
+  width: clamp(350px, 35vw, 540px);
+  aspect-ratio: 1;
+  background: var(--macs-mustard);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.macs-advice__image-frame {
+  position: absolute;
+  top: 50%;
+  right: clamp(-8px, 1vw, 20px);
+  z-index: 2;
+  width: clamp(280px, 29vw, 430px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--macs-cream);
+  border: 9px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22);
+  transform: translateY(-50%);
+}
+
+.macs-advice__dog {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.macs-advice__placeholder {
+  width: 100%;
+  height: 100%;
+  color: rgba(32, 35, 31, 0.25);
+  background: var(--macs-cream);
+}
+
+.macs-advice__placeholder svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.macs-advice__product {
+  position: absolute;
+  right: clamp(235px, 19vw, 310px);
+  bottom: clamp(14px, 2vw, 34px);
+  z-index: 4;
+  display: block;
+  width: auto;
+  max-width: none;
+  height: clamp(150px, 16vw, 235px);
+  object-fit: contain;
+  filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.26));
+  transform: rotate(-5deg);
+  transition:
+    transform 350ms ease,
+    filter 350ms ease;
+}
+
+.macs-advice__box:hover .macs-advice__product {
+  filter: drop-shadow(0 22px 22px rgba(0, 0, 0, 0.3));
+  transform: translateY(-6px) rotate(-3deg);
+}
+
+/* Tablet */
+
+@media screen and (max-width: 989px) {
+  .macs-advice__box {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.8fr);
+    gap: 20px;
+    padding-inline: clamp(28px, 4vw, 52px);
+  }
+
+  .macs-advice__title {
+    font-size: clamp(2.7rem, 6vw, 4.2rem);
+  }
+
+  .macs-advice__visual {
+    min-height: 370px;
+  }
+
+  .macs-advice__image-frame {
+    right: -35px;
+    width: clamp(270px, 37vw, 360px);
+  }
+
+  .macs-advice__product {
+    right: 67%;
+    height: clamp(140px, 19vw, 190px);
+  }
+
+  .macs-advice__yellow-shape {
+    right: -150px;
+  }
+}
+
+/* Mobil */
+
+@media screen and (max-width: 749px) {
+  .macs-advice {
+    padding-block: 42px;
+  }
+
+  .macs-advice__box {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    min-height: auto;
+    padding: 38px 24px 0;
+    border-radius: 28px;
+  }
+
+  .macs-advice__content {
+    max-width: 100%;
+  }
+
+  .macs-advice__eyebrow {
+    margin-bottom: 15px;
+    font-size: 0.68rem;
+  }
+
+  .macs-advice__title {
+    max-width: 520px;
+    font-size: clamp(2.65rem, 12vw, 4rem);
+  }
+
+  .macs-advice__text {
+    margin-top: 20px;
+    font-size: 0.94rem;
+    line-height: 1.62;
+  }
+
+  .macs-advice__button {
+    width: 100%;
+    margin-top: 25px;
+  }
+
+  .macs-advice__visual {
+    min-height: clamp(320px, 90vw, 440px);
+  }
+
+  .macs-advice__image-frame {
+    top: auto;
+    right: -7%;
+    bottom: -7%;
+    width: clamp(270px, 76vw, 390px);
+    border-width: 7px;
+    transform: none;
+  }
+
+  .macs-advice__product {
+    right: auto;
+    bottom: 5%;
+    left: 1%;
+    height: clamp(135px, 39vw, 205px);
+  }
+
+  .macs-advice__yellow-shape {
+    right: -38%;
+    bottom: -45%;
+    width: clamp(390px, 112vw, 560px);
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .macs-advice__box {
+    padding-inline: 20px;
+  }
+
+  .macs-advice__visual {
+    min-height: 315px;
+  }
+
+  .macs-advice__image-frame {
+    right: -15%;
+  }
+
+  .macs-advice__product {
+    left: -2%;
+    height: 145px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .macs-advice__product,
+  .macs-advice__button,
+  .macs-advice__button span:last-child {
+    transition: none;
+  }
+}

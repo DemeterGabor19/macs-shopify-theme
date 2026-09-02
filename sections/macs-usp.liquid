@@ -1,0 +1,249 @@
+<section
+  class="macs-section macs-usp"
+  id="macs-usp-{{ section.id }}"
+>
+  <div class="macs-container macs-usp__container">
+
+    <div class="macs-usp__media">
+
+      <span
+        class="macs-usp__spot macs-usp__spot--red"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="macs-usp__spot macs-usp__spot--yellow"
+        aria-hidden="true"
+      ></span>
+
+      <div class="macs-usp__image-frame">
+      {% if section.settings.image != blank %}
+  {{
+    section.settings.image
+    | image_url: width: 1100
+    | image_tag:
+      class: 'macs-usp__image',
+      loading: 'lazy',
+      widths: '400, 600, 800, 1000, 1100',
+      sizes: '(max-width: 749px) 90vw, 44vw',
+      alt: section.settings.image.alt
+  }}
+{% else %}
+  <img
+    class="macs-usp__image"
+    src="{{ 'dog-with-canne.jpg' | asset_url }}"
+    alt="MAC’s konzervet tartó kutya"
+    width="1400"
+    height="1400"
+    loading="lazy"
+  >
+{% endif %}
+
+    </div>
+
+      {% if section.settings.badge_number != blank %}
+        <div class="macs-usp__badge">
+          <strong>{{ section.settings.badge_number | escape }}</strong>
+
+          {% if section.settings.badge_text != blank %}
+            <span>{{ section.settings.badge_text | escape }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    </div>
+
+    <div class="macs-usp__content">
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="macs-usp__eyebrow">
+          <span aria-hidden="true"></span>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      <h2 class="macs-usp__title">
+        {% if section.settings.title != blank %}
+          <span>{{ section.settings.title | escape }}</span>
+        {% endif %}
+
+        {% if section.settings.highlighted_title != blank %}
+          <em>{{ section.settings.highlighted_title | escape }}</em>
+        {% endif %}
+      </h2>
+
+      {% if section.settings.subtitle != blank %}
+        <h3 class="macs-usp__subtitle">
+          {{ section.settings.subtitle | escape }}
+        </h3>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="macs-usp__intro rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="macs-usp__list">
+          {% for block in section.blocks %}
+            <article
+              class="macs-usp__item"
+              {{ block.shopify_attributes }}
+            >
+              <div class="macs-usp__icon" aria-hidden="true">
+                {{ block.settings.icon | escape }}
+              </div>
+
+              <div class="macs-usp__item-content">
+                {% if block.settings.title != blank %}
+                  <h4>{{ block.settings.title | escape }}</h4>
+                {% endif %}
+
+                {% if block.settings.text != blank %}
+                  <p>{{ block.settings.text | escape }}</p>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Miért válassz",
+  "tag": "section",
+  "class": "macs-usp-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Kép"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bal oldali kép"
+    },
+    {
+      "type": "text",
+      "id": "badge_number",
+      "label": "Jelvény nagy szövege",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Jelvény kis szövege",
+      "default": "örömmel válogatva"
+    },
+    {
+      "type": "header",
+      "content": "Szöveges tartalom"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Miért MAC’s?"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím első része",
+      "default": "Ami jó neki, abból"
+    },
+    {
+      "type": "text",
+      "id": "highlighted_title",
+      "label": "Piros címrész",
+      "default": "nem engedünk."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Alcím",
+      "default": "Természetközeli receptek valódi igényekre"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Bevezető szöveg",
+      "default": "<p>A MAC’s eledeleit úgy állítjuk össze, hogy kutyád minden élethelyzetben teljes értékű, ízletes és gondosan megtervezett táplálást kapjon.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Előny",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Ikon vagy rövid felirat",
+          "default": "✓"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Cím",
+          "default": "Hús az első helyen"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Leírás",
+          "default": "Magas hústartalmú receptek az ízletes, természetközeli táplálásért."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Miért válassz",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "✦",
+            "title": "Hús az első helyen",
+            "text": "Magas hústartalmú receptek az ízletes, természetközeli táplálásért."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "∅",
+            "title": "Gabona nélkül",
+            "text": "Gabonamentes változatok az érzékenyebb kutyák számára is."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "✓",
+            "title": "Teljes értékű táplálás",
+            "text": "Kiegyensúlyozott receptek kölyökkortól az idősebb évekig."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "30+",
+            "title": "Több mint 30 év tapasztalat",
+            "text": "Német szakértelem és folyamatos termékfejlesztés 1993 óta."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

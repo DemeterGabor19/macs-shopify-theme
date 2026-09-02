@@ -1,0 +1,137 @@
+{{ 'macs-b2b.css' | asset_url | stylesheet_tag }}
+
+<section class="macs-b2b-hero">
+  <span class="macs-b2b-hero__spot macs-b2b-hero__spot--red" aria-hidden="true"></span>
+  <span class="macs-b2b-hero__spot macs-b2b-hero__spot--yellow" aria-hidden="true"></span>
+
+  <div class="macs-container macs-b2b-hero__container">
+    <div class="macs-b2b-hero__content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="macs-b2b-hero__eyebrow">
+          <span aria-hidden="true"></span>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.title != blank or section.settings.title_accent != blank %}
+        <h1 class="macs-b2b-hero__title">
+          {% if section.settings.title != blank %}
+            <span>{{ section.settings.title | escape }}</span>
+          {% endif %}
+
+          {% if section.settings.title_accent != blank %}
+            <em>{{ section.settings.title_accent | escape }}</em>
+          {% endif %}
+        </h1>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="macs-b2b-hero__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <a
+          class="macs-button macs-b2b-hero__button"
+          href="{{ section.settings.button_link | default: '#b2b-jelentkezes' }}"
+        >
+          <span>{{ section.settings.button_label | escape }}</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="macs-b2b-hero__visual">
+      <div class="macs-b2b-hero__image-frame">
+        {% if section.settings.image != blank %}
+          {{
+            section.settings.image
+            | image_url: width: 1500
+            | image_tag:
+              class: 'macs-b2b-hero__image',
+              loading: 'eager',
+              fetchpriority: 'high',
+              widths: '480, 720, 960, 1200, 1500',
+              sizes: '(max-width: 989px) 92vw, 46vw',
+              alt: section.settings.image.alt
+          }}
+        {% else %}
+          <div class="macs-b2b-hero__placeholder">
+            {{ 'collection-1' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.badge != blank %}
+        <p class="macs-b2b-hero__badge">
+          {{ section.settings.badge | escape }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – B2B hero",
+  "tag": "section",
+  "class": "macs-b2b-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "MAC’s B2B partnerprogram"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Főcím első sora",
+      "default": "Legyen MAC’s"
+    },
+    {
+      "type": "text",
+      "id": "title_accent",
+      "label": "Kiemelt címrész",
+      "default": "viszonteladó partner!"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Bevezető szöveg",
+      "default": "<p>Bővítsd kínálatodat minőségi kutya- és macskaeledelekkel, és építs velünk hosszú távú, jól működő partnerkapcsolatot.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Gomb felirata",
+      "default": "Partner szeretnék lenni"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Gomb hivatkozása"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero kép"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Kör alakú jelvény szövege",
+      "default": "Prémium német márka"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – B2B hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,293 @@
+<section
+  class="macs-section macs-categories"
+  id="macs-categories-{{ section.id }}"
+>
+  <span
+    class="macs-categories__orbit macs-categories__orbit--right"
+    aria-hidden="true"
+  ></span>
+
+  <span
+    class="macs-categories__orbit macs-categories__orbit--left"
+    aria-hidden="true"
+  ></span>
+
+  <div class="macs-container">
+
+    <div class="macs-categories__header">
+
+      <div class="macs-categories__heading">
+        {% if section.settings.eyebrow != blank %}
+          <p class="macs-categories__eyebrow">
+            <span aria-hidden="true"></span>
+            {{ section.settings.eyebrow | escape }}
+          </p>
+        {% endif %}
+
+        <h2 class="macs-categories__title">
+          {% if section.settings.title != blank %}
+            <span>{{ section.settings.title | escape }}</span>
+          {% endif %}
+
+          {% if section.settings.highlighted_title != blank %}
+            <em>{{ section.settings.highlighted_title | escape }}</em>
+          {% endif %}
+        </h2>
+      </div>
+
+      {% if section.settings.intro != blank %}
+        <div class="macs-categories__intro rte">
+          {{ section.settings.intro }}
+        </div>
+      {% endif %}
+
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="macs-categories__grid">
+
+        {% for block in section.blocks %}
+          <article
+            class="macs-category-card macs-category-card--{{ block.settings.accent }}"
+            {{ block.shopify_attributes }}
+          >
+
+            <div class="macs-category-card__top">
+              <span class="macs-category-card__number">
+                {% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}
+              </span>
+
+              <span class="macs-category-card__arrow" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+
+            <div class="macs-category-card__media">
+              <span
+                class="macs-category-card__halo"
+                aria-hidden="true"
+              ></span>
+
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 700
+                  | image_tag:
+                    class: 'macs-category-card__image',
+                    loading: 'lazy',
+                    widths: '240, 360, 480, 600, 700',
+                    sizes: '(max-width: 749px) 65vw, (max-width: 1050px) 35vw, 260px',
+                    alt: block.settings.image.alt
+                }}
+              {% else %}
+                <img
+                  class="macs-category-card__image"
+                  src="{{ 'macs-category-placeholder.png' | asset_url }}"
+                  alt="MAC’s kutyaeledel"
+                  width="700"
+                  height="900"
+                  loading="lazy"
+                >
+              {% endif %}
+            </div>
+
+            <div class="macs-category-card__content">
+              {% if block.settings.title != blank %}
+                <h3>{{ block.settings.title | escape }}</h3>
+              {% endif %}
+
+              {% if block.settings.text != blank %}
+                <p>{{ block.settings.text | escape }}</p>
+              {% endif %}
+
+              {% if block.settings.button_text != blank %}
+                <a
+                  class="macs-category-card__button"
+                  href="{{ block.settings.link | default: '#' }}"
+                >
+                  <span>{{ block.settings.button_text | escape }}</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              {% endif %}
+            </div>
+
+          </article>
+        {% endfor %}
+
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+      <div class="macs-categories__footer">
+        <a
+          class="macs-button macs-button--categories"
+          href="{{ section.settings.button_link | default: '#' }}"
+        >
+          <span>{{ section.settings.button_text | escape }}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Kategóriák",
+  "tag": "section",
+  "class": "macs-categories-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Fedezd fel a kínálatot"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím első része",
+      "default": "Minden falatban"
+    },
+    {
+      "type": "text",
+      "id": "highlighted_title",
+      "label": "Piros címrész",
+      "default": "ott a gondoskodás."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Bevezető szöveg",
+      "default": "<p>Válassz kutyád életkorához, ízléséhez és egyedi igényeihez illő MAC’s eledelt.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Alsó gomb felirata",
+      "default": "Összes kutyatermék"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Alsó gomb hivatkozása"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Kategória",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Termékkép"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Kategória neve",
+          "default": "Száraz eledelek"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Leírás",
+          "default": "Teljes értékű, gabonamentes receptek a mindennapokra."
+        },
+        {
+          "type": "select",
+          "id": "accent",
+          "label": "Kiemelőszín",
+          "default": "red",
+          "options": [
+            {
+              "value": "red",
+              "label": "Piros"
+            },
+            {
+              "value": "yellow",
+              "label": "Sárga"
+            },
+            {
+              "value": "dark",
+              "label": "Sötét"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Gomb felirata",
+          "default": "Termékek megtekintése"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Kategória hivatkozása"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Kategóriák",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Száraz eledelek",
+            "text": "Teljes értékű, gabonamentes receptek a mindennapokra.",
+            "accent": "red"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Félnedves eledelek",
+            "text": "Puha, szaftos falatok magasabb nedvességtartalommal.",
+            "accent": "yellow"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Konzervek",
+            "text": "Magas hústartalmú, természetközeli nedves eledelek.",
+            "accent": "dark"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Levesek",
+            "text": "Ízletes folyadékpótlás és különleges kiegészítés.",
+            "accent": "red"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "MAC’s Vetcare",
+            "text": "Speciális eledelek különleges táplálási igényekre.",
+            "accent": "yellow"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Jutalomfalatok",
+            "text": "Gabonamentes falatok tréninghez és jutalmazáshoz.",
+            "accent": "dark"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

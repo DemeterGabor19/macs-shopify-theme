@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "b2b_hero": {
+      "type": "macs-b2b-hero",
+      "settings": {
+        "eyebrow": "MAC’s B2B partnerprogram",
+        "title": "Legyen MAC’s",
+        "title_accent": "viszonteladó partner!",
+        "text": "<p>Bővítsd kínálatodat minőségi kutya- és macskaeledelekkel, és építs velünk hosszú távú, jól működő partnerkapcsolatot.</p>",
+        "button_label": "Partner szeretnék lenni",
+        "button_link": "#b2b-jelentkezes",
+        "image": "shopify://shop_images/macs-story-dog.jpg",
+        "badge": "Prémium német márka"
+      }
+    },
+    "b2b_benefits": {
+      "type": "macs-b2b-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Viszonteladói árak",
+            "text": "Hozzáférés a MAC’s nagykereskedelmi kínálatához és partneri feltételeihez.",
+            "color": "cream"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Folyamatosan bővülő kínálat",
+            "text": "Többféle terméktípus, fehérjeforrás és kiszerelés egyetlen prémium márkán belül.",
+            "color": "yellow"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Hosszú távú partnerség",
+            "text": "Egy kölcsönösen jól működő és fenntartható viszonteladói kapcsolat kialakítására törekszünk.",
+            "color": "dark"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3"
+      ],
+      "settings": {
+        "eyebrow": "Együttműködés",
+        "title": "Több mint termékértékesítés",
+        "text": "<p>Célunk nem egyszerűen a termékértékesítés, hanem egy hosszú távon működő viszonteladói együttműködés és partnerkapcsolat kialakítása.</p>",
+        "audiences": "Állateledelboltok, Webáruházak, Kutyaiskolák, Sportegyesületek, Tenyésztők, Kisállatos vállalkozások"
+      }
+    },
+    "b2b_offer": {
+      "type": "macs-b2b-offer",
+      "blocks": {
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "title": "Szárazeledelek",
+            "text": "Teljes értékű eledelek a mindennapokra.",
+            "accent": "red"
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "title": "Nedveseledelek",
+            "text": "Szaftos receptek válogatott alapanyagokból.",
+            "accent": "yellow"
+          }
+        },
+        "category_3": {
+          "type": "category",
+          "settings": {
+            "title": "Monoprotein eledelek",
+            "text": "Egyetlen állati fehérjeforrással készült termékek.",
+            "accent": "dark"
+          }
+        },
+        "category_4": {
+          "type": "category",
+          "settings": {
+            "title": "Jutalomfalatok",
+            "text": "Finom falatok örömteli pillanatokhoz.",
+            "accent": "red"
+          }
+        },
+        "category_5": {
+          "type": "category",
+          "settings": {
+            "title": "Smoothie-k és levesek",
+            "text": "Ízletes kiegészítés és extra folyadék.",
+            "accent": "yellow"
+          }
+        },
+        "category_6": {
+          "type": "category",
+          "settings": {
+            "title": "Vetcare termékek",
+            "text": "Speciális táplálási igényekhez fejlesztve.",
+            "accent": "dark"
+          }
+        }
+      },
+      "block_order": [
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4",
+        "category_5",
+        "category_6"
+      ],
+      "settings": {
+        "eyebrow": "Széles termékpaletta",
+        "title": "Kínálat többféle vásárlói igényre",
+        "text": "<p>Partnerként hozzáférhetsz a MAC’s nagykereskedelmi kínálatához és viszonteladói áraihoz. A különböző fehérjeforrásoknak, kiszereléseknek és terméktípusoknak köszönhetően a MAC’s a mindennapi táplálástól a speciális igényekig több vásárlói elvárást is lefed.</p>",
+        "note": "A termékpaletta folyamatosan bővül."
+      }
+    },
+    "b2b_form": {
+      "type": "macs-b2b-form",
+      "settings": {
+        "anchor_id": "b2b-jelentkezes",
+        "eyebrow": "Első lépés",
+        "title": "Lépj velünk kapcsolatba!",
+        "text": "<p>Szeretnéd üzletedben vagy webáruházadban is forgalmazni a MAC’s termékeket? Töltsd ki az űrlapot, és ismerd meg B2B kínálatunkat, partneri feltételeinket és a MAC’s termékpalettáját.</p>",
+        "note": "A jelentkezés elküldése még nem jelent szerződéses kötelezettséget.",
+        "privacy_link": "",
+        "submit_label": "Viszonteladói jelentkezés elküldése",
+        "success_title": "Köszönjük a jelentkezést!",
+        "success_text": "Hamarosan felvesszük veled a kapcsolatot."
+      }
+    }
+  },
+  "order": [
+    "b2b_hero",
+    "b2b_benefits",
+    "b2b_offer",
+    "b2b_form"
+  ]
+}

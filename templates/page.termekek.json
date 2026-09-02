@@ -1,0 +1,223 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "products_hero": {
+      "type": "macs-products-hero",
+      "settings": {
+        "eyebrow": "MAC’s kutyaeledelek",
+        "title": "Minden kutyának",
+        "highlighted_title": "megvan a kedvence.",
+        "text": "<p>Fedezd fel gondosan összeállított eledeleinket a mindennapi táplálástól a különleges és speciális igényekig.</p>",
+        "primary_label": "Kategóriák megtekintése",
+        "primary_link": "#termekkategoriak",
+        "secondary_label": "Táplálkozási tanácsot kérek",
+        "secondary_link": "",
+        "badge": "6 kategória"
+      }
+    },
+    "products_navigation": {
+      "type": "macs-products-navigation",
+      "blocks": {
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "label": "Száraz eledelek",
+            "description": "Teljes értékű eledelek a mindennapokra.",
+            "anchor_id": "szaraz-eledelek",
+            "accent": "red"
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "label": "Félnedves eledelek",
+            "description": "Puha falatok magas hústartalommal.",
+            "anchor_id": "felnedves-eledelek",
+            "accent": "yellow"
+          }
+        },
+        "category_3": {
+          "type": "category",
+          "settings": {
+            "label": "Konzervek",
+            "description": "Szaftos receptek válogatott alapanyagokból.",
+            "anchor_id": "konzervek",
+            "accent": "neutral"
+          }
+        },
+        "category_4": {
+          "type": "category",
+          "settings": {
+            "label": "Levesek",
+            "description": "Ízletes kiegészítés és extra folyadék.",
+            "anchor_id": "levesek",
+            "accent": "yellow"
+          }
+        },
+        "category_5": {
+          "type": "category",
+          "settings": {
+            "label": "MAC’s Vetcare",
+            "description": "Speciális táplálás különleges igényekre.",
+            "anchor_id": "vetcare",
+            "accent": "green"
+          }
+        },
+        "category_6": {
+          "type": "category",
+          "settings": {
+            "label": "Jutalomfalatok",
+            "description": "Finom falatok örömteli pillanatokhoz.",
+            "anchor_id": "jutalomfalatok",
+            "accent": "red"
+          }
+        }
+      },
+      "block_order": [
+        "category_1",
+        "category_2",
+        "category_3",
+        "category_4",
+        "category_5",
+        "category_6"
+      ],
+      "settings": {
+        "eyebrow": "MAC’s termékkategóriák",
+        "title": "Milyen eledelt keresel?",
+        "text": "<p>Válassz kategóriát, és ugorj közvetlenül a számodra érdekes termékekhez.</p>"
+      }
+    },
+    "dry_food": {
+      "type": "macs-product-group",
+      "settings": {
+        "anchor_id": "szaraz-eledelek",
+        "eyebrow": "Mindennapi táplálás",
+        "title": "Száraz eledelek",
+        "highlighted_title": "",
+        "text": "<p>Teljes értékű, magas hústartalmú száraz eledelek a mindennapi tápláláshoz.</p>",
+        "products_to_show": 8,
+        "columns": "4",
+        "placeholder_count": 4,
+        "show_vendor": true,
+        "show_price": true,
+        "product_button_text": "Megnézem",
+        "background": "cream",
+        "show_button": false,
+        "button_text": "Összes száraz eledel"
+      }
+    },
+    "semi_moist_food": {
+      "type": "macs-product-group",
+      "settings": {
+        "anchor_id": "felnedves-eledelek",
+        "eyebrow": "Puha és szaftos",
+        "title": "Félnedves eledelek",
+        "highlighted_title": "",
+        "text": "<p>Puha állagú, ízletes eledelek magasabb nedvességtartalommal.</p>",
+        "products_to_show": 8,
+        "columns": "4",
+        "placeholder_count": 4,
+        "show_vendor": true,
+        "show_price": true,
+        "product_button_text": "Megnézem",
+        "background": "white",
+        "show_button": false,
+        "button_text": "Összes félnedves eledel"
+      }
+    },
+    "canned_food": {
+      "type": "macs-product-group",
+      "settings": {
+        "anchor_id": "konzervek",
+        "eyebrow": "Magas hústartalom",
+        "title": "Konzervek",
+        "highlighted_title": "",
+        "text": "<p>Szaftos, természetközeli receptek válogatott alapanyagokból.</p>",
+        "products_to_show": 8,
+        "columns": "4",
+        "placeholder_count": 4,
+        "show_vendor": true,
+        "show_price": true,
+        "product_button_text": "Megnézem",
+        "background": "burlap",
+        "show_button": false,
+        "button_text": "Összes konzerv"
+      }
+    },
+    "soups": {
+      "type": "macs-product-group",
+      "settings": {
+        "anchor_id": "levesek",
+        "eyebrow": "Ízletes folyadékpótlás",
+        "title": "Levesek",
+        "highlighted_title": "",
+        "text": "<p>Különleges kiegészítés, amely az ízélmény mellett a folyadékbevitelt is támogatja.</p>",
+        "products_to_show": 8,
+        "columns": "4",
+        "placeholder_count": 4,
+        "show_vendor": true,
+        "show_price": true,
+        "product_button_text": "Megnézem",
+        "background": "cream",
+        "show_button": false,
+        "button_text": "Összes leves"
+      }
+    },
+    "vetcare": {
+      "type": "macs-product-group",
+      "settings": {
+        "anchor_id": "vetcare",
+        "eyebrow": "Speciális igényekre",
+        "title": "MAC’s Vetcare",
+        "highlighted_title": "",
+        "text": "<p>Speciális táplálási igényekhez fejlesztett, célzott eledelek.</p>",
+        "products_to_show": 8,
+        "columns": "4",
+        "placeholder_count": 4,
+        "show_vendor": true,
+        "show_price": true,
+        "product_button_text": "Megnézem",
+        "background": "white",
+        "show_button": false,
+        "button_text": "Összes Vetcare termék"
+      }
+    },
+    "treats": {
+      "type": "macs-product-group",
+      "settings": {
+        "anchor_id": "jutalomfalatok",
+        "eyebrow": "Jutalmazáshoz és tréninghez",
+        "title": "Jutalomfalatok",
+        "highlighted_title": "",
+        "text": "<p>Finom, gabonamentes falatok közös pillanatokhoz, tréninghez és jutalmazáshoz.</p>",
+        "products_to_show": 8,
+        "columns": "4",
+        "placeholder_count": 4,
+        "show_vendor": true,
+        "show_price": true,
+        "product_button_text": "Megnézem",
+        "background": "burlap",
+        "show_button": false,
+        "button_text": "Összes jutalomfalat"
+      }
+    }
+  },
+  "order": [
+    "products_hero",
+    "products_navigation",
+    "dry_food",
+    "semi_moist_food",
+    "canned_food",
+    "soups",
+    "vetcare",
+    "treats"
+  ]
+}

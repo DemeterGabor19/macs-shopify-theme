@@ -1,0 +1,193 @@
+{{ 'macs-products.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign hero_id = 'MacsProductsHero-' | append: section.id
+  assign hero_image = section.settings.image
+  assign primary_url = section.settings.primary_link | default: '#termekkategoriak'
+  assign secondary_url = section.settings.secondary_link | default: routes.root_url
+
+  if hero_image != blank
+    assign image_focal_point = hero_image.presentation.focal_point | default: 'center'
+    assign image_style = 'object-position: [focal-point];' | replace: '[focal-point]', image_focal_point
+  endif
+%}
+
+<section
+  class="macs-section macs-products-hero"
+  id="{{ hero_id }}"
+>
+  <div class="macs-container macs-products-hero__container">
+    <div class="macs-products-hero__content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="macs-products-hero__eyebrow">
+          <span aria-hidden="true"></span>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      <h1 class="macs-products-hero__title">
+        {% if section.settings.title != blank %}
+          <span>{{ section.settings.title | escape }}</span>
+        {% endif %}
+
+        {% if section.settings.highlighted_title != blank %}
+          <em>{{ section.settings.highlighted_title | escape }}</em>
+        {% endif %}
+      </h1>
+
+      {% if section.settings.text != blank %}
+        <div class="macs-products-hero__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      <div class="macs-products-hero__actions">
+        {% if section.settings.primary_label != blank %}
+          <a
+            class="macs-button macs-button--primary"
+            href="{{ primary_url }}"
+          >
+            <span>{{ section.settings.primary_label | escape }}</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        {% endif %}
+
+        {% if section.settings.secondary_label != blank %}
+          <a
+            class="macs-button macs-button--secondary"
+            href="{{ secondary_url }}"
+          >
+            <span>{{ section.settings.secondary_label | escape }}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="macs-products-hero__visual">
+      <span
+        class="macs-products-hero__spot macs-products-hero__spot--red"
+        aria-hidden="true"
+      ></span>
+
+      <span
+        class="macs-products-hero__spot macs-products-hero__spot--yellow"
+        aria-hidden="true"
+      ></span>
+
+      <div class="macs-products-hero__image-frame">
+        {% if hero_image != blank %}
+          {{
+            hero_image
+            | image_url: width: 1800
+            | image_tag:
+              class: 'macs-products-hero__image',
+              loading: 'eager',
+              fetchpriority: 'high',
+              widths: '480, 720, 960, 1200, 1500, 1800',
+              sizes: '(max-width: 749px) 92vw, (max-width: 989px) 82vw, 48vw',
+              style: image_style,
+              alt: hero_image.alt
+          }}
+        {% else %}
+          <div class="macs-products-hero__placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.badge != blank %}
+        <div class="macs-products-hero__badge">
+          {{ section.settings.badge | escape }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Termékek hero",
+  "tag": "section",
+  "class": "macs-products-hero-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Szöveges tartalom"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "MAC’s kutyaeledelek"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Cím első része",
+      "default": "Minden kutyának"
+    },
+    {
+      "type": "text",
+      "id": "highlighted_title",
+      "label": "Piros címrész",
+      "default": "megvan a kedvence."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Leírás",
+      "default": "<p>Fedezd fel gondosan összeállított eledeleinket a mindennapi táplálástól a különleges és speciális igényekig.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Gombok"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Elsődleges gomb felirata",
+      "default": "Kategóriák megtekintése"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Elsődleges gomb hivatkozása"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Másodlagos gomb felirata",
+      "default": "Táplálkozási tanácsot kérek"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Másodlagos gomb hivatkozása"
+    },
+    {
+      "type": "header",
+      "content": "Kép"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Kutyás hero kép"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Képen megjelenő címke",
+      "default": "6 kategória"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Termékek hero"
+    }
+  ]
+}
+{% endschema %}

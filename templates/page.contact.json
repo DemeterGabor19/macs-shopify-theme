@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "contact_hero": {
+      "type": "macs-contact-hero",
+      "settings": {
+        "eyebrow": "Lépj velünk kapcsolatba",
+        "title": "Kapcsolat",
+        "text": "<p>Kérdésed van egy termékről, rendelésről vagy a megfelelő eledel kiválasztásáról? Írj nekünk, és segítünk.</p>",
+        "button_label": "Üzenetet írok",
+        "button_link": "#kapcsolati-urlap",
+        "email": "david@macs-pet.hu",
+        "phone": "+36 70 357 6927",
+        "social_title": "Kövess minket",
+        "facebook_url": "https://www.facebook.com/macsallateledel/",
+        "tiktok_url": "https://www.tiktok.com/@macsmagyarorszag"
+      }
+    },
+    "contact_form": {
+      "type": "macs-contact-form",
+      "settings": {
+        "anchor_id": "kapcsolati-urlap",
+        "eyebrow": "Írj nekünk",
+        "title": "Miben segíthetünk?",
+        "text": "<p>Töltsd ki az űrlapot, és írd meg, miben segíthetünk. A megfelelő témakör kiválasztásával gyorsabban tudunk válaszolni.</p>",
+        "note": "Rendeléssel kapcsolatos kérdésnél add meg a rendelési számot is.",
+        "submit_label": "Üzenet elküldése",
+        "success_title": "Köszönjük az üzenetet!",
+        "success_text": "Hamarosan válaszolunk a megadott e-mail-címen."
+      }
+    }
+  },
+  "order": ["contact_hero", "contact_form"]
+}

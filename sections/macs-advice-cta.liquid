@@ -1,0 +1,173 @@
+<section
+  class="macs-section macs-advice"
+  id="macs-advice-{{ section.id }}"
+>
+  <div class="macs-container">
+
+    <div class="macs-advice__box">
+
+      <span
+        class="macs-advice__yellow-shape"
+        aria-hidden="true"
+      ></span>
+
+      <div class="macs-advice__content">
+
+        {% if section.settings.eyebrow != blank %}
+          <p class="macs-advice__eyebrow">
+            <span aria-hidden="true"></span>
+            {{ section.settings.eyebrow | escape }}
+          </p>
+        {% endif %}
+
+        <h2 class="macs-advice__title">
+          {% if section.settings.title_first != blank %}
+            <span>{{ section.settings.title_first | escape }}</span>
+          {% endif %}
+
+          {% if section.settings.title_highlight != blank %}
+            <em>{{ section.settings.title_highlight | escape }}</em>
+          {% endif %}
+
+          {% if section.settings.title_last != blank %}
+            <span>{{ section.settings.title_last | escape }}</span>
+          {% endif %}
+        </h2>
+
+        {% if section.settings.text != blank %}
+          <div class="macs-advice__text rte">
+            {{ section.settings.text }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_text != blank %}
+          <a
+            class="macs-advice__button"
+            href="{{ section.settings.button_link | default: routes.root_url }}"
+          >
+            <span>{{ section.settings.button_text | escape }}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        {% endif %}
+
+      </div>
+
+      <div class="macs-advice__visual">
+
+        <div class="macs-advice__image-frame">
+
+          {% if section.settings.dog_image != blank %}
+            {{
+              section.settings.dog_image
+              | image_url: width: 1000
+              | image_tag:
+                class: 'macs-advice__dog',
+                loading: 'lazy',
+                widths: '400, 600, 800, 1000',
+                sizes: '(max-width: 749px) 80vw, 40vw',
+                alt: section.settings.dog_image.alt
+            }}
+          {% else %}
+            <div class="macs-advice__placeholder">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+
+        </div>
+
+        {% if section.settings.product_image != blank %}
+          {{
+            section.settings.product_image
+            | image_url: width: 600
+            | image_tag:
+              class: 'macs-advice__product',
+              loading: 'lazy',
+              widths: '240, 360, 480, 600',
+              sizes: '(max-width: 749px) 30vw, 180px',
+              alt: section.settings.product_image.alt
+          }}
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Tanácsadás CTA",
+  "tag": "section",
+  "class": "macs-advice-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Szöveges tartalom"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Felső címke",
+      "default": "Segítünk választani"
+    },
+    {
+      "type": "text",
+      "id": "title_first",
+      "label": "Cím első sora",
+      "default": "Nem tudod, melyik"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Sárga címrész",
+      "default": "MAC’s eledel"
+    },
+    {
+      "type": "text",
+      "id": "title_last",
+      "label": "Cím utolsó sora",
+      "default": "illik hozzá?"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Leírás",
+      "default": "<p>Írd meg kutyád életkorát, testsúlyát és táplálkozási igényeit, mi pedig segítünk megtalálni a megfelelő eledelt.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Gomb felirata",
+      "default": "Táplálkozási tanácsot kérek"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Gomb hivatkozása"
+    },
+    {
+      "type": "header",
+      "content": "Képek"
+    },
+    {
+      "type": "image_picker",
+      "id": "dog_image",
+      "label": "Kutyás kép"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Termékkép"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAC’s – Tanácsadás CTA"
+    }
+  ]
+}
+{% endschema %}

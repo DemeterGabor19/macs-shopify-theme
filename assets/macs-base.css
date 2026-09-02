@@ -1,0 +1,76 @@
+/* Alap MAC’s felületek */
+
+.macs-section {
+  position: relative;
+  width: 100%;
+  font-family: var(--macs-font-body);
+}
+
+.macs-container {
+  width: min(
+    calc(100% - (var(--macs-page-padding) * 2)),
+    var(--macs-page-width)
+  );
+  margin-inline: auto;
+}
+
+.macs-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 12px 26px;
+  border: 2px solid transparent;
+  border-radius: var(--macs-radius-pill);
+  font: inherit;
+  font-family: var(--macs-font-body);
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color var(--macs-transition),
+    background-color var(--macs-transition),
+    border-color var(--macs-transition),
+    box-shadow var(--macs-transition),
+    transform var(--macs-transition);
+}
+
+.macs-button:hover {
+  transform: translateY(-2px);
+}
+
+.macs-button--primary {
+  color: var(--macs-white);
+  background-color: var(--macs-red);
+  box-shadow: 0 10px 24px rgba(213, 43, 50, 0.22);
+}
+
+.macs-button--primary:hover {
+  color: var(--macs-white);
+  background-color: var(--macs-black);
+  box-shadow: var(--macs-shadow-small);
+}
+
+.macs-button--secondary {
+  color: var(--macs-black);
+  background-color: transparent;
+  border-color: var(--macs-black);
+}
+
+.macs-button--secondary:hover {
+  color: var(--macs-white);
+  background-color: var(--macs-black);
+}
+
+@media screen and (max-width: 749px) {
+  .macs-container {
+    width: min(calc(100% - 32px), var(--macs-page-width));
+  }
+
+  .macs-button {
+    min-height: 48px;
+    padding-inline: 22px;
+  }
+}
