@@ -103,6 +103,7 @@
         "title": "Száraz eledelek",
         "highlighted_title": "",
         "text": "<p>Teljes értékű, magas hústartalmú száraz eledelek a mindennapi tápláláshoz.</p>",
+        "collection": "szarazeledel",
         "products_to_show": 8,
         "columns": "4",
         "placeholder_count": 4,
@@ -111,7 +112,8 @@
         "product_button_text": "Megnézem",
         "background": "cream",
         "show_button": false,
-        "button_text": "Összes száraz eledel"
+        "button_text": "Összes száraz eledel",
+        "button_link": ""
       }
     },
     "semi_moist_food": {
@@ -122,15 +124,17 @@
         "title": "Félnedves eledelek",
         "highlighted_title": "",
         "text": "<p>Puha állagú, ízletes eledelek magasabb nedvességtartalommal.</p>",
+        "collection": "soft",
         "products_to_show": 8,
         "columns": "4",
         "placeholder_count": 4,
         "show_vendor": true,
         "show_price": true,
         "product_button_text": "Megnézem",
-        "background": "white",
+        "background": "burlap",
         "show_button": false,
-        "button_text": "Összes félnedves eledel"
+        "button_text": "Összes félnedves eledel",
+        "button_link": ""
       }
     },
     "canned_food": {
@@ -141,15 +145,17 @@
         "title": "Konzervek",
         "highlighted_title": "",
         "text": "<p>Szaftos, természetközeli receptek válogatott alapanyagokból.</p>",
+        "collection": "konzerv",
         "products_to_show": 8,
         "columns": "4",
         "placeholder_count": 4,
         "show_vendor": true,
         "show_price": true,
         "product_button_text": "Megnézem",
-        "background": "burlap",
+        "background": "cream",
         "show_button": false,
-        "button_text": "Összes konzerv"
+        "button_text": "Összes konzerv",
+        "button_link": ""
       }
     },
     "soups": {
@@ -160,15 +166,17 @@
         "title": "Levesek",
         "highlighted_title": "",
         "text": "<p>Különleges kiegészítés, amely az ízélmény mellett a folyadékbevitelt is támogatja.</p>",
+        "collection": "smoothiek-es-italok",
         "products_to_show": 8,
         "columns": "4",
         "placeholder_count": 4,
         "show_vendor": true,
         "show_price": true,
         "product_button_text": "Megnézem",
-        "background": "cream",
+        "background": "white",
         "show_button": false,
-        "button_text": "Összes leves"
+        "button_text": "Összes leves",
+        "button_link": ""
       }
     },
     "vetcare": {
@@ -179,15 +187,17 @@
         "title": "MAC’s Vetcare",
         "highlighted_title": "",
         "text": "<p>Speciális táplálási igényekhez fejlesztett, célzott eledelek.</p>",
+        "collection": "gyogytapok-vetcare",
         "products_to_show": 8,
         "columns": "4",
         "placeholder_count": 4,
         "show_vendor": true,
         "show_price": true,
         "product_button_text": "Megnézem",
-        "background": "white",
+        "background": "burlap",
         "show_button": false,
-        "button_text": "Összes Vetcare termék"
+        "button_text": "Összes Vetcare termék",
+        "button_link": ""
       }
     },
     "treats": {
@@ -198,6 +208,7 @@
         "title": "Jutalomfalatok",
         "highlighted_title": "",
         "text": "<p>Finom, gabonamentes falatok közös pillanatokhoz, tréninghez és jutalmazáshoz.</p>",
+        "collection": "snacks",
         "products_to_show": 8,
         "columns": "4",
         "placeholder_count": 4,
@@ -206,7 +217,8 @@
         "product_button_text": "Megnézem",
         "background": "burlap",
         "show_button": false,
-        "button_text": "Összes jutalomfalat"
+        "button_text": "Összes jutalomfalat",
+        "button_link": ""
       }
     }
   },

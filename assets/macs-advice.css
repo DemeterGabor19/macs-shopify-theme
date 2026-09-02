@@ -253,3 +253,403 @@
     transform: none;
   }
 }
+
+/* =========================================================
+   MAC'S – TÖBBLÉPÉSES TANÁCSADÁSI ŰRLAP
+   Ezt a macs-advice.css fájl végére másold.
+   ========================================================= */
+.macs-advice-form-section {
+  padding-block: clamp(72px, 8vw, 120px);
+  scroll-margin-top: 90px;
+  color: var(--macs-black, #20231f);
+  background: #fff;
+  font-family: var(--macs-font-body, Arial, sans-serif);
+}
+.macs-advice-form-section * {
+  box-sizing: border-box;
+}
+.macs-advice-form-section__header {
+  max-width: 860px;
+  margin: 0 auto clamp(38px, 5vw, 60px);
+  text-align: center;
+}
+.macs-advice-form-section__eyebrow {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 15px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.macs-advice-form-section__eyebrow > span {
+  width: 36px;
+  height: 3px;
+  background: var(--macs-red, #d52b32);
+  border-radius: 999px;
+}
+.macs-advice-form-section__header h2 {
+  margin: 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(2.7rem, 4.5vw, 5rem);
+  font-weight: 850;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+.macs-advice-form-section__text {
+  max-width: 650px;
+  margin: 22px auto 0;
+  color: var(--macs-muted, #5c5f58);
+  line-height: 1.7;
+}
+.macs-advice-form-section__text p {
+  margin: 0;
+}
+.macs-advice-progress {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  max-width: 1050px;
+  margin: 0 auto 28px;
+}
+.macs-advice-progress::before {
+  position: absolute;
+  top: 19px;
+  right: 7%;
+  left: 7%;
+  height: 2px;
+  background: #deded8;
+  content: "";
+}
+.macs-advice-progress__step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 4px;
+  color: #8a8d86;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.macs-advice-progress__step > span {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  background: #f0eee8;
+  border: 2px solid #deded8;
+  border-radius: 50%;
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+.macs-advice-progress__step small {
+  font-size: 0.67rem;
+  font-weight: 750;
+  text-align: center;
+}
+.macs-advice-progress__step.is-active > span,
+.macs-advice-progress__step.is-complete > span {
+  color: #fff;
+  background: var(--macs-red, #d52b32);
+  border-color: var(--macs-red, #d52b32);
+}
+.macs-advice-progress__step.is-active {
+  color: var(--macs-black, #20231f);
+}
+.macs-advice-progress__step:disabled {
+  cursor: default;
+}
+.macs-advice-form-card {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: clamp(25px, 4vw, 52px);
+  background: var(--macs-cream, #f7f3ea);
+  border: 1px solid rgba(32, 35, 31, 0.08);
+  border-radius: 30px;
+  box-shadow: 0 22px 55px rgba(32, 35, 31, 0.11);
+}
+.macs-advice-form__panel[hidden],
+.macs-advice-conditional[hidden],
+[data-form-back][hidden],
+[data-form-next][hidden],
+[data-form-submit][hidden] {
+  display: none !important;
+}
+.macs-advice-form__step-heading {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  margin-bottom: 34px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(32, 35, 31, 0.12);
+}
+.macs-advice-form__step-heading > span {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  place-items: center;
+  color: #fff;
+  background: var(--macs-black, #20231f);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 850;
+}
+.macs-advice-form__step-heading h3 {
+  margin: 0;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.macs-advice-form__step-heading p {
+  margin: 9px 0 0;
+  color: var(--macs-muted, #5c5f58);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.macs-advice-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 17px;
+}
+.macs-advice-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+.macs-advice-field--full {
+  grid-column: 1/-1;
+}
+.macs-advice-field > span,
+.macs-advice-choice legend {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.macs-advice-field input,
+.macs-advice-field select,
+.macs-advice-field textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 12px 14px;
+  color: var(--macs-black, #20231f);
+  background: #fff;
+  border: 1px solid rgba(32, 35, 31, 0.18);
+  border-radius: 12px;
+  font: inherit;
+}
+.macs-advice-field textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.macs-advice-field input:focus,
+.macs-advice-field select:focus,
+.macs-advice-field textarea:focus {
+  border-color: var(--macs-yellow, #e5ae2f);
+  outline: 3px solid rgba(229, 174, 47, 0.3);
+}
+.macs-advice-choice {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.macs-advice-choice legend {
+  margin-bottom: 10px;
+}
+.macs-advice-choice__row,
+.macs-advice-choice__grid {
+  display: grid;
+  gap: 10px;
+}
+.macs-advice-choice__row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.macs-advice-choice__grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.macs-advice-choice label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 48px;
+  padding: 10px 13px;
+  background: #fff;
+  border: 1px solid rgba(32, 35, 31, 0.12);
+  border-radius: 11px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.macs-advice-choice label:has(input:checked) {
+  background: rgba(213, 43, 50, 0.08);
+  border-color: rgba(213, 43, 50, 0.32);
+}
+.macs-advice-choice input,
+.macs-advice-form__consent input {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  accent-color: var(--macs-red, #d52b32);
+}
+.macs-advice-conditional {
+  padding: 24px;
+  background: #fff;
+  border-radius: 18px;
+}
+.macs-advice-conditional h4 {
+  margin: 0 0 22px;
+  font-family: var(--macs-font-heading, Arial, sans-serif);
+  font-size: 1.35rem;
+}
+.macs-advice-conditional--empty {
+  text-align: center;
+  color: var(--macs-muted, #5c5f58);
+}
+.macs-advice-conditional--empty p {
+  margin: 0;
+}
+.macs-advice-field--supplements {
+  margin-top: 20px;
+}
+.macs-advice-form__consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+.macs-advice-form__consent a {
+  color: inherit;
+  font-weight: 750;
+  text-underline-offset: 3px;
+}
+.macs-advice-form__navigation {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 34px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(32, 35, 31, 0.12);
+}
+.macs-advice-form__back,
+.macs-advice-form__next,
+.macs-advice-form__submit {
+  min-height: 50px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 850;
+  cursor: pointer;
+}
+.macs-advice-form__back {
+  margin-right: auto;
+  color: var(--macs-black, #20231f);
+  background: transparent;
+  border: 1px solid rgba(32, 35, 31, 0.24);
+}
+.macs-advice-form__next,
+.macs-advice-form__submit {
+  color: #fff;
+  background: var(--macs-red, #d52b32);
+  border: 2px solid var(--macs-red, #d52b32);
+}
+.macs-advice-form__next:hover,
+.macs-advice-form__submit:hover {
+  background: var(--macs-black, #20231f);
+  border-color: var(--macs-black, #20231f);
+}
+.macs-advice-form__validation {
+  margin: 20px 0 0;
+  padding: 12px 14px;
+  color: #8a151a;
+  background: #fff0f0;
+  border-radius: 10px;
+  font-size: 0.82rem;
+}
+.macs-advice-form__success,
+.macs-advice-form__errors {
+  margin-bottom: 24px;
+  padding: 17px;
+  border-radius: 12px;
+}
+.macs-advice-form__success {
+  color: #23451d;
+  background: #edf7e9;
+}
+.macs-advice-form__success p {
+  margin: 5px 0 0;
+}
+.macs-advice-form__errors {
+  color: #8a151a;
+  background: #fff0f0;
+}
+@media (max-width: 749px) {
+  .macs-advice-form-section {
+    padding-block: 62px 74px;
+    scroll-margin-top: 70px;
+  }
+  .macs-advice-progress {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding: 0 2px 12px;
+    scrollbar-width: none;
+  }
+  .macs-advice-progress::before {
+    display: none;
+  }
+  .macs-advice-progress__step {
+    min-width: 57px;
+  }
+  .macs-advice-progress__step > span {
+    width: 35px;
+    height: 35px;
+  }
+  .macs-advice-progress__step small {
+    display: none;
+  }
+  .macs-advice-form-card {
+    margin-inline: -4px;
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+  .macs-advice-form__grid,
+  .macs-advice-choice__grid,
+  .macs-advice-choice__row {
+    grid-template-columns: 1fr;
+  }
+  .macs-advice-field--full {
+    grid-column: auto;
+  }
+  .macs-advice-form__step-heading {
+    gap: 13px;
+  }
+  .macs-advice-form__step-heading > span {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+  .macs-advice-form__navigation {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+  .macs-advice-form__back {
+    width: 100%;
+    margin: 0;
+  }
+  .macs-advice-form__next,
+  .macs-advice-form__submit {
+    width: 100%;
+  }
+}

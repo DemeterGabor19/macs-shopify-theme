@@ -1,0 +1,217 @@
+{{ 'macs-advice.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'macs-advice-form.js' | asset_url }}" defer="defer"></script>
+
+<section
+  class="macs-advice-form-section"
+  id="{{ section.settings.anchor_id | default: 'taplalkozasi-tanacsadas-urlap' | handleize }}"
+  data-advice-form-section
+>
+  <div class="macs-container">
+    <header class="macs-advice-form-section__header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="macs-advice-form-section__eyebrow">
+          <span aria-hidden="true"></span>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="macs-advice-form-section__text rte">{{ section.settings.text }}</div>
+      {% endif %}
+    </header>
+
+    <div class="macs-advice-progress" aria-label="A kérdőív lépései">
+      {% assign step_labels = 'Rólad|A kutyádról|Egészség|Táplálás|Etetési mód|Mozgás és nasik|Emésztés' | split: '|' %}
+      {% for step_label in step_labels %}
+        <button
+          class="macs-advice-progress__step{% if forloop.first %} is-active{% endif %}"
+          type="button"
+          data-progress-step="{{ forloop.index0 }}"
+          {% unless forloop.first %}disabled{% endunless %}
+        >
+          <span>{{ forloop.index }}</span>
+          <small>{{ step_label }}</small>
+        </button>
+      {% endfor %}
+    </div>
+
+    <div class="macs-advice-form-card">
+      {% form 'contact', id: 'MacsNutritionAdviceForm', class: 'macs-advice-form' %}
+        <input type="hidden" name="contact[Kapcsolatfelvétel típusa]" value="Táplálkozási tanácsadás">
+
+        {% if form.posted_successfully? %}
+          <div class="macs-advice-form__success" tabindex="-1" autofocus>
+            <strong>{{ section.settings.success_title | escape }}</strong>
+            <p>{{ section.settings.success_text | escape }}</p>
+          </div>
+        {% endif %}
+
+        {% if form.errors %}
+          <div class="macs-advice-form__errors" role="alert">{{ form.errors | default_errors }}</div>
+        {% endif %}
+
+        <div class="macs-advice-form__panel is-active" data-form-step="0">
+          <div class="macs-advice-form__step-heading">
+            <span>01</span><div><h3>Először ismerkedjünk meg veled</h3><p>Ezeken az elérhetőségeken tudunk válaszolni a tanácskérésedre.</p></div>
+          </div>
+          <div class="macs-advice-form__grid">
+            <label class="macs-advice-field"><span>Gazdi neve *</span><input type="text" name="contact[name]" autocomplete="name" required></label>
+            <label class="macs-advice-field"><span>E-mail-cím *</span><input type="email" name="contact[email]" autocomplete="email" required></label>
+            <label class="macs-advice-field macs-advice-field--full"><span>Telefonszám</span><input type="tel" name="contact[Telefonszám]" autocomplete="tel"></label>
+          </div>
+        </div>
+
+        <div class="macs-advice-form__panel" data-form-step="1" hidden>
+          <div class="macs-advice-form__step-heading">
+            <span>02</span><div><h3>Mesélj a kutyádról</h3><p>Az alapadatok segítenek az életkorához és adottságaihoz illő termék kiválasztásában.</p></div>
+          </div>
+          <div class="macs-advice-form__grid">
+            <label class="macs-advice-field"><span>Hogy hívják a kutyádat? *</span><input type="text" name="contact[A kutya neve]" data-dog-name-input required></label>
+            <label class="macs-advice-field"><span>Hány éves? *</span><input type="text" name="contact[A kutya életkora]" required></label>
+            <fieldset class="macs-advice-choice macs-advice-field--full"><legend>Kan vagy szuka? *</legend><div class="macs-advice-choice__row"><label><input type="radio" name="contact[A kutya neme]" value="Kan" required><span>Kan</span></label><label><input type="radio" name="contact[A kutya neme]" value="Szuka" required><span>Szuka</span></label></div></fieldset>
+            <label class="macs-advice-field"><span>Milyen fajta? *</span><input type="text" name="contact[Fajta]" required></label>
+            <label class="macs-advice-field"><span>Hány kilogramm? *</span><input type="number" min="0.5" step="0.1" name="contact[Testsúly]" required></label>
+            <label class="macs-advice-field"><span>Mióta van veled?</span><input type="text" name="contact[Mióta van a gazdival]"></label>
+            <label class="macs-advice-field"><span>Honnan került hozzád?</span><select name="contact[Származás]"><option value="">Válassz</option><option>Mentett</option><option>Tenyésztőtől vásárolt</option><option>Egyéb helyről került hozzám</option></select></label>
+            <label class="macs-advice-field"><span>Ivaros vagy ivartalanított?</span><select name="contact[Ivarosság]"><option value="">Válassz</option><option>Ivaros</option><option>Ivartalanított</option></select></label>
+            <label class="macs-advice-field"><span>Mikor történt az ivartalanítás?</span><input type="text" name="contact[Ivartalanítás időpontja]"></label>
+            <label class="macs-advice-field"><span>Tervezed ivartalaníttatni?</span><select name="contact[Tervezett ivartalanítás]"><option value="">Nem releváns / válassz</option><option>Igen</option><option>Nem</option><option>Még nem tudom</option></select></label>
+            <label class="macs-advice-field"><span>Tervezed tenyésztésbe vonni?</span><select name="contact[Tervezett tenyésztés]"><option value="">Válassz</option><option>Igen</option><option>Nem</option><option>Még nem tudom</option></select></label>
+            <label class="macs-advice-field"><span>Hol tartjátok?</span><select name="contact[Tartás helye]"><option value="">Válassz</option><option>Lakásban</option><option>Udvaron</option><option>Lakásban és udvaron</option></select></label>
+            <label class="macs-advice-field"><span>Hol alszik?</span><select name="contact[Alvás helye]"><option value="">Válassz</option><option>Bent</option><option>Kint</option><option>Változó</option></select></label>
+            <label class="macs-advice-field"><span>Lépcsőzik naponta?</span><select name="contact[Napi lépcsőzés]"><option value="">Válassz</option><option>Igen</option><option>Nem</option><option>Ritkán</option></select></label>
+            <label class="macs-advice-field"><span>Felmehet a bútorokra?</span><select name="contact[Bútorokra felmehet]"><option value="">Válassz</option><option>Igen</option><option>Nem</option><option>Csak bizonyos bútorokra</option></select></label>
+            <label class="macs-advice-field macs-advice-field--full"><span>Vannak tiltott helyiségek vagy más fontos szabályok?</span><textarea name="contact[Otthoni szabályok]" rows="3"></textarea></label>
+          </div>
+        </div>
+
+        <div class="macs-advice-form__panel" data-form-step="2" hidden>
+          <div class="macs-advice-form__step-heading">
+            <span>03</span><div><h3><span data-dog-name>A kutyád</span> egészsége</h3><p>Az egészségi információk segítenek elkerülni a számára nem megfelelő ajánlásokat.</p></div>
+          </div>
+          <div class="macs-advice-form__grid">
+            <label class="macs-advice-field macs-advice-field--full"><span>Voltak a felmenőinek ismert betegségei?</span><textarea name="contact[Felmenők ismert betegségei]" rows="3" placeholder="Például diszplázia, allergia vagy epilepszia"></textarea></label>
+            <label class="macs-advice-field macs-advice-field--full"><span>Van ismert betegsége?</span><textarea name="contact[Ismert betegségek]" rows="3" placeholder="Például vesekő vagy diszplázia"></textarea></label>
+            <label class="macs-advice-field"><span>Van ismert allergiája?</span><select name="contact[Ismert allergia]"><option value="">Válassz</option><option>Nincs</option><option>Ételallergia</option><option>Környezeti allergia</option><option>Többféle allergia</option><option>Nem tudom</option></select></label>
+            <label class="macs-advice-field"><span>Pontosan mire allergiás?</span><input type="text" name="contact[Allergia részletei]"></label>
+            <label class="macs-advice-field"><span>A tünetek jellege</span><select name="contact[Allergiás tünetek gyakorisága]"><option value="">Válassz</option><option>Állandóak</option><option>Időszakosan jelentkeznek</option><option>Jelenleg tünetmentes</option></select></label>
+            <label class="macs-advice-field"><span>Mennyit iszik naponta?</span><input type="text" name="contact[Napi vízfogyasztás]" placeholder="Becsült mennyiség is megfelelő"></label>
+            <label class="macs-advice-field"><span>Mindig van előtte friss víz?</span><select name="contact[Mindig elérhető víz]"><option value="">Válassz</option><option>Igen</option><option>Nem</option><option>Általában igen</option></select></label>
+            <label class="macs-advice-field macs-advice-field--full"><span>Kap gyógyszert vagy táplálékkiegészítőt?</span><textarea name="contact[Gyógyszerek és kiegészítők]" rows="3" placeholder="Mit, mikor és milyen mennyiségben?"></textarea></label>
+          </div>
+        </div>
+
+        <div class="macs-advice-form__panel" data-form-step="3" hidden>
+          <div class="macs-advice-form__step-heading">
+            <span>04</span><div><h3>Jelenlegi táplálás</h3><p>Írd le, mit és hogyan eszik jelenleg <span data-dog-name>a kutyád</span>.</p></div>
+          </div>
+          <div class="macs-advice-form__grid">
+            <label class="macs-advice-field macs-advice-field--full"><span>Mit eszik most elsődleges ételként? *</span><textarea name="contact[Jelenlegi elsődleges étel]" rows="3" required></textarea></label>
+            <label class="macs-advice-field"><span>Naponta hányszor eszik főételt? *</span><input type="number" min="1" max="10" name="contact[Napi főétkezések száma]" required></label>
+            <label class="macs-advice-field"><span>Mennyi az étvágya?</span><select name="contact[Étvágy]"><option value="">Válassz</option><option>Állandóan éhes</option><option>Kiegyensúlyozott</option><option>Változó</option><option>Rossz evő / válogatós</option></select></label>
+            <label class="macs-advice-field"><span>Megeszi a teljes elé tett adagot?</span><select name="contact[Teljes adag elfogyasztása]"><option value="">Válassz</option><option>Igen</option><option>Nem</option><option>Változó</option></select></label>
+            <label class="macs-advice-field"><span>Mi történik a maradékkal?</span><input type="text" name="contact[Maradék kezelése]"></label>
+            <label class="macs-advice-field"><span>Milyen gyakran váltasz tápot vagy etetési módot?</span><input type="text" name="contact[Etetésváltás gyakorisága]"></label>
+            <label class="macs-advice-field macs-advice-field--full"><span>Hogyan váltottál korábban, és tapasztaltál-e tüneteket?</span><textarea name="contact[Korábbi tápváltás tapasztalatai]" rows="4" placeholder="Írd le a váltás módját, a tüneteket és hogy mennyi idő alatt múltak el."></textarea></label>
+            <fieldset class="macs-advice-choice macs-advice-field--full"><legend>Mi a jelenlegi fő etetési mód? *</legend><div class="macs-advice-choice__grid"><label><input type="radio" name="contact[Etetési mód]" value="Száraztáp" data-feeding-mode="dry" required><span>Száraztáp</span></label><label><input type="radio" name="contact[Etetési mód]" value="Nyers etetés" data-feeding-mode="raw" required><span>Nyers etetés</span></label><label><input type="radio" name="contact[Etetési mód]" value="Főtt étrend" data-feeding-mode="cooked" required><span>Főtt étrend</span></label><label><input type="radio" name="contact[Etetési mód]" value="Vegyes / egyéb" data-feeding-mode="other" required><span>Vegyes / egyéb</span></label></div></fieldset>
+          </div>
+        </div>
+
+        <div class="macs-advice-form__panel" data-form-step="4" hidden>
+          <div class="macs-advice-form__step-heading">
+            <span>05</span><div><h3>Az etetési mód részletei</h3><p>Csak a korábban kiválasztott etetési módhoz tartozó kérdések jelennek meg.</p></div>
+          </div>
+          <div class="macs-advice-conditional" data-feeding-panel="dry" hidden>
+            <h4>Száraztápos etetés</h4><div class="macs-advice-form__grid">
+              <label class="macs-advice-field"><span>Mióta eszi a jelenlegi tápot?</span><input type="text" name="contact[Száraztáp – mióta]"></label>
+              <label class="macs-advice-field"><span>Honnan tájékozódsz a megfelelő mennyiségről?</span><input type="text" name="contact[Száraztáp – mennyiség forrása]"></label>
+              <label class="macs-advice-field macs-advice-field--full"><span>Hogyan választottad ki ezt a tápot?</span><textarea name="contact[Száraztáp – választás módja]" rows="3"></textarea></label>
+            </div>
+          </div>
+          <div class="macs-advice-conditional" data-feeding-panel="raw" hidden>
+            <h4>Nyers etetés</h4><div class="macs-advice-form__grid">
+              <label class="macs-advice-field"><span>Mióta eszik nyers étrendet?</span><input type="text" name="contact[Nyers – mióta]"></label>
+              <label class="macs-advice-field"><span>Te állítod össze, vagy készen vásárolod?</span><input type="text" name="contact[Nyers – összeállítás]"></label>
+              <label class="macs-advice-field"><span>Milyen arányokkal állítod össze?</span><input type="text" name="contact[Nyers – arányok]"></label>
+              <label class="macs-advice-field"><span>Honnan tájékozódsz a mennyiségekről?</span><input type="text" name="contact[Nyers – mennyiség forrása]"></label>
+              <label class="macs-advice-field macs-advice-field--full"><span>Honnan szerzed be az alapanyagokat?</span><textarea name="contact[Nyers – alapanyagok forrása]" rows="3"></textarea></label>
+            </div>
+          </div>
+          <div class="macs-advice-conditional" data-feeding-panel="cooked" hidden>
+            <h4>Főtt étrend</h4><div class="macs-advice-form__grid">
+              <label class="macs-advice-field"><span>Mióta eszik főtt étrendet?</span><input type="text" name="contact[Főtt – mióta]"></label>
+              <label class="macs-advice-field"><span>Te állítod össze, vagy készen vásárolod?</span><input type="text" name="contact[Főtt – összeállítás]"></label>
+              <label class="macs-advice-field"><span>Milyen arányokkal állítod össze?</span><input type="text" name="contact[Főtt – arányok]"></label>
+              <label class="macs-advice-field"><span>Honnan tájékozódsz a mennyiségekről?</span><input type="text" name="contact[Főtt – mennyiség forrása]"></label>
+              <label class="macs-advice-field macs-advice-field--full"><span>Mely összetevőket és mennyi ideig főzöd?</span><textarea name="contact[Főtt – elkészítés]" rows="3"></textarea></label>
+              <label class="macs-advice-field macs-advice-field--full"><span>Honnan szerzed be az alapanyagokat?</span><textarea name="contact[Főtt – alapanyagok forrása]" rows="3"></textarea></label>
+            </div>
+          </div>
+          <div class="macs-advice-conditional" data-feeding-panel="other" hidden>
+            <h4>Vegyes vagy más etetési mód</h4><label class="macs-advice-field"><span>Írd le részletesen, hogyan eteted <span data-dog-name>a kutyádat</span>.</span><textarea name="contact[Vegyes etetés részletei]" rows="5"></textarea></label>
+          </div>
+          <div class="macs-advice-conditional macs-advice-conditional--empty" data-feeding-empty><p>Az előző lépésben válaszd ki a jelenlegi etetési módot.</p></div>
+          <label class="macs-advice-field macs-advice-field--supplements"><span>Kap táplálékkiegészítőket?</span><textarea name="contact[Táplálékkiegészítők részletei]" rows="3" placeholder="Mit, mikor és milyen mennyiségben?"></textarea></label>
+        </div>
+
+        <div class="macs-advice-form__panel" data-form-step="5" hidden>
+          <div class="macs-advice-form__step-heading">
+            <span>06</span><div><h3>Mozgás és jutalomfalatok</h3><p>A napi aktivitás és a főétkezéseken kívüli falatok is befolyásolják az étrendet.</p></div>
+          </div>
+          <div class="macs-advice-form__grid">
+            <label class="macs-advice-field macs-advice-field--full"><span>Mennyit mozog vagy sétál naponta?</span><textarea name="contact[Napi mozgás]" rows="3"></textarea></label>
+            <fieldset class="macs-advice-choice macs-advice-field--full"><legend>Hogyan néz ki általában egy sétátok?</legend><div class="macs-advice-choice__grid"><label><input type="checkbox" name="contact[Séta – kutyafuttató]" value="Igen"><span>Kutyafuttatóba megyünk</span></label><label><input type="checkbox" name="contact[Séta – labdázás]" value="Igen"><span>Labdázunk</span></label><label><input type="checkbox" name="contact[Séta – rövid póráz]" value="Igen"><span>Rövid pórázon sétálunk</span></label><label><input type="checkbox" name="contact[Séta – tréning]" value="Igen"><span>Tréningezünk és sétálunk</span></label></div></fieldset>
+            <label class="macs-advice-field"><span>Kap jutalomfalatot séta közben?</span><select name="contact[Séta közbeni jutalomfalat]"><option value="">Válassz</option><option>Igen, rendszeresen</option><option>Alkalmanként</option><option>Nem</option></select></label>
+            <label class="macs-advice-field"><span>Kap emberi ételt vagy maradékot?</span><select name="contact[Emberi étel]"><option value="">Válassz</option><option>Igen, rendszeresen</option><option>Alkalmanként</option><option>Nem</option></select></label>
+            <fieldset class="macs-advice-choice macs-advice-field--full"><legend>Milyen jutalomfalatokat vagy nasikat kap?</legend><div class="macs-advice-choice__grid"><label><input type="checkbox" name="contact[Nasi – emberi falatok]" value="Igen"><span>Sajt, virsli vagy más emberi falat</span></label><label><input type="checkbox" name="contact[Nasi – csomagolt]" value="Igen"><span>Bolti, csomagolt falatok</span></label><label><input type="checkbox" name="contact[Nasi – rágcsák]" value="Igen"><span>Nagyobb rágcsák, fogtisztítók</span></label><label><input type="checkbox" name="contact[Nasi – szárított]" value="Igen"><span>Szárított falatok, hal, nyuszifül</span></label><label><input type="checkbox" name="contact[Nasi – nedves]" value="Igen"><span>Konzerv vagy alutasakos eledel</span></label></div></fieldset>
+            <label class="macs-advice-field macs-advice-field--full"><span>Milyen más nasit kap?</span><textarea name="contact[Egyéb nasik]" rows="3"></textarea></label>
+          </div>
+        </div>
+
+        <div class="macs-advice-form__panel" data-form-step="6" hidden>
+          <div class="macs-advice-form__step-heading">
+            <span>07</span><div><h3>Emésztés és elküldés</h3><p>Már csak néhány kérdés, és elküldheted <span data-dog-name>a kutyád</span> adatait.</p></div>
+          </div>
+          <div class="macs-advice-form__grid">
+            <label class="macs-advice-field"><span>A széklet állaga leginkább</span><select name="contact[Széklet állaga]"><option value="">Válassz</option><option>Normális</option><option>Híg</option><option>Nehezen ürít</option><option>Változó</option></select></label>
+            <label class="macs-advice-field"><span>A széklet mennyisége leginkább</span><select name="contact[Széklet mennyisége]"><option value="">Válassz</option><option>Kicsi, gyakoribb</option><option>Átlagos</option><option>Nagy adagot ürít egyszerre</option><option>Változó</option></select></label>
+            <label class="macs-advice-field macs-advice-field--full"><span>Van még valami, amit fontosnak tartasz elmondani?</span><textarea name="contact[body]" rows="5"></textarea></label>
+            <label class="macs-advice-form__consent macs-advice-field--full"><input type="checkbox" name="contact[Adatkezelési hozzájárulás]" value="Elfogadva" required><span>Elolvastam és elfogadom az {% if section.settings.privacy_link != blank %}<a href="{{ section.settings.privacy_link }}">adatkezelési tájékoztatót</a>{% else %}adatkezelési tájékoztatót{% endif %}. *</span></label>
+          </div>
+        </div>
+
+        <p class="macs-advice-form__validation" data-form-validation role="alert" hidden>Kérjük, töltsd ki a megjelölt kötelező mezőket.</p>
+
+        <div class="macs-advice-form__navigation">
+          <button class="macs-advice-form__back" type="button" data-form-back hidden>← Vissza</button>
+          <button class="macs-advice-form__next" type="button" data-form-next>Tovább →</button>
+          <button class="macs-advice-form__submit" type="submit" data-form-submit hidden>{{ section.settings.submit_label | escape }} <span aria-hidden="true">→</span></button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAC’s – Tanácsadási űrlap",
+  "tag": "section",
+  "class": "macs-advice-form-wrapper",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "text", "id": "anchor_id", "label": "Horgonyazonosító", "default": "taplalkozasi-tanacsadas-urlap" },
+    { "type": "text", "id": "eyebrow", "label": "Felső címke", "default": "Táplálkozási kérdőív" },
+    { "type": "text", "id": "title", "label": "Cím", "default": "Ismerjük meg jobban a kutyádat!" },
+    { "type": "richtext", "id": "text", "label": "Bevezető", "default": "<p>A válaszaid alapján pontosabb képet kapunk kutyád életmódjáról, egészségéről és jelenlegi táplálásáról.</p>" },
+    { "type": "url", "id": "privacy_link", "label": "Adatkezelési tájékoztató" },
+    { "type": "text", "id": "submit_label", "label": "Küldés gomb", "default": "Tanácskérés elküldése" },
+    { "type": "text", "id": "success_title", "label": "Sikeres küldés címe", "default": "Köszönjük, megkaptuk a válaszaidat!" },
+    { "type": "text", "id": "success_text", "label": "Sikeres küldés szövege", "default": "Hamarosan felvesszük veled a kapcsolatot a megadott e-mail-címen." }
+  ],
+  "presets": [{ "name": "MAC’s – Tanácsadási űrlap" }]
+}
+{% endschema %}
