@@ -53,6 +53,8 @@
   font-weight: 850;
   line-height: 0.86;
   letter-spacing: -0.065em;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .macs-contact-hero__text {
@@ -187,20 +189,37 @@
 
 .macs-contact-socials__links {
   display: flex;
-  gap: 17px;
+  gap: 10px;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
 .macs-contact-socials__links a {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
   color: var(--macs-black, #20231f);
-  font-size: 0.82rem;
-  font-weight: 800;
+  background: rgba(32, 35, 31, 0.06);
+  border: 1px solid rgba(32, 35, 31, 0.1);
+  border-radius: 50%;
   text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .macs-contact-socials__links a:hover {
-  color: var(--macs-red, #d52b32);
+  color: var(--macs-white, #ffffff);
+  background: var(--macs-red, #d52b32);
+  transform: translateY(-3px);
+}
+
+.macs-contact-socials__links svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 .macs-contact-hero__spot {
@@ -327,6 +346,12 @@
   font-weight: 850;
   line-height: 0.95;
   letter-spacing: -0.045em;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.macs-contact-form-section__title-keep {
+  white-space: nowrap;
 }
 
 .macs-contact-form-section__text {
@@ -489,16 +514,6 @@
 .macs-contact-form__errors {
   color: #8a151a;
   background: #fff0f0;
-}
-
-.macs-contact-form-section__spot {
-  position: absolute;
-  right: -170px;
-  bottom: -190px;
-  width: 470px;
-  aspect-ratio: 1;
-  background: rgba(213, 43, 50, 0.11);
-  border-radius: 50%;
 }
 
 @media screen and (max-width: 989px) {

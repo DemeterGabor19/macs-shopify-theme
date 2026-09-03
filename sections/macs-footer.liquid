@@ -1,0 +1,126 @@
+{{ 'macs-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="macs-footer">
+  <span class="macs-footer__spot macs-footer__spot--red" aria-hidden="true"></span>
+  <span class="macs-footer__spot macs-footer__spot--yellow" aria-hidden="true"></span>
+
+  <div class="macs-container macs-footer__main">
+    <div class="macs-footer__brand">
+      <a class="macs-footer__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} – Főoldal">
+        {% if section.settings.logo != blank %}
+          {{ section.settings.logo | image_url: width: 500 | image_tag: loading: 'lazy', widths: '180, 260, 360, 500', sizes: '220px', alt: shop.name }}
+        {% else %}
+          <span>{{ shop.name | escape }}</span>
+        {% endif %}
+      </a>
+
+      {% if section.settings.text != blank %}
+        <div class="macs-footer__text rte">{{ section.settings.text }}</div>
+      {% endif %}
+
+      <div class="macs-footer__socials" aria-label="Közösségi média">
+        {% if section.settings.facebook_url != blank %}
+          <a href="{{ section.settings.facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M14.1 8.5V6.8c0-.8.5-1 1-1h2.6V2.1L14.5 2C11.3 2 9.2 4 9.2 7.6v.9H6v4.1h3.2V22h4.9v-9.4h3.3l.6-4.1h-3.9Z"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if section.settings.tiktok_url != blank %}
+          <a href="{{ section.settings.tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M16.7 2c.3 2.2 1.6 3.6 3.8 3.8v4a9.4 9.4 0 0 1-3.8-1.1v6.8a6.5 6.5 0 1 1-5.6-6.4v4a2.6 2.6 0 1 0 1.7 2.4V2h3.9Z"/>
+            </svg>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="macs-footer__column">
+      {% if section.settings.menu_title != blank %}<h2>{{ section.settings.menu_title | escape }}</h2>{% endif %}
+      {% if section.settings.menu != blank %}
+        <nav aria-label="Lábléc navigáció">
+          <ul>
+            {% for link in section.settings.menu.links %}
+              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+
+    <div class="macs-footer__column">
+      {% if section.settings.contact_title != blank %}<h2>{{ section.settings.contact_title | escape }}</h2>{% endif %}
+      <ul class="macs-footer__contact-list">
+        {% if section.settings.email != blank %}
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm9 8L3.8 7.5a.5.5 0 0 0-.8.4v.5l9 6 9-6v-.5a.5.5 0 0 0-.8-.4L12 13Z"/></svg>
+            <a href="mailto:{{ section.settings.email | escape }}">{{ section.settings.email | escape }}</a>
+          </li>
+        {% endif %}
+        {% if section.settings.phone != blank %}
+          {% assign phone_link = section.settings.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' %}
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2h3l1.5 5-2.3 1.8a15.5 15.5 0 0 0 6.4 6.4l1.8-2.3 5 1.5v3c0 2.5-2 4.6-4.6 4.6A15.4 15.4 0 0 1 2 6.6C2 4 4 2 6.6 2Z"/></svg>
+            <a href="tel:{{ phone_link }}">{{ section.settings.phone | escape }}</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="macs-footer__column">
+      {% if section.settings.legal_title != blank %}<h2>{{ section.settings.legal_title | escape }}</h2>{% endif %}
+      <ul>
+        {% if section.settings.terms_url != blank %}<li><a href="{{ section.settings.terms_url }}">{{ section.settings.terms_label | escape }}</a></li>{% endif %}
+        {% if section.settings.privacy_url != blank %}<li><a href="{{ section.settings.privacy_url }}">{{ section.settings.privacy_label | escape }}</a></li>{% endif %}
+        {% if section.settings.shipping_url != blank %}<li><a href="{{ section.settings.shipping_url }}">{{ section.settings.shipping_label | escape }}</a></li>{% endif %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="macs-container macs-footer__bottom">
+    <p>© {{ 'now' | date: '%Y' }} {{ section.settings.copyright_name | default: shop.name | escape }}. Minden jog fenntartva.</p>
+    {% if section.settings.bottom_text != blank %}<p>{{ section.settings.bottom_text | escape }}</p>{% endif %}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "MAC’s – Lábléc",
+  "tag": "section",
+  "class": "macs-footer-section",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logó" },
+    { "type": "richtext", "id": "text", "label": "Márkaszöveg", "default": "<p>Szuperprémium kutyaeledelek gondosan válogatott alapanyagokból.</p>" },
+    { "type": "link_list", "id": "menu", "label": "Navigációs menü" },
+    { "type": "text", "id": "menu_title", "label": "Menü címe", "default": "Fedezd fel" },
+    { "type": "header", "content": "Kapcsolat" },
+    { "type": "text", "id": "contact_title", "label": "Kapcsolati oszlop címe", "default": "Kapcsolat" },
+    { "type": "text", "id": "email", "label": "E-mail", "default": "david@macs-pet.hu" },
+    { "type": "text", "id": "phone", "label": "Telefonszám", "default": "+36 70 357 6927" },
+    { "type": "header", "content": "Közösségi média" },
+    { "type": "url", "id": "facebook_url", "label": "Facebook" },
+    { "type": "url", "id": "tiktok_url", "label": "TikTok" },
+    { "type": "header", "content": "Jogi oldalak" },
+    { "type": "text", "id": "legal_title", "label": "Jogi oszlop címe", "default": "Információk" },
+    { "type": "text", "id": "terms_label", "label": "ÁSZF link felirata", "default": "Általános szerződési feltételek" },
+    { "type": "url", "id": "terms_url", "label": "ÁSZF oldal" },
+    { "type": "text", "id": "privacy_label", "label": "GDPR link felirata", "default": "Adatkezelési tájékoztató" },
+    { "type": "url", "id": "privacy_url", "label": "GDPR oldal" },
+    { "type": "text", "id": "shipping_label", "label": "Harmadik link felirata", "default": "Szállítás és fizetés" },
+    { "type": "url", "id": "shipping_url", "label": "Harmadik információs oldal" },
+    { "type": "header", "content": "Alsó sor" },
+    { "type": "text", "id": "copyright_name", "label": "Szerzői jog tulajdonosa", "default": "MAC’s Magyarország" },
+    { "type": "text", "id": "bottom_text", "label": "Jobb oldali alsó szöveg", "default": "Minőségi táplálás. Boldog kutyák." }
+  ],
+  "presets": [{
+    "name": "MAC’s – Lábléc",
+    "settings": {
+      "facebook_url": "https://www.facebook.com/macsallateledel/",
+      "tiktok_url": "https://www.tiktok.com/@macsmagyarorszag"
+    }
+  }]
+}
+{% endschema %}

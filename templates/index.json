@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "macs_hero_emaUpz": {
@@ -9,9 +18,9 @@
         "title_accent": "amit kutyád is imádni fog.",
         "description": "Magas hústartalmú, gabonamentes kutyaeledelek gondosan válogatott\nalapanyagokból. Teljes értékű táplálás kölyökkortól egészen az\nidősebb évekig.",
         "primary_label": "Kutyatermékek",
-        "primary_link": "",
+        "primary_link": "shopify://pages/termekek",
         "secondary_label": "Táplálkozási tanácsot kérek",
-        "secondary_link": "",
+        "secondary_link": "/pages/taplalkozasi-tanadas-1",
         "benefit_one": "Gabonamentes",
         "benefit_two": "Magas hústartalom",
         "benefit_three": "30+ év tapasztalat"
@@ -70,10 +79,12 @@
         "category_1": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/MACsMonoLargePulyka.jpg",
             "title": "Száraz eledelek",
             "text": "Teljes értékű, gabonamentes receptek a mindennapokra.",
             "accent": "red",
-            "button_text": "Termékek megtekintése"
+            "button_text": "Termékek megtekintése",
+            "link": "/pages/termekek#szaraz-eledelek"
           }
         },
         "category_2": {
@@ -82,7 +93,8 @@
             "title": "Félnedves eledelek",
             "text": "Puha, szaftos falatok magasabb nedvességtartalommal.",
             "accent": "yellow",
-            "button_text": "Termékek megtekintése"
+            "button_text": "Termékek megtekintése",
+            "link": "/pages/termekek#felnedves-eledelek"
           }
         },
         "category_3": {
@@ -91,7 +103,8 @@
             "title": "Konzervek",
             "text": "Magas hústartalmú, természetközeli nedves eledelek.",
             "accent": "dark",
-            "button_text": "Termékek megtekintése"
+            "button_text": "Termékek megtekintése",
+            "link": "/pages/termekek#konzervek"
           }
         },
         "category_4": {
@@ -100,7 +113,8 @@
             "title": "Levesek",
             "text": "Ízletes folyadékpótlás és különleges kiegészítés.",
             "accent": "red",
-            "button_text": "Termékek megtekintése"
+            "button_text": "Termékek megtekintése",
+            "link": "/pages/termekek#levesek"
           }
         },
         "category_5": {
@@ -109,7 +123,8 @@
             "title": "MAC’s Vetcare",
             "text": "Speciális eledelek különleges táplálási igényekre.",
             "accent": "yellow",
-            "button_text": "Termékek megtekintése"
+            "button_text": "Termékek megtekintése",
+            "link": "/pages/termekek#vetcare"
           }
         },
         "category_6": {
@@ -118,7 +133,8 @@
             "title": "Jutalomfalatok",
             "text": "Gabonamentes falatok tréninghez és jutalmazáshoz.",
             "accent": "dark",
-            "button_text": "Termékek megtekintése"
+            "button_text": "Termékek megtekintése",
+            "link": "/pages/termekek#jutalomfalatok"
           }
         }
       },
@@ -136,7 +152,7 @@
         "highlighted_title": "ott a gondoskodás.",
         "intro": "<p>Válassz kutyád életkorához, ízléséhez és egyedi igényeihez illő MAC’s eledelt.</p>",
         "button_text": "Összes kutyatermék",
-        "button_link": ""
+        "button_link": "shopify://pages/termekek"
       }
     },
     "macs_brand_story": {
@@ -163,12 +179,13 @@
       },
       "block_order": ["benefit_1", "benefit_2", "benefit_3"],
       "settings": {
+        "image": "shopify://shop_images/MACs_Dog_MeatBits_Beef_Blueberry2.png",
         "eyebrow": "Minőség 1993 óta",
         "title": "A természetből",
         "highlighted_title": "merítünk ihletet.",
         "text": "<p>A MAC’s több mint 30 éve fejleszt szuperprémium eledeleket kutyák és macskák számára. A receptek kialakításánál a természetes táplálkozás szolgál mintaként.</p>",
         "button_text": "Lépj kapcsolatba velünk",
-        "button_link": ""
+        "button_link": "shopify://pages/kapcsolat"
       }
     },
     "macs_blog_preview": {
@@ -191,7 +208,9 @@
         "title_last": "illik hozzá?",
         "text": "<p>Írd meg kutyád életkorát, testsúlyát és táplálkozási igényeit, mi pedig segítünk megtalálni a megfelelő eledelt.</p>",
         "button_text": "Táplálkozási tanácsot kérek",
-        "button_link": ""
+        "button_link": "/pages/taplalkozasi-tanacsadas",
+        "dog_image": "shopify://shop_images/CTA.jpg",
+        "product_image": "shopify://shop_images/Edzosnackbaranymono120g.png"
       }
     }
   },

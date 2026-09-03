@@ -1,1 +1,41 @@
-{"type":"footer","name":"t:names.footer","sections":{},"order":[]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:names.footer",
+  "sections": {
+    "macs_footer_J9g7eb": {
+      "type": "macs-footer",
+      "name": "MAC’s – Lábléc",
+      "settings": {
+        "text": "<p>Szuperprémium kutyaeledelek gondosan válogatott alapanyagokból.</p>",
+        "menu": "main-menu",
+        "menu_title": "Fedezd fel",
+        "contact_title": "Kapcsolat",
+        "email": "david@macs-pet.hu",
+        "phone": "+36 70 357 6927",
+        "facebook_url": "https://www.facebook.com/macsallateledel/",
+        "tiktok_url": "https://www.tiktok.com/@macsmagyarorszag",
+        "legal_title": "Információk",
+        "terms_label": "Általános szerződési feltételek",
+        "terms_url": "shopify://pages/aszf",
+        "privacy_label": "Adatkezelési tájékoztató",
+        "privacy_url": "shopify://pages/fogyaszto-barat-tanusitvany",
+        "shipping_label": "Szállítás és fizetés",
+        "shipping_url": "shopify://pages/adatkezelesi-tajekoztato",
+        "copyright_name": "MAC’s Magyarország",
+        "bottom_text": "Minőségi táplálás. Boldog kutyák."
+      }
+    }
+  },
+  "order": [
+    "macs_footer_J9g7eb"
+  ]
+}

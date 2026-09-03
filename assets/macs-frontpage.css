@@ -2,6 +2,16 @@
    MAC'S - Homepage hero
    ========================================================= */
 
+:root {
+  --macs-hero__dog-scale: 1;
+  --macs-hero__bag-x: 0px;
+  --macs-hero__bag-y: 0px;
+  --macs-hero__can-x: 0px;
+  --macs-hero__can-y: 0px;
+  --macs-hero__snack-x: 0px;
+  --macs-hero__snack-y: 0px;
+}
+
 .macs-hero__section {
   position: relative;
   overflow: hidden;
@@ -284,32 +294,41 @@
   height: clamp(380px, 39vw, 565px);
   transform: scale(var(--macs-hero__dog-scale, 1));
   transform-origin: center bottom;
+  transition: transform 180ms linear;
   will-change: transform;
 }
 
 .macs-hero__product {
   z-index: 4;
+  transition: transform 180ms linear;
+  will-change: transform;
 }
 
 .macs-hero__product--bag {
   right: 61%;
   bottom: 9%;
   height: clamp(158px, 16vw, 245px);
-  transform: rotate(-7deg);
+  transform: translate(var(--macs-hero__bag-x, 0), var(--macs-hero__bag-y, 0))
+    rotate(-7deg);
 }
 
 .macs-hero__product--can {
   right: 1%;
   bottom: 7%;
   height: clamp(126px, 13vw, 190px);
-  transform: rotate(4deg);
+  transform: translate(var(--macs-hero__can-x, 0), var(--macs-hero__can-y, 0))
+    rotate(4deg);
 }
 
 .macs-hero__product--snack {
   top: 15%;
   right: 7%;
   height: clamp(138px, 13vw, 200px);
-  transform: rotate(8deg);
+  transform: translate(
+      var(--macs-hero__snack-x, 0),
+      var(--macs-hero__snack-y, 0)
+    )
+    rotate(8deg);
 }
 
 @media screen and (min-width: 900px) and (max-width: 1199px) {
@@ -383,8 +402,8 @@
   }
 
   .macs-hero__inner {
-    width: min(calc(100% - 32px), var(--macs-page-width, 1320px));
-    padding-block: 42px 34px;
+    width: min(calc(100% - 28px), var(--macs-page-width, 1320px));
+    padding-block: 36px 28px;
   }
 
   .macs-hero__eyebrow {
@@ -393,11 +412,17 @@
   }
 
   .macs-hero__title {
-    font-size: clamp(2.82rem, 13vw, 4.35rem);
+    font-size: clamp(2.62rem, 12vw, 3.85rem);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+  }
+
+  .macs-hero__title-accent {
+    margin-top: 10px;
   }
 
   .macs-hero__description {
-    margin-top: 22px;
+    margin-top: 18px;
     font-size: 0.98rem;
     line-height: 1.62;
   }
@@ -414,12 +439,12 @@
 
   .macs-hero__benefits {
     gap: 12px 16px;
-    margin-top: 24px;
+    margin-top: 20px;
     font-size: 0.78rem;
   }
 
   .macs-hero__media {
-    min-height: clamp(330px, 90vw, 460px);
+    min-height: clamp(300px, 82vw, 420px);
     margin-top: 8px;
   }
 
@@ -440,25 +465,25 @@
   .macs-hero__dog {
     right: 19%;
     bottom: 0;
-    height: clamp(275px, 77vw, 390px);
+    height: clamp(250px, 70vw, 360px);
   }
 
   .macs-hero__product--bag {
     right: 62%;
     bottom: 5%;
-    height: clamp(104px, 30vw, 150px);
+    height: clamp(94px, 27vw, 136px);
   }
 
   .macs-hero__product--can {
     right: 2%;
     bottom: 8%;
-    height: clamp(82px, 23vw, 118px);
+    height: clamp(74px, 21vw, 108px);
   }
 
   .macs-hero__product--snack {
     top: 8%;
     right: 1%;
-    height: clamp(98px, 29vw, 142px);
+    height: clamp(88px, 25vw, 128px);
   }
 }
 
@@ -755,13 +780,13 @@
 
 @media screen and (max-width: 749px) {
   .macs-usp {
-    padding-block: 82px 120px;
+    padding-block: 64px 82px;
     border-radius: 0 0 50% 50% / 0 0 42px 42px;
   }
 
   .macs-usp__container {
     grid-template-columns: minmax(0, 1fr);
-    gap: 48px;
+    gap: 38px;
   }
 
   .macs-usp__content {
@@ -770,15 +795,17 @@
 
   .macs-usp__media {
     order: 2;
-    min-height: clamp(410px, 112vw, 520px);
+    min-height: clamp(300px, 82vw, 390px);
   }
 
   .macs-usp__title {
-    font-size: clamp(2.75rem, 12vw, 4rem);
+    font-size: clamp(2.5rem, 11vw, 3.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
   }
 
   .macs-usp__subtitle {
-    margin-top: 26px;
+    margin-top: 22px;
   }
 
   .macs-usp__intro {
@@ -787,7 +814,7 @@
   }
 
   .macs-usp__list {
-    margin-top: 28px;
+    margin-top: 24px;
   }
 
   .macs-usp__item {
@@ -824,7 +851,7 @@
   .macs-usp__badge {
     top: 7%;
     right: 0;
-    width: 94px;
+    width: 86px;
   }
 }
 
@@ -834,7 +861,7 @@
   }
 
   .macs-usp__title {
-    font-size: clamp(2.55rem, 12vw, 3.35rem);
+    font-size: clamp(2.35rem, 11vw, 3.1rem);
   }
 
   .macs-usp__item p {
@@ -843,7 +870,7 @@
 
   .macs-usp__badge {
     right: -5px;
-    width: 88px;
+    width: 80px;
   }
 }
 /* =========================================================
@@ -1237,7 +1264,7 @@
 @media screen and (max-width: 749px) {
   .macs-categories {
     margin-top: -55px;
-    padding-block: 135px 105px;
+    padding-block: 105px 74px;
     background-size:
       auto,
       390px 390px;
@@ -1246,11 +1273,13 @@
   .macs-categories__header {
     grid-template-columns: minmax(0, 1fr);
     gap: 22px;
-    margin-bottom: 38px;
+    margin-bottom: 30px;
   }
 
   .macs-categories__title {
-    font-size: clamp(2.75rem, 12vw, 4rem);
+    font-size: clamp(2.5rem, 11vw, 3.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
   }
 
   .macs-categories__intro {
@@ -1261,21 +1290,22 @@
 
   .macs-categories__grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
+    gap: 16px;
   }
 
   .macs-category-card {
-    min-height: 485px;
+    min-height: auto;
     border-radius: 22px;
   }
 
   .macs-category-card__media {
-    height: 285px;
-    flex-basis: 285px;
+    height: clamp(215px, 62vw, 270px);
+    flex-basis: clamp(215px, 62vw, 270px);
+    padding-top: 36px;
   }
 
   .macs-category-card__image {
-    height: 255px;
+    height: clamp(190px, 56vw, 240px);
   }
 
   .macs-category-card__content {
@@ -1297,7 +1327,7 @@
 
 @media screen and (max-width: 420px) {
   .macs-categories__title {
-    font-size: clamp(2.55rem, 12vw, 3.3rem);
+    font-size: clamp(2.35rem, 11vw, 3.05rem);
   }
 
   .macs-category-card__image {
@@ -1551,18 +1581,24 @@
 
 @media screen and (max-width: 749px) {
   .macs-story {
-    margin-top: -50px;
-    padding-block: 125px 100px;
+    margin-top: 22px;
+    padding-block: 96px 74px;
     border-radius: 50% 50% 0 0 / 42px 42px 0 0;
   }
 
   .macs-story__container {
     grid-template-columns: minmax(0, 1fr);
-    gap: 52px;
+    gap: 40px;
+  }
+
+  .macs-story__content,
+  .macs-story__media {
+    width: 100%;
+    min-width: 0;
   }
 
   .macs-story__media {
-    min-height: clamp(400px, 105vw, 510px);
+    min-height: clamp(290px, 78vw, 380px);
   }
 
   .macs-story__shape {
@@ -1591,33 +1627,35 @@
   }
 
   .macs-story__title {
-    font-size: clamp(2.75rem, 12vw, 4rem);
+    font-size: clamp(2.5rem, 11vw, 3.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
   }
 
   .macs-story__text {
-    margin-top: 24px;
+    margin-top: 20px;
     font-size: 0.92rem;
     line-height: 1.65;
   }
 
   .macs-story__list {
-    margin-top: 26px;
+    margin-top: 22px;
     font-size: 0.85rem;
   }
 
   .macs-story__button {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 26px;
   }
 }
 
 @media screen and (max-width: 420px) {
   .macs-story__media {
-    min-height: 390px;
+    min-height: 330px;
   }
 
   .macs-story__title {
-    font-size: clamp(2.55rem, 12vw, 3.3rem);
+    font-size: clamp(2.35rem, 11vw, 3.05rem);
   }
 
   .macs-story__image-frame {
@@ -1761,6 +1799,38 @@
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 24px;
   box-shadow: 0 12px 32px;
+}
+
+@media screen and (max-width: 749px) {
+  .macs-blog {
+    margin-top: -48px;
+    padding-block: 116px 82px;
+    border-radius: 50% 50% 0 0 / 42px 42px 0 0;
+  }
+
+  .macs-blog__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 34px;
+  }
+
+  .macs-blog__title {
+    gap: 8px;
+    font-size: clamp(2.5rem, 11vw, 3.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .macs-blog__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .macs-blog-card {
+    min-height: auto;
+    border-radius: 20px;
+  }
 }
 
 /* =========================================================
@@ -2036,14 +2106,14 @@
 
 @media screen and (max-width: 749px) {
   .macs-advice {
-    padding-block: 42px;
+    padding-block: 34px 48px;
   }
 
   .macs-advice__box {
     grid-template-columns: minmax(0, 1fr);
     gap: 22px;
     min-height: auto;
-    padding: 38px 24px 0;
+    padding: 34px 22px 0;
     border-radius: 28px;
   }
 
@@ -2058,22 +2128,24 @@
 
   .macs-advice__title {
     max-width: 520px;
-    font-size: clamp(2.65rem, 12vw, 4rem);
+    font-size: clamp(2.45rem, 11vw, 3.45rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
   }
 
   .macs-advice__text {
-    margin-top: 20px;
+    margin-top: 18px;
     font-size: 0.94rem;
     line-height: 1.62;
   }
 
   .macs-advice__button {
     width: 100%;
-    margin-top: 25px;
+    margin-top: 22px;
   }
 
   .macs-advice__visual {
-    min-height: clamp(320px, 90vw, 440px);
+    min-height: clamp(285px, 78vw, 380px);
   }
 
   .macs-advice__image-frame {
@@ -2082,6 +2154,7 @@
     bottom: -7%;
     width: clamp(270px, 76vw, 390px);
     border-width: 7px;
+    border-radius: 50%;
     transform: none;
   }
 
@@ -2101,20 +2174,21 @@
 
 @media screen and (max-width: 420px) {
   .macs-advice__box {
-    padding-inline: 20px;
+    padding-inline: 18px;
   }
 
   .macs-advice__visual {
-    min-height: 315px;
+    min-height: 260px;
   }
 
   .macs-advice__image-frame {
-    right: -15%;
+    right: -12%;
+    width: clamp(230px, 72vw, 300px);
   }
 
   .macs-advice__product {
     left: -2%;
-    height: 145px;
+    height: 125px;
   }
 }
 

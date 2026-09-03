@@ -35,6 +35,32 @@
       >
         {% for block in section.blocks %}
           {% assign category_anchor = block.settings.anchor_id | handleize %}
+          {% assign category_image = block.settings.image %}
+          {% assign fallback_collection_handle = '' %}
+
+          {% case category_anchor %}
+            {% when 'szaraz-eledelek' %}
+              {% assign fallback_collection_handle = 'szarazeledel' %}
+            {% when 'felnedves-eledelek' %}
+              {% assign fallback_collection_handle = 'soft' %}
+            {% when 'konzervek' %}
+              {% assign fallback_collection_handle = 'konzerv' %}
+            {% when 'levesek' %}
+              {% assign fallback_collection_handle = 'smoothiek-es-italok' %}
+            {% when 'vetcare' %}
+              {% assign fallback_collection_handle = 'gyogytapok-vetcare' %}
+            {% when 'jutalomfalatok' %}
+              {% assign fallback_collection_handle = 'snacks' %}
+          {% endcase %}
+
+          {% if category_image == blank and fallback_collection_handle != blank %}
+            {% assign fallback_collection = collections[fallback_collection_handle] %}
+
+            {% if fallback_collection != blank %}
+              {% assign fallback_product = fallback_collection.products | first %}
+              {% assign category_image = fallback_collection.image | default: fallback_product.featured_image %}
+            {% endif %}
+          {% endif %}
 
           <a
             class="macs-products-nav__card macs-products-nav__card--{{ block.settings.accent }}"
@@ -51,9 +77,9 @@
                 aria-hidden="true"
               ></span>
 
-              {% if block.settings.image != blank %}
+              {% if category_image != blank %}
                 {{
-                  block.settings.image
+                  category_image
                   | image_url: width: 700
                   | image_tag:
                     class: 'macs-products-nav__image',

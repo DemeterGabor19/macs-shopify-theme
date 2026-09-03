@@ -4,8 +4,6 @@
   class="macs-contact-form-section"
   id="{{ section.settings.anchor_id | default: 'kapcsolati-urlap' | handleize }}"
 >
-  <span class="macs-contact-form-section__spot" aria-hidden="true"></span>
-
   <div class="macs-container macs-contact-form-section__container">
     <div class="macs-contact-form-section__intro">
       {% if section.settings.eyebrow != blank %}
@@ -16,8 +14,13 @@
       {% endif %}
 
       {% if section.settings.title != blank %}
+        {% liquid
+          assign contact_form_title = section.settings.title | escape
+          assign contact_form_title = contact_form_title | replace: 'segíthetünk?', '<span class="macs-contact-form-section__title-keep">segíthetünk?</span>'
+        %}
+
         <h2 class="macs-contact-form-section__title">
-          {{ section.settings.title | escape }}
+          {{ contact_form_title }}
         </h2>
       {% endif %}
 

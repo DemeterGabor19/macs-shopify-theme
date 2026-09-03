@@ -1,15 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "advice_hero": {
       "type": "macs-advice-hero",
-      "settings": {}
+      "settings": {
+        "eyebrow": "Személyre szabott segítség",
+        "title": "Találjuk meg együtt",
+        "highlighted_title": "a kutyádhoz illő eledelt!",
+        "text": "<p>Minden kutya más. Mesélj nekünk kedvencedről, jelenlegi táplálásáról és egyedi igényeiről, hogy személyre szabott segítséget adhassunk a megfelelő MAC’s termék kiválasztásához.</p>",
+        "button_label": "Kitöltöm a kérdőívet",
+        "button_link": "/pages/taplalkozasi-tanacsadas#taplalkozasi-tanacsadas-urlap",
+        "helper_text": "A kitöltés körülbelül 8–10 percet vesz igénybe.",
+        "image": "shopify://shop_images/MACS_Termekek_Hero.jpg",
+        "badge": "Személyre szabott tanácsadás"
+      }
     },
     "advice_form": {
       "type": "macs-advice-form",
       "settings": {
-        "anchor_id": "taplalkozasi-tanacsadas-urlap"
+        "anchor_id": "taplalkozasi-tanacsadas-urlap",
+        "eyebrow": "Táplálkozási kérdőív",
+        "title": "Ismerjük meg jobban a kutyádat!",
+        "text": "<p>A válaszaid alapján pontosabb képet kapunk kutyád életmódjáról, egészségéről és jelenlegi táplálásáról.</p>",
+        "privacy_link": "",
+        "submit_label": "Tanácskérés elküldése",
+        "success_title": "Köszönjük, megkaptuk a válaszaidat!",
+        "success_text": "Hamarosan felvesszük veled a kapcsolatot a megadott e-mail-címen."
       }
     }
   },
-  "order": ["advice_hero", "advice_form"]
+  "order": [
+    "advice_hero",
+    "advice_form"
+  ]
 }

@@ -1,121 +1,107 @@
 (() => {
-  const controllerBySection = new WeakMap();
+  const PAGE_WRAPPER_SELECTOR = ".page-wrapper";
+
+  const root = document.documentElement;
+  const squeezeQuery = window.matchMedia("(min-width: 990px)");
   const reduceMotionQuery = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   );
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  let animationFrame = null;
+  let currentScrollContainer = null;
 
-  const initHero = (section) => {
-    const dog = section.querySelector(".macs-hero__dog");
+  const getScrollContainer = () => {
+    if (squeezeQuery.matches) {
+      return (
+        document.querySelector(PAGE_WRAPPER_SELECTOR) ??
+        document.scrollingElement ??
+        document.documentElement
+      );
+    }
 
-    if (!dog) return;
+    return document.scrollingElement ?? document.documentElement;
+  };
 
-    controllerBySection.get(section)?.abort();
+  const setHeroMotion = (progress) => {
+    const scale = 1 + progress * 0.1;
 
-    if (reduceMotionQuery.matches) {
-      dog.style.setProperty("--macs-hero__dog-scale", "1");
+    root.style.setProperty("--macs-hero__dog-scale", scale.toFixed(3));
+    root.style.setProperty(
+      "--macs-hero__bag-x",
+      `${(-54 * progress).toFixed(1)}px`,
+    );
+    root.style.setProperty(
+      "--macs-hero__bag-y",
+      `${(15 * progress).toFixed(1)}px`,
+    );
+    root.style.setProperty(
+      "--macs-hero__can-x",
+      `${(48 * progress).toFixed(1)}px`,
+    );
+    root.style.setProperty(
+      "--macs-hero__can-y",
+      `${(14 * progress).toFixed(1)}px`,
+    );
+    root.style.setProperty(
+      "--macs-hero__snack-x",
+      `${(44 * progress).toFixed(1)}px`,
+    );
+    root.style.setProperty(
+      "--macs-hero__snack-y",
+      `${(-26 * progress).toFixed(1)}px`,
+    );
+  };
+
+  const updateHeroMotion = () => {
+    const hero = document.querySelector(".macs-hero__section");
+
+    if (!hero) {
+      animationFrame = null;
       return;
     }
 
-    const controller = new AbortController();
-    controllerBySection.set(section, controller);
-    (() => {
-      const previousController = window.MacsHeroScroll?.controller;
+    if (reduceMotionQuery.matches) {
+      setHeroMotion(0);
+      animationFrame = null;
+      return;
+    }
 
-      if (previousController) {
-        previousController.abort();
-      }
+    const scrollTop = getScrollContainer().scrollTop;
+    const progress = clamp(scrollTop / 320, 0, 1);
 
-      const controller = new AbortController();
+    setHeroMotion(progress);
 
-      window.MacsHeroScroll = {
-        controller,
-        animationFrame: null,
-      };
+    animationFrame = null;
+  };
 
-      const START_SCALE = 1;
-      const MAXIMUM_SCALE = 1.1;
-      const SCROLL_DISTANCE = 650;
+  const requestUpdate = () => {
+    if (animationFrame) return;
 
-      const updateDogScale = () => {
-        const heroes = document.querySelectorAll(".macs-hero__section");
-
-        heroes.forEach((hero) => {
-          const dog = hero.querySelector(".macs-hero__dog");
-
-          if (!dog) return;
-
-          const progress = Math.min(
-            Math.max(window.scrollY / SCROLL_DISTANCE, 0),
-            1,
-          );
-
-          const scale = START_SCALE + (MAXIMUM_SCALE - START_SCALE) * progress;
-
-          dog.style.setProperty("--macs-hero__dog-scale", scale.toFixed(4));
-        });
-
-        window.MacsHeroScroll.animationFrame = null;
-      };
-
-      const requestUpdate = () => {
-        if (window.MacsHeroScroll.animationFrame) return;
-
-        window.MacsHeroScroll.animationFrame =
-          window.requestAnimationFrame(updateDogScale);
-      };
-
-      window.addEventListener("scroll", requestUpdate, {
-        passive: true,
-        signal: controller.signal,
-      });
-
-      window.addEventListener("resize", requestUpdate, {
-        signal: controller.signal,
-      });
-
-      document.addEventListener("shopify:section:load", requestUpdate, {
-        signal: controller.signal,
-      });
-
-      updateDogScale();
-    })();
-    let ticking = false;
-
-    const updateDogScale = () => {
-      const rect = section.getBoundingClientRect();
-      const distance = Math.min(section.offsetHeight * 0.85, 700);
-      const progress = clamp(-rect.top / distance, 0, 1);
-      const scale = 1 + progress * 0.07;
-
-      dog.style.setProperty("--macs-hero__dog-scale", scale.toFixed(3));
-      ticking = false;
-    };
-
-    const requestUpdate = () => {
-      if (ticking) return;
-
-      ticking = true;
-      window.requestAnimationFrame(updateDogScale);
-    };
-
-    window.addEventListener("scroll", requestUpdate, {
-      passive: true,
-      signal: controller.signal,
-    });
-
-    window.addEventListener("resize", requestUpdate, {
-      passive: true,
-      signal: controller.signal,
-    });
-
-    updateDogScale();
+    animationFrame = window.requestAnimationFrame(updateHeroMotion);
   };
 
   const initAllHeroes = () => {
-    document.querySelectorAll(".macs-hero__section").forEach(initHero);
+    const nextScrollContainer = getScrollContainer();
+
+    if (currentScrollContainer !== nextScrollContainer) {
+      currentScrollContainer?.removeEventListener("scroll", requestUpdate);
+      currentScrollContainer = nextScrollContainer;
+      currentScrollContainer.addEventListener("scroll", requestUpdate, {
+        passive: true,
+      });
+    }
+
+    requestUpdate();
   };
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", initAllHeroes, { passive: true });
+  window.addEventListener("load", initAllHeroes, { passive: true });
+  squeezeQuery.addEventListener?.("change", initAllHeroes);
+  reduceMotionQuery.addEventListener?.("change", requestUpdate);
+  document.addEventListener("shopify:section:load", initAllHeroes);
+  document.addEventListener("shopify:section:unload", initAllHeroes);
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initAllHeroes, {
@@ -124,16 +110,4 @@
   } else {
     initAllHeroes();
   }
-
-  document.addEventListener("shopify:section:load", (event) => {
-    if (event.target.matches(".macs-hero__shopify-section")) {
-      const section = event.target.querySelector(".macs-hero__section");
-      if (section) initHero(section);
-    }
-  });
-
-  document.addEventListener("shopify:section:unload", (event) => {
-    const section = event.target.querySelector(".macs-hero__section");
-    controllerBySection.get(section)?.abort();
-  });
 })();

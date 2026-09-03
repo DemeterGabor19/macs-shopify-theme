@@ -17,6 +17,8 @@
   assign block_settings = block.settings
   assign max_featured_items = 4
   assign image_border_radius = block_settings.image_border_radius
+  assign header_facebook_url = section.settings.header_facebook_url | default: 'https://www.facebook.com/macsallateledel/'
+  assign header_tiktok_url = section.settings.header_tiktok_url | default: 'https://www.tiktok.com/@macsmagyarorszag'
 
   if block_settings.menu_style == 'featured_collections'
     assign ratio = block_settings.featured_collections_aspect_ratio
@@ -63,6 +65,8 @@
     <summary
       class="header__icon header__icon--menu header__icon--summary"
       aria-label="{{ 'accessibility.menu' | t }}"
+      aria-expanded="false"
+      aria-controls="HeaderDrawer-Menu"
       on:click="/toggle"
     >
       <span class="svg-wrapper header-drawer-icon header-drawer-icon--open">
@@ -73,14 +77,20 @@
       </span>
     </summary>
     <div
+      id="HeaderDrawer-Menu"
       ref="menuDrawer"
+      aria-hidden="true"
       class="
         menu-drawer
+        macs-mobile-menu
         {% if block_settings.background_color != blank or block_settings.text_color != blank %}
           color-custom-{{ block.id }}
         {% endif %}
       "
     >
+      <span class="macs-mobile-menu__spot macs-mobile-menu__spot--red" aria-hidden="true"></span>
+      <span class="macs-mobile-menu__spot macs-mobile-menu__spot--yellow" aria-hidden="true"></span>
+
       <button
         class="button close-button menu-drawer__close-button focus-inset"
         type="button"
@@ -720,6 +730,39 @@
             </drawer-localization-component>
           {% endif %}
         {%- endif -%}
+      </div>
+
+      <div
+        class="macs-mobile-menu__footer menu-drawer__animated-element"
+        style="--menu-drawer-animation-index: {{ linklist.links.size | plus: 1 }};"
+      >
+        {% if section.settings.show_advice_button and section.settings.advice_button_text != blank %}
+          {% assign mobile_advice_url = section.settings.advice_button_link | default: routes.root_url %}
+          <a class="macs-mobile-menu__cta" href="{{ mobile_advice_url }}">
+            <span>{{ section.settings.advice_button_text | escape }}</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        {% endif %}
+
+        {% if header_facebook_url != blank or header_tiktok_url != blank %}
+          <div class="macs-mobile-menu__socials" aria-label="Közösségi média">
+            {% if header_facebook_url != blank %}
+              <a href="{{ header_facebook_url }}" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M14.1 8.5V6.8c0-.8.5-1 1-1h2.6V2.1L14.5 2C11.3 2 9.2 4 9.2 7.6v.9H6v4.1h3.2V22h4.9v-9.4h3.3l.6-4.1h-3.9Z"/>
+                </svg>
+              </a>
+            {% endif %}
+
+            {% if header_tiktok_url != blank %}
+              <a href="{{ header_tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M16.7 2c.3 2.2 1.6 3.6 3.8 3.8v4a9.4 9.4 0 0 1-3.8-1.1v6.8a6.5 6.5 0 1 1-5.6-6.4v4a2.6 2.6 0 1 0 1.7 2.4V2h3.9Z"/>
+                </svg>
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
       </div>
 
       {% liquid

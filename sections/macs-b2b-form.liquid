@@ -14,8 +14,13 @@
       {% endif %}
 
       {% if section.settings.title != blank %}
+        {% liquid
+          assign contact_title = section.settings.title | escape
+          assign contact_title = contact_title | replace: 'kapcsolatba!', '<span class="macs-b2b-contact__title-keep">kapcsolatba!</span>'
+        %}
+
         <h2 class="macs-b2b-contact__title">
-          {{ section.settings.title | escape }}
+          {{ contact_title }}
         </h2>
       {% endif %}
 

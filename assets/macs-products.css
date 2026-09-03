@@ -217,31 +217,33 @@
 
 @media screen and (max-width: 749px) {
   .macs-products-hero {
-    padding-block: 38px 46px;
+    padding-block: 30px 38px;
   }
 
   .macs-products-hero__container {
-    gap: 24px;
+    gap: 22px;
   }
 
   .macs-products-hero__eyebrow {
-    margin-bottom: 17px;
+    margin-bottom: 14px;
     font-size: 0.68rem;
   }
 
   .macs-products-hero__title {
-    font-size: clamp(2.8rem, 13vw, 4.25rem);
+    font-size: clamp(2.5rem, 12vw, 3.7rem);
+    line-height: 0.94;
   }
 
   .macs-products-hero__text {
-    margin-top: 21px;
-    font-size: 0.96rem;
-    line-height: 1.62;
+    margin-top: 18px;
+    font-size: 0.92rem;
+    line-height: 1.58;
   }
 
   .macs-products-hero__actions {
+    gap: 10px;
     align-items: stretch;
-    margin-top: 25px;
+    margin-top: 22px;
   }
 
   .macs-products-hero__actions .macs-button {
@@ -249,18 +251,18 @@
   }
 
   .macs-products-hero__visual {
-    min-height: clamp(350px, 94vw, 470px);
+    min-height: clamp(300px, 86vw, 390px);
   }
 
   .macs-products-hero__spot--red {
     top: 2%;
-    left: -10%;
-    width: 230px;
+    left: -13%;
+    width: 205px;
   }
 
   .macs-products-hero__spot--yellow {
-    right: -12%;
-    width: 190px;
+    right: -15%;
+    width: 160px;
   }
 
   .macs-products-hero__image-frame {
@@ -272,20 +274,20 @@
   .macs-products-hero__badge {
     right: -2%;
     bottom: 3%;
-    width: 84px;
+    width: 76px;
     padding: 10px;
     border-width: 4px;
-    font-size: 0.76rem;
+    font-size: 0.7rem;
   }
 }
 
 @media screen and (max-width: 420px) {
   .macs-products-hero__visual {
-    min-height: 330px;
+    min-height: 300px;
   }
 
   .macs-products-hero__image-frame {
-    inset-inline: -2%;
+    inset-inline: 0;
   }
 }
 
@@ -520,18 +522,24 @@
 
 @media screen and (max-width: 749px) {
   .macs-products-nav {
-    padding-block: 54px 68px;
-    scroll-margin-top: 70px;
+    padding-block: 44px 54px;
+    scroll-margin-top: 82px;
   }
 
   .macs-products-nav__header {
     grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
-    margin-bottom: 32px;
+    gap: 14px;
+    margin-bottom: 24px;
   }
 
   .macs-products-nav__title {
-    font-size: clamp(2.4rem, 10.5vw, 3.5rem);
+    font-size: clamp(2.15rem, 10vw, 3.05rem);
+    line-height: 0.98;
+  }
+
+  .macs-products-nav__text {
+    font-size: 0.92rem;
+    line-height: 1.58;
   }
 
   .macs-products-nav__grid {
@@ -549,10 +557,51 @@
   }
 
   .macs-products-nav__card {
-    min-width: min(82vw, 330px);
-    min-height: 340px;
-    flex: 0 0 min(82vw, 330px);
+    min-width: min(76vw, 292px);
+    min-height: 286px;
+    flex: 0 0 min(76vw, 292px);
+    padding: 16px 16px 18px;
+    border-radius: 22px;
     scroll-snap-align: start;
+  }
+
+  .macs-products-nav__media {
+    height: 160px;
+    flex-basis: 160px;
+  }
+
+  .macs-products-nav__image-spot {
+    width: 138px;
+  }
+
+  .macs-products-nav__image {
+    height: 142px;
+    max-width: 78%;
+  }
+
+  .macs-products-nav__placeholder {
+    width: 118px;
+    height: 138px;
+  }
+
+  .macs-products-nav__card-content {
+    padding-right: 44px;
+  }
+
+  .macs-products-nav__card-content h3 {
+    font-size: 1.18rem;
+  }
+
+  .macs-products-nav__card-content p {
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+
+  .macs-products-nav__arrow {
+    right: 16px;
+    bottom: 18px;
+    width: 34px;
+    height: 34px;
   }
 }
 
@@ -887,18 +936,24 @@
 
 @media screen and (max-width: 749px) {
   .macs-product-group {
-    padding-block: 60px 74px;
-    scroll-margin-top: 70px;
+    padding-block: 48px 58px;
+    scroll-margin-top: 82px;
   }
 
   .macs-product-group__header {
     grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
-    margin-bottom: 32px;
+    gap: 14px;
+    margin-bottom: 24px;
   }
 
   .macs-product-group__title {
-    font-size: clamp(2.4rem, 10.5vw, 3.55rem);
+    font-size: clamp(2.12rem, 10vw, 3.05rem);
+    line-height: 0.98;
+  }
+
+  .macs-product-group__intro {
+    font-size: 0.92rem;
+    line-height: 1.58;
   }
 
   .macs-product-group__grid--4,
@@ -917,17 +972,37 @@
   }
 
   .macs-product-card {
-    min-width: min(82vw, 330px);
-    flex: 0 0 min(82vw, 330px);
+    min-width: min(76vw, 292px);
+    flex: 0 0 min(76vw, 292px);
+    border-radius: 22px;
     scroll-snap-align: start;
   }
 
   .macs-product-card__media {
-    min-height: 260px;
+    min-height: 214px;
+    padding: 18px;
+  }
+
+  .macs-product-card__spot {
+    width: 158px;
   }
 
   .macs-product-card__image {
-    height: 215px;
+    height: 176px;
+  }
+
+  .macs-product-card__content {
+    min-height: 178px;
+    padding: 18px;
+  }
+
+  .macs-product-card__title {
+    font-size: 1.05rem;
+  }
+
+  .macs-product-card__button {
+    min-height: 40px;
+    border-radius: 12px;
   }
 }
 
